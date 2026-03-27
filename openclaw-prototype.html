@@ -1,0 +1,1268 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>OpenClaw Prototype</title>
+  <style>
+    :root {
+      --bg: #f6f5f2;
+      --surface: rgba(255, 255, 255, 0.9);
+      --surface-2: #ffffff;
+      --ink: #20262d;
+      --muted: #76808a;
+      --line: rgba(32, 38, 45, 0.08);
+      --brand: #146a90;
+      --brand-soft: #e4f3fb;
+      --warm: #f6efe3;
+      --warn: #af6d11;
+      --warn-soft: #f8edd8;
+      --success: #2b7a4b;
+      --success-soft: #dff2e6;
+      --danger: #b1453c;
+      --danger-soft: #f8e0dc;
+      --shadow: 0 18px 40px rgba(31, 45, 58, 0.12);
+      --font: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 24px;
+      font-family: var(--font);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(20, 106, 144, 0.12), transparent 28%),
+        linear-gradient(180deg, #fbfaf7 0%, #f1efe9 100%);
+    }
+
+    .phone {
+      width: 390px;
+      min-height: 844px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      background: linear-gradient(180deg, #fbfaf7 0%, #f4f2ed 100%);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      box-shadow: var(--shadow);
+    }
+
+    .sidebar {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 306px;
+      padding: 18px 14px 18px;
+      background: rgba(250, 249, 246, 0.98);
+      border-right: 1px solid rgba(32, 38, 45, 0.06);
+      transform: translateX(-100%);
+      transition: transform .28s ease;
+      z-index: 20;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 14px;
+      backdrop-filter: blur(18px);
+    }
+
+    .sidebar.open { transform: translateX(0); }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(21, 27, 34, 0.24);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .24s ease;
+      z-index: 15;
+    }
+
+    .overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px 8px;
+    }
+
+    .topbar-left, .topbar-right, .row, .split, .chips, .actions, .dock {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .icon-btn, .chip-btn, .nav-chip, .composer-btn, .mini-btn {
+      border: 0;
+      font: inherit;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .icon-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: transparent;
+      color: var(--ink);
+      font-size: 18px;
+    }
+
+    .title-wrap strong {
+      display: block;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .title-wrap span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .chat-shell {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: grid;
+      grid-template-rows: auto 1fr auto auto;
+    }
+
+    .settings-page {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #fbfaf7 0%, #f4f2ed 100%);
+      z-index: 18;
+      display: none;
+      grid-template-rows: auto 1fr;
+    }
+
+    .settings-page.open { display: grid; }
+
+    .memory-page {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #fbfaf7 0%, #f4f2ed 100%);
+      z-index: 17;
+      display: none;
+      grid-template-rows: auto 1fr;
+    }
+
+    .memory-page.open { display: grid; }
+
+    .settings-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px 10px;
+      border-bottom: 1px solid rgba(32, 38, 45, 0.06);
+      background: rgba(251, 250, 247, 0.92);
+      backdrop-filter: blur(16px);
+    }
+
+    .settings-body {
+      overflow: auto;
+      padding: 14px 16px 22px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .memory-body {
+      overflow: auto;
+      padding: 14px 16px 22px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .intro {
+      padding: 6px 18px 4px;
+    }
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      font-size: 34px;
+      background: linear-gradient(180deg, #ff8f69, #ff6f5c);
+      box-shadow: 0 10px 20px rgba(255, 111, 92, 0.24);
+      margin-bottom: 12px;
+    }
+
+    .intro h1 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: 0.2px;
+    }
+
+    .intro p {
+      margin: 10px 0 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #2f3a42;
+    }
+
+    .intro a {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .promo {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: var(--brand-soft);
+      color: var(--brand);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .hero-card {
+      margin: 8px 18px 0;
+      padding: 16px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,.94), rgba(250,249,246,.96));
+      border: 1px solid rgba(255,255,255,.72);
+      box-shadow: 0 12px 28px rgba(52, 63, 73, 0.08);
+      display: grid;
+      gap: 10px;
+    }
+
+    .hero-card.work { background: linear-gradient(180deg, #fff6ee, #fff); }
+    .hero-card.health { background: linear-gradient(180deg, #eef8f2, #fff); }
+    .hero-card.device { background: linear-gradient(180deg, #eff6fc, #fff); }
+
+    .message-area {
+      overflow: auto;
+      padding: 4px 18px 14px;
+      display: grid;
+      align-content: start;
+      gap: 12px;
+    }
+
+    .quick-entry, .message, .confirm-card, .sidebar-card, .history-item, .settings-card, .channel-item, .skill-item {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.06);
+    }
+
+    .quick-entry {
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.45;
+      width: fit-content;
+      max-width: 92%;
+      cursor: pointer;
+    }
+
+    .message {
+      max-width: 90%;
+      padding: 14px 15px;
+      border-radius: 18px;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .message.user {
+      justify-self: end;
+      background: #eaf5fb;
+      border-color: rgba(20, 106, 144, 0.08);
+    }
+
+    .message.assistant {
+      justify-self: start;
+      background: rgba(255, 255, 255, 0.86);
+    }
+
+    .message small, .muted {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .dock {
+      padding: 0 14px 8px;
+      overflow-x: auto;
+      flex-wrap: nowrap;
+    }
+
+    .nav-chip {
+      flex: 0 0 auto;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.88);
+      color: #3d4750;
+      border: 1px solid rgba(32, 38, 45, 0.06);
+      white-space: nowrap;
+    }
+
+    .nav-chip.active { background: var(--brand-soft); color: var(--brand); }
+
+    .composer-wrap {
+      padding: 6px 14px 18px;
+      background: linear-gradient(180deg, rgba(244, 242, 237, 0), rgba(244, 242, 237, 0.96) 16%);
+    }
+
+    .composer {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(32, 38, 45, 0.08);
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.08);
+    }
+
+    textarea {
+      flex: 1;
+      min-height: 24px;
+      max-height: 120px;
+      resize: none;
+      border: 0;
+      outline: none;
+      background: transparent;
+      font: inherit;
+      color: var(--ink);
+      line-height: 1.5;
+      padding: 8px 2px 6px;
+    }
+
+    .composer-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: #f3f5f7;
+      color: var(--ink);
+      font-size: 20px;
+    }
+
+    .composer-btn.primary {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .settings-card {
+      padding: 16px;
+      border-radius: 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .settings-card h3, .settings-card p {
+      margin: 0;
+    }
+
+    .settings-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .usage-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .usage-box {
+      padding: 13px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(20, 106, 144, 0.07);
+    }
+
+    .usage-box strong {
+      display: block;
+      font-size: 22px;
+      margin-top: 6px;
+    }
+
+    .channel-list, .skill-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .accordion-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .accordion-head .meta {
+      display: grid;
+      gap: 3px;
+    }
+
+    .accordion-arrow {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: rgba(32, 38, 45, 0.05);
+      color: var(--muted);
+      transition: transform .2s ease;
+      flex: 0 0 auto;
+    }
+
+    .accordion-content {
+      display: none;
+      gap: 10px;
+    }
+
+    .settings-card.expanded .accordion-content {
+      display: grid;
+    }
+
+    .settings-card.expanded .accordion-arrow {
+      transform: rotate(180deg);
+    }
+
+    .channel-item, .skill-item {
+      padding: 13px;
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .channel-item strong, .skill-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .memory-form {
+      display: grid;
+      gap: 10px;
+    }
+
+    .memory-field {
+      padding: 13px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.74);
+      border: 1px solid rgba(20, 106, 144, 0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .memory-field strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .sidebar-header {
+      display: grid;
+      gap: 12px;
+    }
+
+    .profile {
+      padding: 14px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid rgba(32, 38, 45, 0.06);
+    }
+
+    .profile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .mini-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      background: linear-gradient(180deg, #38bdf8, #0ea5b7);
+      color: #fff;
+    }
+
+    .profile-nav {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(32, 38, 45, 0.06);
+      padding-top: 10px;
+    }
+
+    .profile-nav div {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 6px 4px 0;
+    }
+
+    .profile-nav strong {
+      display: block;
+      color: var(--ink);
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .sidebar-body {
+      overflow: auto;
+      display: grid;
+      gap: 12px;
+      padding-right: 4px;
+    }
+
+    .sidebar-card {
+      padding: 14px;
+      border-radius: 18px;
+    }
+
+    .sidebar-card h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+    }
+
+    .sidebar-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .metric-list {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .metric {
+      padding: 7px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      background: rgba(20, 106, 144, 0.07);
+    }
+
+    .history-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .history-item {
+      padding: 12px;
+      border-radius: 16px;
+    }
+
+    .history-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .chip-btn {
+      padding: 9px 12px;
+      border-radius: 12px;
+      background: #fff;
+      color: var(--brand);
+      border: 1px solid rgba(20, 106, 144, 0.08);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .confirm-card {
+      padding: 14px;
+      border-radius: 20px;
+      display: grid;
+      gap: 12px;
+      background: linear-gradient(180deg, #ffffff, #fbfaf7);
+    }
+
+    .confirm-card h3, .confirm-card p { margin: 0; }
+    .confirm-card p { color: var(--muted); font-size: 13px; line-height: 1.55; }
+
+    .chips span {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--brand-soft);
+      color: var(--brand);
+    }
+
+    .chips .warn { background: var(--warn-soft); color: var(--warn); }
+    .chips .success { background: var(--success-soft); color: var(--success); }
+    .chips .danger { background: var(--danger-soft); color: var(--danger); }
+
+    .mini-btn {
+      padding: 10px 13px;
+      border-radius: 12px;
+      background: #f3f5f7;
+      color: var(--ink);
+      font-size: 13px;
+    }
+
+    .mini-btn.primary {
+      background: var(--brand);
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="profile">
+          <div class="profile-top">
+            <div class="mini-avatar">🦀</div>
+            <button class="icon-btn" id="closeSidebarBtn">✕</button>
+          </div>
+          <div style="font-size:18px;font-weight:700;">OpenClaw</div>
+          <div class="muted" style="margin-top:4px;">聊天、派活、定时提醒、健康分析、设备诊断</div>
+          <div class="profile-nav">
+            <div><strong>Kimi+</strong>模式</div>
+            <div id="openMemoryBtn" style="cursor:pointer;"><strong>记忆库</strong>资料</div>
+            <div><strong>消息</strong>回执</div>
+          </div>
+        </div>
+        <button class="chip-btn">升级订阅</button>
+      </div>
+
+      <div class="sidebar-body">
+        <div>
+          <div class="row" style="margin-bottom:8px;">
+            <h2 class="section-title">三大管家</h2>
+            <span class="muted">切换当前模式</span>
+          </div>
+          <div class="sidebar-card sidebar-mode" data-mode="work" style="cursor:pointer;">
+            <div class="row">
+              <h3>工作管家</h3>
+              <span class="chips"><span class="warn">任务模式</span></span>
+            </div>
+            <p>承接微信、飞书、钉钉与 App 内任务。</p>
+          </div>
+
+          <div class="sidebar-card sidebar-mode" data-mode="health" style="cursor:pointer;">
+            <div class="row">
+              <h3>健康管家</h3>
+              <span class="chips"><span class="success">健康模式</span></span>
+            </div>
+            <p>查看健康总结、异常提醒和趋势建议。</p>
+          </div>
+
+          <div class="sidebar-card sidebar-mode" data-mode="device" style="cursor:pointer;">
+            <div class="row">
+              <h3>设备管家</h3>
+              <span class="chips"><span class="danger">设备模式</span></span>
+            </div>
+            <p>检查电量、连接、佩戴和异常诊断。</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="row" style="margin-bottom:8px;">
+            <h2 class="section-title">最近记录</h2>
+            <span class="muted">点击继续追问</span>
+          </div>
+          <div class="history-list" id="historyList"></div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="chat-shell">
+      <div class="topbar">
+        <div class="topbar-left">
+          <button class="icon-btn" id="openSidebarBtn">☰</button>
+          <div class="title-wrap">
+            <strong>OpenClaw</strong>
+            <span>K2.5 快速 · SANAG AI 助手模式</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <button class="icon-btn">🔊</button>
+          <button class="icon-btn" id="openSettingsBtn">◍</button>
+        </div>
+      </div>
+
+      <div class="intro">
+        <div class="avatar">🦀</div>
+        <h1>Hi，一键部署 OpenClaw</h1>
+        <p>聊天、派活、定时提醒都能在这里完成。需要的时候，随时找我。<a href="#">去试试</a></p>
+        <div class="promo">🎵 升级订阅</div>
+      </div>
+
+      <div class="hero-card work" id="modeHeroCard"></div>
+
+      <div class="message-area" id="messageArea">
+        <button class="quick-entry quick-trigger" data-command="帮我创建一个明天上午9点的会议提醒，并同步到微信 clawbot">明天 9 点提醒我开会，并同步到微信</button>
+        <button class="quick-entry quick-trigger" data-command="分析一下我今天的睡眠和压力情况">看看今天的健康总结</button>
+        <button class="quick-entry quick-trigger" data-command="为什么我的左耳机掉电这么快">耳机掉电为什么这么快</button>
+
+        <div class="message assistant">
+          我已经切到 OpenClaw 模式。你可以直接输入一句话，我会把它拆成可执行任务、健康分析或设备诊断；需要确认的动作，我会在聊天里生成确认卡。
+        </div>
+
+        <div class="confirm-card" id="confirmCard">
+          <h3>已识别为工作任务</h3>
+          <p>类型：定时提醒。执行前需要确认提醒时间、发送渠道和目标对象。</p>
+          <div class="chips">
+            <span class="warn">工作管家</span>
+            <span>来源：App 对话</span>
+            <span>目标：微信 clawbot</span>
+          </div>
+          <div class="history-item">
+            <strong>原始指令</strong>
+            <div class="muted">明天 9 点提醒我开周会，并同步到微信 clawbot。</div>
+          </div>
+          <div class="actions">
+            <button class="mini-btn primary">确认执行</button>
+            <button class="mini-btn">补充参数</button>
+            <button class="mini-btn">取消</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="dock">
+        <button class="nav-chip active mode-switch-trigger" data-mode="work" data-command="打开工作管家，看看待办和执行记录">工作管家</button>
+        <button class="nav-chip mode-switch-trigger" data-mode="health" data-command="打开健康管家，生成今日健康总结">健康管家</button>
+        <button class="nav-chip mode-switch-trigger" data-mode="device" data-command="打开设备管家，检查当前连接和电量异常">设备管家</button>
+        <button class="nav-chip quick-trigger" data-command="查看 OpenClaw 消息中心里的最新提醒">消息中心</button>
+      </div>
+
+      <div class="composer-wrap">
+        <div class="composer">
+          <button class="composer-btn">◉</button>
+          <textarea id="composerInput" placeholder="尽管问，带图也行">尽管问，带图也行</textarea>
+          <button class="composer-btn primary" id="sendBtn">＋</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="settings-page" id="settingsPage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">设置</div>
+          <div class="muted">用量统计、远控通道、技能管理</div>
+        </div>
+        <button class="icon-btn" id="closeSettingsBtn">✕</button>
+      </div>
+      <div class="settings-body">
+        <div class="settings-card">
+          <div class="row">
+            <h3 class="section-title">用量统计</h3>
+            <span class="muted">近 7 天</span>
+          </div>
+          <p>查看 OpenClaw 的对话、任务执行和主动提醒消耗，帮助用户理解使用频率和价值。</p>
+          <div class="usage-grid">
+            <div class="usage-box">
+              <div class="muted">总对话数</div>
+              <strong>126</strong>
+            </div>
+            <div class="usage-box">
+              <div class="muted">任务执行</div>
+              <strong>34</strong>
+            </div>
+            <div class="usage-box">
+              <div class="muted">主动提醒</div>
+              <strong>18</strong>
+            </div>
+            <div class="usage-box">
+              <div class="muted">设备诊断</div>
+              <strong>12</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-card accordion-card" id="channelCard">
+          <div class="accordion-head">
+            <div class="meta">
+              <h3 class="section-title">远控通道</h3>
+              <span class="muted">配置微信、飞书、钉钉账号</span>
+            </div>
+            <div class="accordion-arrow">⌄</div>
+          </div>
+          <div class="accordion-content">
+            <p>用于让 OpenClaw 将提醒、任务执行结果和一次性云端任务回执同步到外部通道。</p>
+            <div class="channel-list">
+            <div class="channel-item">
+              <div>
+                <strong>微信 clawbot</strong>
+                <div class="muted">已绑定个人微信 · 默认提醒通道</div>
+              </div>
+              <div class="row">
+                <div class="chips"><span>已连接</span></div>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+            <div class="channel-item">
+              <div>
+                <strong>飞书账号</strong>
+                <div class="muted">未配置联系人与群目标，暂不可外发</div>
+              </div>
+              <div class="row">
+                <div class="chips"><span class="warn">去配置</span></div>
+                <div class="toggle"></div>
+              </div>
+            </div>
+            <div class="channel-item">
+              <div>
+                <strong>钉钉账号</strong>
+                <div class="muted">已接入组织通讯录，可发送到指定联系人</div>
+              </div>
+              <div class="row">
+                <div class="chips"><span class="success">组织已连通</span></div>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-card accordion-card" id="skillCard">
+          <div class="accordion-head">
+            <div class="meta">
+              <h3 class="section-title">技能管理</h3>
+              <span class="muted">启用或关闭能力模块</span>
+            </div>
+            <div class="accordion-arrow">⌄</div>
+          </div>
+          <div class="accordion-content">
+            <p>管理 OpenClaw 当前可调用的技能能力，便于按业务阶段灰度开放。</p>
+            <div class="skill-list">
+              <div class="skill-item">
+                <div>
+                  <strong>日程提醒技能</strong>
+                  <div class="muted">支持自然语言解析、定时任务、提醒回执。</div>
+                </div>
+                <div class="toggle active"></div>
+              </div>
+              <div class="skill-item">
+                <div>
+                  <strong>健康总结技能</strong>
+                  <div class="muted">根据耳机、手表、指环和健康档案生成建议。</div>
+                </div>
+                <div class="toggle active"></div>
+              </div>
+              <div class="skill-item">
+                <div>
+                  <strong>设备诊断技能</strong>
+                  <div class="muted">识别连接、电量、佩戴和音量异常。</div>
+                </div>
+                <div class="toggle active"></div>
+              </div>
+              <div class="skill-item">
+                <div>
+                  <strong>云端任务技能</strong>
+                  <div class="muted">处理一次性云端执行任务，并回写执行结果。</div>
+                </div>
+                <div class="toggle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="memory-page" id="memoryPage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">记忆库</div>
+          <div class="muted">配置基础资料，帮助 OpenClaw 更懂你</div>
+        </div>
+        <button class="icon-btn" id="closeMemoryBtn">✕</button>
+      </div>
+      <div class="memory-body">
+        <div class="settings-card">
+          <div class="row">
+            <h3 class="section-title">基础信息</h3>
+            <span class="muted">用于任务和健康能力个性化</span>
+          </div>
+          <p>这些信息会帮助 OpenClaw 更准确地生成健康建议、提醒时间和对话偏好。</p>
+          <div class="memory-form">
+            <div class="memory-field">
+              <div>
+                <strong>年龄</strong>
+                <div class="muted">28 岁</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+            <div class="memory-field">
+              <div>
+                <strong>性别</strong>
+                <div class="muted">女</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+            <div class="memory-field">
+              <div>
+                <strong>职业</strong>
+                <div class="muted">品牌运营经理</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+            <div class="memory-field">
+              <div>
+                <strong>作息时间</strong>
+                <div class="muted">工作日 23:30 入睡，07:30 起床</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="row">
+            <h3 class="section-title">补充偏好</h3>
+            <span class="muted">让提醒和建议更贴合</span>
+          </div>
+          <div class="memory-form">
+            <div class="memory-field">
+              <div>
+                <strong>常用提醒时段</strong>
+                <div class="muted">09:00 - 21:00</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+            <div class="memory-field">
+              <div>
+                <strong>健康关注点</strong>
+                <div class="muted">睡眠恢复、压力管理、久坐提醒</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+            <div class="memory-field">
+              <div>
+                <strong>设备使用习惯</strong>
+                <div class="muted">通勤佩戴耳机，夜间佩戴指环</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const historyData = [
+      {
+        title: "15:00 渠道同步提醒已发送",
+        detail: "工作管家已将提醒推送到微信 clawbot，并生成执行回执。",
+        command: "打开刚才发送到微信的任务回执"
+      },
+      {
+        title: "检测到午后压力偏高",
+        detail: "健康管家建议进行 10 分钟呼吸练习，已写入今日报告。",
+        command: "解释一下刚才的压力提醒"
+      },
+      {
+        title: "左耳机掉电异常",
+        detail: "设备管家建议放回充电仓校准，并检查电池健康度。",
+        command: "为什么左耳机掉电异常"
+      }
+    ];
+
+    const defaultConfirmByMode = {
+      work: "明天 9 点提醒我开周会，并同步到微信 clawbot。",
+      health: "分析一下我今天的睡眠和压力情况。",
+      device: "打开设备管家，检查当前连接和电量异常。"
+    };
+
+    const modeCards = {
+      work: {
+        cls: "work",
+        title: "工作管家",
+        tagClass: "warn",
+        tagText: "2 个待确认",
+        desc: "承接微信、飞书、钉钉与 App 内任务，统一确认、执行和回执。",
+        metrics: ["今日待办 4", "下次提醒 15:00", "云端任务已完成 1"],
+        quickEntries: [
+          ["明天 9 点提醒我开会，并同步到微信", "帮我创建一个明天上午9点的会议提醒，并同步到微信 clawbot"],
+          ["记录一个新的项目待办", "帮我记录一个待办：跟进新品发布会物料进度"],
+          ["查看工作回执和执行记录", "打开工作管家，看看待办和执行记录"]
+        ],
+        assistant: "这里是工作管家模式。你可以直接创建提醒、记录待办、发起一次性云端任务，我会先生成确认卡，再执行并回写结果。"
+      },
+      health: {
+        cls: "health",
+        title: "健康管家",
+        tagClass: "success",
+        tagText: "整体正常",
+        desc: "结合耳机、手表、指环与健康档案，输出建议型健康结论。",
+        metrics: ["睡眠恢复 72", "压力提醒 1 次", "血氧 97%"],
+        quickEntries: [
+          ["看看今天的健康总结", "分析一下我今天的睡眠和压力情况"],
+          ["有没有新的异常提醒", "帮我查看今天是否有新的健康异常提醒"],
+          ["生成一份简版健康报告", "基于今天的数据生成简版健康报告"]
+        ],
+        assistant: "这里是健康管家模式。你可以查看睡眠、压力、血氧等指标变化，我会结合用户档案给出建议型总结和异常提醒。"
+      },
+      device: {
+        cls: "device",
+        title: "设备管家",
+        tagClass: "danger",
+        tagText: "1 个异常",
+        desc: "监控电量、连接、佩戴和音量，并给出可执行处理建议。",
+        metrics: ["左耳 18%", "高音量 2h", "蓝牙稳定 92%"],
+        quickEntries: [
+          ["检查当前设备异常", "打开设备管家，检查当前连接和电量异常"],
+          ["为什么耳机掉电这么快", "为什么我的左耳机掉电这么快"],
+          ["看看蓝牙连接情况", "帮我查看当前蓝牙连接稳定性和异常"]
+        ],
+        assistant: "这里是设备管家模式。你可以排查电量、蓝牙连接、佩戴和音量问题，我会把诊断结果整理成可执行建议。"
+      }
+    };
+
+    let currentMode = "work";
+
+    function openSidebar() {
+      document.getElementById("sidebar").classList.add("open");
+      document.getElementById("overlay").classList.add("show");
+    }
+
+    function closeSidebar() {
+      document.getElementById("sidebar").classList.remove("open");
+      document.getElementById("overlay").classList.remove("show");
+    }
+
+    function openSettings() {
+      document.getElementById("settingsPage").classList.add("open");
+    }
+
+    function closeSettings() {
+      document.getElementById("settingsPage").classList.remove("open");
+    }
+
+    function openMemory() {
+      closeSidebar();
+      document.getElementById("memoryPage").classList.add("open");
+    }
+
+    function closeMemory() {
+      document.getElementById("memoryPage").classList.remove("open");
+    }
+
+    function renderHistory() {
+      const root = document.getElementById("historyList");
+      root.innerHTML = historyData.map(item => `
+        <button class="history-item sidebar-trigger" data-command="${item.command}" style="text-align:left;border:0;width:100%;">
+          <strong>${item.title}</strong>
+          <div class="muted">${item.detail}</div>
+        </button>
+      `).join("");
+    }
+
+    function renderModeHero(mode) {
+      currentMode = mode;
+      const config = modeCards[mode];
+      const root = document.getElementById("modeHeroCard");
+      root.className = `hero-card ${config.cls}`;
+      root.innerHTML = `
+        <div class="row">
+          <h2 class="section-title" style="font-size:20px;margin:0;">${config.title}</h2>
+          <div class="chips"><span class="${config.tagClass}">${config.tagText}</span></div>
+        </div>
+        <div class="muted" style="font-size:14px;line-height:1.6;">${config.desc}</div>
+        <div class="metric-list">${config.metrics.map(item => `<span class="metric">${item}</span>`).join("")}</div>
+      `;
+    }
+
+    function renderModeConversation(mode) {
+      const config = modeCards[mode];
+      const area = document.getElementById("messageArea");
+      area.innerHTML = `
+        ${config.quickEntries.map(item => `<button class="quick-entry quick-trigger" data-command="${item[1]}">${item[0]}</button>`).join("")}
+        <div class="message assistant">${config.assistant}</div>
+        <div class="confirm-card" id="confirmCard"></div>
+      `;
+
+      document.querySelectorAll(".quick-trigger").forEach(button => {
+        button.addEventListener("click", () => {
+          const cmd = button.dataset.command;
+          document.getElementById("composerInput").value = cmd;
+          appendUserMessage(cmd);
+        });
+      });
+
+      buildConfirm(defaultConfirmByMode[mode]);
+      area.scrollTop = 0;
+    }
+
+    function switchMode(mode, command) {
+      renderModeHero(mode);
+      renderModeConversation(mode);
+      document.querySelectorAll(".mode-switch-trigger").forEach(button => {
+        button.classList.toggle("active", button.dataset.mode === mode);
+      });
+      if (command) {
+        document.getElementById("composerInput").value = command;
+      }
+    }
+
+    function buildConfirm(command) {
+      const text = command.trim();
+      let title = "已识别为工作任务";
+      let desc = "类型：定时提醒。执行前需要确认提醒时间、发送渠道和目标对象。";
+      let chips = `
+        <span class="warn">工作管家</span>
+        <span>来源：App 对话</span>
+        <span>目标：微信 clawbot</span>
+      `;
+
+      if (text.includes("睡眠") || text.includes("压力") || text.includes("健康")) {
+        title = "已识别为健康分析请求";
+        desc = "系统将结合用户档案与设备数据生成简版健康总结，并在异常时给出建议动作。";
+        chips = `
+          <span class="success">健康管家</span>
+          <span>需读取今日数据</span>
+          <span>输出：简版报告</span>
+        `;
+      } else if (text.includes("耳机") || text.includes("掉电") || text.includes("音量") || text.includes("设备")) {
+        title = "已识别为设备诊断请求";
+        desc = "系统会检查连接、电量、电池健康度、佩戴时长，并返回可执行建议。";
+        chips = `
+          <span class="danger">设备管家</span>
+          <span>对象：SANAG Air Clip</span>
+          <span>动作：诊断异常</span>
+        `;
+      }
+
+      document.getElementById("confirmCard").innerHTML = `
+        <h3>${title}</h3>
+        <p>${desc}</p>
+        <div class="chips">${chips}</div>
+        <div class="history-item">
+          <strong>原始指令</strong>
+          <div class="muted">${text}</div>
+        </div>
+        <div class="actions">
+          <button class="mini-btn primary">确认执行</button>
+          <button class="mini-btn">补充参数</button>
+          <button class="mini-btn">取消</button>
+        </div>
+      `;
+    }
+
+    function appendUserMessage(text) {
+      const area = document.getElementById("messageArea");
+      const user = document.createElement("div");
+      user.className = "message user";
+      user.textContent = text;
+      area.appendChild(user);
+
+      const reply = document.createElement("div");
+      reply.className = "message assistant";
+      reply.innerHTML = "我已收到你的请求，并已切换到对应管家处理。需要确认的动作会继续显示在下方确认卡中。<br><small>OpenClaw 会把结果同步到消息中心与侧边历史记录。</small>";
+      area.appendChild(reply);
+
+      buildConfirm(text);
+      area.scrollTop = area.scrollHeight;
+    }
+
+    document.getElementById("openSidebarBtn").addEventListener("click", openSidebar);
+    document.getElementById("closeSidebarBtn").addEventListener("click", closeSidebar);
+    document.getElementById("overlay").addEventListener("click", closeSidebar);
+    document.getElementById("openSettingsBtn").addEventListener("click", openSettings);
+    document.getElementById("closeSettingsBtn").addEventListener("click", closeSettings);
+    document.getElementById("openMemoryBtn").addEventListener("click", openMemory);
+    document.getElementById("closeMemoryBtn").addEventListener("click", closeMemory);
+
+    document.querySelectorAll(".accordion-head").forEach(head => {
+      head.addEventListener("click", () => {
+        head.parentElement.classList.toggle("expanded");
+      });
+    });
+
+    document.querySelectorAll(".quick-trigger").forEach(button => {
+      button.addEventListener("click", () => {
+        const cmd = button.dataset.command;
+        document.getElementById("composerInput").value = cmd;
+        appendUserMessage(cmd);
+      });
+    });
+
+    document.addEventListener("click", event => {
+      const trigger = event.target.closest(".sidebar-trigger");
+      if (!trigger) return;
+      const cmd = trigger.dataset.command;
+      closeSidebar();
+      document.getElementById("composerInput").value = cmd;
+      appendUserMessage(cmd);
+    });
+
+    document.querySelectorAll(".sidebar-mode").forEach(button => {
+      button.addEventListener("click", () => {
+        const mode = button.dataset.mode;
+        switchMode(mode, defaultConfirmByMode[mode]);
+        closeSidebar();
+      });
+    });
+
+    document.querySelectorAll(".mode-switch-trigger").forEach(button => {
+      button.addEventListener("click", () => {
+        const mode = button.dataset.mode;
+        switchMode(mode, button.dataset.command);
+      });
+    });
+
+    document.getElementById("sendBtn").addEventListener("click", () => {
+      const input = document.getElementById("composerInput");
+      const text = input.value.trim();
+      if (!text) return;
+      appendUserMessage(text);
+      input.value = "";
+    });
+
+    document.querySelectorAll(".toggle").forEach(toggle => {
+      toggle.addEventListener("click", () => toggle.classList.toggle("active"));
+    });
+
+    renderHistory();
+    switchMode("work", defaultConfirmByMode.work);
+  </script>
+</body>
+</html>
