@@ -1,1 +1,1779 @@
-PCFET0NUWVBFIGh0bWw+CjxodG1sIGxhbmc9InpoLUNOIj4KPGhlYWQ+CiAgPG1ldGEgY2hhcnNldD0iVVRGLTgiPgogIDxtZXRhIG5hbWU9InZpZXdwb3J0IiBjb250ZW50PSJ3aWR0aD1kZXZpY2Utd2lkdGgsIGluaXRpYWwtc2NhbGU9MS4wIj4KICA8dGl0bGU+U2FuYWdDbGF3IFByb3RvdHlwZTwvdGl0bGU+CiAgPHN0eWxlPgogICAgOnJvb3QgewogICAgICAtLWJnOiAjZjZmNWYyOwogICAgICAtLXN1cmZhY2U6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC45KTsKICAgICAgLS1zdXJmYWNlLTI6ICNmZmZmZmY7CiAgICAgIC0taW5rOiAjMjAyNjJkOwogICAgICAtLW11dGVkOiAjNzY4MDhhOwogICAgICAtLWxpbmU6IHJnYmEoMzIsIDM4LCA0NSwgMC4wOCk7CiAgICAgIC0tYnJhbmQ6ICMxNDZhOTA7CiAgICAgIC0tYnJhbmQtc29mdDogI2U0ZjNmYjsKICAgICAgLS13YXJtOiAjZjZlZmUzOwogICAgICAtLXdhcm46ICNhZjZkMTE7CiAgICAgIC0td2Fybi1zb2Z0OiAjZjhlZGQ4OwogICAgICAtLXN1Y2Nlc3M6ICMyYjdhNGI7CiAgICAgIC0tc3VjY2Vzcy1zb2Z0OiAjZGZmMmU2OwogICAgICAtLWRhbmdlcjogI2IxNDUzYzsKICAgICAgLS1kYW5nZXItc29mdDogI2Y4ZTBkYzsKICAgICAgLS1zaGFkb3c6IDAgMThweCA0MHB4IHJnYmEoMzEsIDQ1LCA1OCwgMC4xMik7CiAgICAgIC0tZm9udDogIlNlZ29lIFVJIiwgIlBpbmdGYW5nIFNDIiwgIk1pY3Jvc29mdCBZYUhlaSIsIHNhbnMtc2VyaWY7CiAgICB9CgogICAgKiB7IGJveC1zaXppbmc6IGJvcmRlci1ib3g7IH0KCiAgICBib2R5IHsKICAgICAgbWFyZ2luOiAwOwogICAgICBtaW4taGVpZ2h0OiAxMDB2aDsKICAgICAgZGlzcGxheTogZmxleDsKICAgICAganVzdGlmeS1jb250ZW50OiBjZW50ZXI7CiAgICAgIHBhZGRpbmc6IDI0cHg7CiAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1mb250KTsKICAgICAgY29sb3I6IHZhcigtLWluayk7CiAgICAgIGJhY2tncm91bmQ6CiAgICAgICAgcmFkaWFsLWdyYWRpZW50KGNpcmNsZSBhdCB0b3AgbGVmdCwgcmdiYSgyMCwgMTA2LCAxNDQsIDAuMTIpLCB0cmFuc3BhcmVudCAyOCUpLAogICAgICAgIGxpbmVhci1ncmFkaWVudCgxODBkZWcsICNmYmZhZjcgMCUsICNmMWVmZTkgMTAwJSk7CiAgICB9CgogICAgLnBob25lIHsKICAgICAgd2lkdGg6IDM5MHB4OwogICAgICBtaW4taGVpZ2h0OiA4NDRweDsKICAgICAgcG9zaXRpb246IHJlbGF0aXZlOwogICAgICBvdmVyZmxvdzogaGlkZGVuOwogICAgICBib3JkZXItcmFkaXVzOiAzNHB4OwogICAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoMTgwZGVnLCAjZmJmYWY3IDAlLCAjZjRmMmVkIDEwMCUpOwogICAgICBib3JkZXI6IDFweCBzb2xpZCByZ2JhKDI1NSwgMjU1LCAyNTUsIDAuNzIpOwogICAgICBib3gtc2hhZG93OiB2YXIoLS1zaGFkb3cpOwogICAgfQoKICAgIC5zaWRlYmFyIHsKICAgICAgcG9zaXRpb246IGFic29sdXRlOwogICAgICBpbnNldDogMCBhdXRvIDAgMDsKICAgICAgd2lkdGg6IDMwNnB4OwogICAgICBwYWRkaW5nOiAxOHB4IDE0cHggMThweDsKICAgICAgYmFja2dyb3VuZDogcmdiYSgyNTAsIDI0OSwgMjQ2LCAwLjk4KTsKICAgICAgYm9yZGVyLXJpZ2h0OiAxcHggc29saWQgcmdiYSgzMiwgMzgsIDQ1LCAwLjA2KTsKICAgICAgdHJhbnNmb3JtOiB0cmFuc2xhdGVYKC0xMDAlKTsKICAgICAgdHJhbnNpdGlvbjogdHJhbnNmb3JtIC4yOHMgZWFzZTsKICAgICAgei1pbmRleDogMjA7CiAgICAgIGRpc3BsYXk6IGdyaWQ7CiAgICAgIGdyaWQtdGVtcGxhdGUtcm93czogYXV0byBhdXRvIDFmcjsKICAgICAgZ2FwOiAxNHB4OwogICAgICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoMThweCk7CiAgICB9CgogICAgLnNpZGViYXIub3BlbiB7IHRyYW5zZm9ybTogdHJhbnNsYXRlWCgwKTsgfQoKICAgIC5vdmVybGF5IHsKICAgICAgcG9zaXRpb246IGFic29sdXRlOwogICAgICBpbnNldDogMDsKICAgICAgYmFja2dyb3VuZDogcmdiYSgyMSwgMjcsIDM0LCAwLjI0KTsKICAgICAgb3BhY2l0eTogMDsKICAgICAgcG9pbnRlci1ldmVudHM6IG5vbmU7CiAgICAgIHRyYW5zaXRpb246IG9wYWNpdHkgLjI0cyBlYXNlOwogICAgICB6LWluZGV4OiAxNTsKICAgIH0KCiAgICAub3ZlcmxheS5zaG93IHsKICAgICAgb3BhY2l0eTogMTsKICAgICAgcG9pbnRlci1ldmVudHM6IGF1dG87CiAgICB9CgogICAgLnRvcGJhciB7CiAgICAgIGRpc3BsYXk6IGZsZXg7CiAgICAgIGp1c3RpZnktY29udGVudDogc3BhY2UtYmV0d2VlbjsKICAgICAgYWxpZ24taXRlbXM6IGNlbnRlcjsKICAgICAgcGFkZGluZzogMTRweCAxNnB4IDhweDsKICAgIH0KCiAgICAudG9wYmFyLWxlZnQsIC50b3BiYXItcmlnaHQsIC5yb3csIC5zcGxpdCwgLmNoaXBzLCAuYWN0aW9ucyB7CiAgICAgIGRpc3BsYXk6IGZsZXg7CiAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7CiAgICAgIGdhcDogOHB4OwogICAgICBmbGV4LXdyYXA6IHdyYXA7CiAgICB9CgogICAgLmljb24tYnRuLCAuY2hpcC1idG4sIC5jb21wb3Nlci1idG4sIC5taW5pLWJ0biB7CiAgICAgIGJvcmRlcjogMDsKICAgICAgZm9udDogaW5oZXJpdDsKICAgICAgY3Vyc29yOiBwb2ludGVyOwogICAgICB0cmFuc2l0aW9uOiAuMnMgZWFzZTsKICAgIH0KCiAgICAuaWNvbi1idG4gewogICAgICB3aWR0aDogMzRweDsKICAgICAgaGVpZ2h0OiAzNHB4OwogICAgICBib3JkZXItcmFkaXVzOiAxMnB4OwogICAgICBiYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDsKICAgICAgY29sb3I6IHZhcigtLWluayk7CiAgICAgIGZvbnQtc2l6ZTogMThweDsKICAgIH0KCiAgICAudGl0bGUtd3JhcCBzdHJvbmcgewogICAgICBkaXNwbGF5OiBibG9jazsKICAgICAgZm9udC1zaXplOiAxOHB4OwogICAgICBmb250LXdlaWdodDogNzAwOwogICAgfQoKICAgIC50aXRsZS13cmFwIHNwYW4gewogICAgICBjb2xvcjogdmFyKC0tbXV0ZWQpOwogICAgICBmb250LXNpemU6IDEycHg7CiAgICB9CgogICAgLmNoYXQtc2hlbGwgewogICAgICBwb3NpdGlvbjogcmVsYXRpdmU7CiAgICAgIHotaW5kZXg6IDE7CiAgICAgIGhlaWdodDogMTAwJTsKICAgICAgZGlzcGxheTogZ3JpZDsKICAgICAgZ3JpZC10ZW1wbGF0ZS1yb3dzOiBhdXRvIDFmciBhdXRvIGF1dG87CiAgICB9CgogICAgLnNldHRpbmdzLXBhZ2UgewogICAgICBwb3NpdGlvbjogYWJzb2x1dGU7CiAgICAgIGluc2V0OiAwOwogICAgICBiYWNrZ3JvdW5kOiBsaW5lYXItZ3JhZGllbnQoMTgwZGVnLCAjZmJmYWY3IDAlLCAjZjRmMmVkIDEwMCUpOwogICAgICB6LWluZGV4OiAxODsKICAgICAgZGlzcGxheTogbm9uZTsKICAgICAgZ3JpZC10ZW1wbGF0ZS1yb3dzOiBhdXRvIDFmcjsKICAgIH0KCiAgICAuc2V0dGluZ3MtcGFnZS5vcGVuIHsgZGlzcGxheTogZ3JpZDsgfQoKICAgIC5kZXRhaWwtcGFnZSwgLm1lbW9yeS1wYWdlIHsKICAgICAgcG9zaXRpb246IGFic29sdXRlOwogICAgICBpbnNldDogMDsKICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDE4MGRlZywgI2ZiZmFmNyAwJSwgI2Y0ZjJlZCAxMDAlKTsKICAgICAgei1pbmRleDogMTc7CiAgICAgIGRpc3BsYXk6IG5vbmU7CiAgICAgIGdyaWQtdGVtcGxhdGUtcm93czogYXV0byAxZnI7CiAgICB9CgogICAgLmRldGFpbC1wYWdlLm9wZW4sIC5tZW1vcnktcGFnZS5vcGVuIHsgZGlzcGxheTogZ3JpZDsgfQoKICAgIC5zZXR0aW5ncy10b3AgewogICAgICBkaXNwbGF5OiBmbGV4OwogICAgICBqdXN0aWZ5LWNvbnRlbnQ6IHNwYWNlLWJldHdlZW47CiAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7CiAgICAgIHBhZGRpbmc6IDE0cHggMTZweCAxMHB4OwogICAgICBib3JkZXItYm90dG9tOiAxcHggc29saWQgcmdiYSgzMiwgMzgsIDQ1LCAwLjA2KTsKICAgICAgYmFja2dyb3VuZDogcmdiYSgyNTEsIDI1MCwgMjQ3LCAwLjkyKTsKICAgICAgYmFja2Ryb3AtZmlsdGVyOiBibHVyKDE2cHgpOwogICAgfQoKICAgIC5zZXR0aW5ncy1ib2R5IHsKICAgICAgb3ZlcmZsb3c6IGF1dG87CiAgICAgIHBhZGRpbmc6IDE0cHggMTZweCAyMnB4OwogICAgICBkaXNwbGF5OiBncmlkOwogICAgICBnYXA6IDE0cHg7CiAgICB9CgogICAgLmRldGFpbC1ib2R5LCAubWVtb3J5LWJvZHkgewogICAgICBvdmVyZmxvdzogYXV0bzsKICAgICAgcGFkZGluZzogMTRweCAxNnB4IDIycHg7CiAgICAgIGRpc3BsYXk6IGdyaWQ7CiAgICAgIGdhcDogMTRweDsKICAgIH0KCiAgICAuaW50cm8gewogICAgICBwYWRkaW5nOiA2cHggMThweCA0cHg7CiAgICB9CgogICAgLmF2YXRhciB7CiAgICAgIHdpZHRoOiA2NHB4OwogICAgICBoZWlnaHQ6IDY0cHg7CiAgICAgIGJvcmRlci1yYWRpdXM6IDIwcHg7CiAgICAgIGRpc3BsYXk6IGdyaWQ7CiAgICAgIHBsYWNlLWl0ZW1zOiBjZW50ZXI7CiAgICAgIGZvbnQtc2l6ZTogMzRweDsKICAgICAgYmFja2dyb3VuZDogbGluZWFyLWdyYWRpZW50KDE4MGRlZywgI2ZmOGY2OSwgI2ZmNmY1Yyk7CiAgICAgIGJveC1zaGFkb3c6IDAgMTBweCAyMHB4IHJnYmEoMjU1LCAxMTEsIDkyLCAwLjI0KTsKICAgICAgbWFyZ2luLWJvdHRvbTogMTJweDsKICAgIH0KCiAgICAuaW50cm8gaDEgewogICAgICBtYXJnaW46IDA7CiAgICAgIGZvbnQtc2l6ZTogMjhweDsKICAgICAgbGluZS1oZWlnaHQ6IDEuMjsKICAgICAgbGV0dGVyLXNwYWNpbmc6IDAuMnB4OwogICAgfQoKICAgIC5pbnRybyBwIHsKICAgICAgbWFyZ2luOiAxMHB4IDAgMDsKICAgICAgZm9udC1zaXplOiAxNXB4OwogICAgICBsaW5lLWhlaWdodDogMS42NTsKICAgICAgY29sb3I6ICMyZjNhNDI7CiAgICB9CgogICAgLmludHJvIGEgewogICAgICBjb2xvcjogdmFyKC0tYnJhbmQpOwogICAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7CiAgICAgIGZvbnQtd2VpZ2h0OiA2MDA7CiAgICB9CgogICAgLnByb21vIHsKICAgICAgbWFyZ2luLXRvcDogMTRweDsKICAgICAgZGlzcGxheTogaW5saW5lLWZsZXg7CiAgICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7CiAgICAgIGdhcDogOHB4OwogICAgICBwYWRkaW5nOiAxMHB4IDE0cHg7CiAgICAgIGJvcmRlci1yYWRpdXM6IDE0cHg7CiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWJyYW5kLXNvZnQpOwogICAgICBjb2xvcjogdmFyKC0tYnJhbmQpOwogICAgICBmb250LXNpemU6IDEzcHg7CiAgICAgIGZvbnQtd2VpZ2h0OiA2MDA7CiAgICB9C...
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SanagClaw Prototype</title>
+  <style>
+    :root {
+      --bg: #f6f5f2;
+      --surface: rgba(255, 255, 255, 0.9);
+      --surface-2: #ffffff;
+      --ink: #20262d;
+      --muted: #76808a;
+      --line: rgba(32, 38, 45, 0.08);
+      --brand: #146a90;
+      --brand-soft: #e4f3fb;
+      --warm: #f6efe3;
+      --warn: #af6d11;
+      --warn-soft: #f8edd8;
+      --success: #2b7a4b;
+      --success-soft: #dff2e6;
+      --danger: #b1453c;
+      --danger-soft: #f8e0dc;
+      --shadow: 0 18px 40px rgba(31, 45, 58, 0.12);
+      --font: "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 24px;
+      font-family: var(--font);
+      color: var(--ink);
+      background:
+        radial-gradient(circle at top left, rgba(20, 106, 144, 0.12), transparent 28%),
+        linear-gradient(180deg, #fbfaf7 0%, #f1efe9 100%);
+    }
+
+    .phone {
+      width: 390px;
+      min-height: 844px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 34px;
+      background: linear-gradient(180deg, #fbfaf7 0%, #f4f2ed 100%);
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      box-shadow: var(--shadow);
+    }
+
+    .sidebar {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 306px;
+      padding: 18px 14px 18px;
+      background: rgba(250, 249, 246, 0.98);
+      border-right: 1px solid rgba(32, 38, 45, 0.06);
+      transform: translateX(-100%);
+      transition: transform .28s ease;
+      z-index: 20;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 14px;
+      backdrop-filter: blur(18px);
+    }
+
+    .sidebar.open { transform: translateX(0); }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(21, 27, 34, 0.24);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .24s ease;
+      z-index: 15;
+    }
+
+    .overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px 8px;
+    }
+
+    .topbar-left, .topbar-right, .row, .split, .chips, .actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .icon-btn, .chip-btn, .composer-btn, .mini-btn {
+      border: 0;
+      font: inherit;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .icon-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      background: transparent;
+      color: var(--ink);
+      font-size: 18px;
+    }
+
+    .title-wrap strong {
+      display: block;
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    .title-wrap span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .chat-shell {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: grid;
+      grid-template-rows: auto 1fr auto auto;
+    }
+
+    .settings-page {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #fbfaf7 0%, #f4f2ed 100%);
+      z-index: 18;
+      display: none;
+      grid-template-rows: auto 1fr;
+    }
+
+    .settings-page.open { display: grid; }
+
+    .detail-page, .memory-page {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #fbfaf7 0%, #f4f2ed 100%);
+      z-index: 17;
+      display: none;
+      grid-template-rows: auto 1fr;
+    }
+
+    .detail-page.open, .memory-page.open { display: grid; }
+
+    .settings-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 16px 10px;
+      border-bottom: 1px solid rgba(32, 38, 45, 0.06);
+      background: rgba(251, 250, 247, 0.92);
+      backdrop-filter: blur(16px);
+    }
+
+    .settings-body {
+      overflow: auto;
+      padding: 14px 16px 22px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .detail-body, .memory-body {
+      overflow: auto;
+      padding: 14px 16px 22px;
+      display: grid;
+      gap: 14px;
+    }
+
+    .intro {
+      padding: 6px 18px 4px;
+    }
+
+    .avatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      font-size: 34px;
+      background: linear-gradient(180deg, #ff8f69, #ff6f5c);
+      box-shadow: 0 10px 20px rgba(255, 111, 92, 0.24);
+      margin-bottom: 12px;
+    }
+
+    .intro h1 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.2;
+      letter-spacing: 0.2px;
+    }
+
+    .intro p {
+      margin: 10px 0 0;
+      font-size: 15px;
+      line-height: 1.65;
+      color: #2f3a42;
+    }
+
+    .intro a {
+      color: var(--brand);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .promo {
+      margin-top: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 14px;
+      background: var(--brand-soft);
+      color: var(--brand);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .message-area {
+      overflow: auto;
+      padding: 12px 18px 14px;
+      display: grid;
+      align-content: start;
+      gap: 12px;
+    }
+
+    .quick-entry, .message, .confirm-card, .sidebar-card, .history-item, .settings-card, .channel-item, .skill-item {
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.06);
+    }
+
+    .quick-entry {
+      padding: 12px 14px;
+      border-radius: 16px;
+      font-size: 14px;
+      line-height: 1.45;
+      width: fit-content;
+      max-width: 92%;
+      cursor: pointer;
+    }
+
+    .message {
+      max-width: 90%;
+      padding: 14px 15px;
+      border-radius: 18px;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .message.user {
+      justify-self: end;
+      background: #eaf5fb;
+      border-color: rgba(20, 106, 144, 0.08);
+    }
+
+    .message.assistant {
+      justify-self: start;
+      background: rgba(255, 255, 255, 0.86);
+    }
+
+    .message small, .muted {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .composer-wrap {
+      padding: 6px 14px 18px;
+      background: linear-gradient(180deg, rgba(244, 242, 237, 0), rgba(244, 242, 237, 0.96) 16%);
+    }
+
+    .composer-module {
+      margin: 0 14px 8px;
+      padding: 12px 12px 10px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.72);
+      border: 1px solid rgba(32, 38, 45, 0.06);
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.06);
+      overflow-x: auto;
+    }
+
+    .composer-module-tabs {
+      display: flex;
+      gap: 10px;
+      width: max-content;
+    }
+
+    .composer-module-chip {
+      flex: 0 0 auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(32, 38, 45, 0.08);
+      background: rgba(248, 248, 245, 0.95);
+      color: #49515a;
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .composer-module-chip.active {
+      border-color: rgba(20, 106, 144, 0.32);
+      background: #ffffff;
+      color: var(--brand);
+      box-shadow: inset 0 0 0 1px rgba(20, 106, 144, 0.18);
+    }
+
+    .composer-module-icon {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: inline-grid;
+      place-items: center;
+      color: var(--brand);
+      font-size: 12px;
+      background: rgba(20, 106, 144, 0.08);
+    }
+
+    .composer {
+      display: flex;
+      align-items: flex-end;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(32, 38, 45, 0.08);
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.08);
+    }
+
+    textarea {
+      flex: 1;
+      min-height: 24px;
+      max-height: 120px;
+      resize: none;
+      border: 0;
+      outline: none;
+      background: transparent;
+      font: inherit;
+      color: var(--ink);
+      line-height: 1.5;
+      padding: 8px 2px 6px;
+    }
+
+    .composer-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 14px;
+      background: #f3f5f7;
+      color: var(--ink);
+      font-size: 20px;
+    }
+
+    .composer-btn.primary {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .section-title {
+      margin: 0;
+      font-size: 15px;
+      font-weight: 700;
+    }
+
+    .settings-card {
+      padding: 16px;
+      border-radius: 20px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .settings-card h3, .settings-card p {
+      margin: 0;
+    }
+
+    .settings-card p {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .settings-menu {
+      display: grid;
+      gap: 12px;
+    }
+
+    .settings-menu-item {
+      width: 100%;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(249,248,244,0.96));
+      box-shadow: 0 12px 28px rgba(52, 63, 73, 0.07);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+      color: var(--ink);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .settings-menu-item:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 34px rgba(52, 63, 73, 0.09);
+      border-color: rgba(20, 106, 144, 0.16);
+    }
+
+    .settings-menu-main {
+      display: grid;
+      gap: 10px;
+      flex: 1;
+      min-width: 0;
+    }
+
+    .settings-menu-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .settings-menu-pill {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: var(--brand-soft);
+      color: var(--brand);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .settings-menu-item strong {
+      display: block;
+      font-size: 16px;
+      line-height: 1.3;
+    }
+
+    .settings-menu-item span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .settings-menu-item em {
+      font-style: normal;
+      color: var(--brand);
+      font-size: 20px;
+      line-height: 1;
+      padding-top: 4px;
+      margin-left: 8px;
+    }
+
+    .usage-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .usage-box {
+      padding: 13px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.7);
+      border: 1px solid rgba(20, 106, 144, 0.07);
+    }
+
+    .usage-box strong {
+      display: block;
+      font-size: 22px;
+      margin-top: 6px;
+    }
+
+    .channel-list, .skill-list {
+      display: grid;
+      gap: 10px;
+    }
+
+    .channel-item, .skill-item {
+      padding: 13px;
+      border-radius: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .channel-item strong, .skill-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .skill-list {
+      gap: 12px;
+    }
+
+    .skill-item {
+      padding: 16px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,247,243,0.96));
+      border: 1px solid rgba(32, 38, 45, 0.06);
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.05);
+      align-items: center;
+    }
+
+    .skill-item-main {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .skill-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      background: rgba(20, 106, 144, 0.08);
+      color: var(--brand);
+      font-size: 16px;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+
+    .skill-copy {
+      min-width: 0;
+    }
+
+    .skill-copy strong {
+      margin-bottom: 6px;
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    .skill-copy .muted {
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .memory-form {
+      display: grid;
+      gap: 10px;
+    }
+
+    .memory-field {
+      padding: 13px;
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.74);
+      border: 1px solid rgba(20, 106, 144, 0.06);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .memory-field strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .sidebar-header {
+      display: grid;
+      gap: 12px;
+    }
+
+    .profile {
+      padding: 14px;
+      border-radius: 20px;
+      background: #fff;
+      border: 1px solid rgba(32, 38, 45, 0.06);
+    }
+
+    .profile-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .mini-avatar {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      background: linear-gradient(180deg, #38bdf8, #0ea5b7);
+      color: #fff;
+    }
+
+    .sidebar-body {
+      overflow: auto;
+      display: grid;
+      gap: 12px;
+      padding-right: 4px;
+    }
+
+    .sidebar-card {
+      padding: 14px;
+      border-radius: 18px;
+    }
+
+    .sidebar-card h3 {
+      margin: 0 0 6px;
+      font-size: 15px;
+    }
+
+    .sidebar-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    .metric-list {
+      margin-top: 10px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .metric {
+      padding: 7px 10px;
+      border-radius: 12px;
+      font-size: 12px;
+      background: rgba(20, 106, 144, 0.07);
+    }
+
+    .history-list, .task-list, .template-list, .market-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .history-item, .task-item, .template-item {
+      padding: 12px;
+      border-radius: 16px;
+    }
+
+    .history-item strong, .task-item strong, .template-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 13px;
+    }
+
+    .history-head {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 4px;
+    }
+
+    .history-title {
+      font-size: 15px;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    .history-search-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0 0 0 12px;
+      border-top: 1px solid rgba(32, 38, 45, 0.06);
+      min-height: 42px;
+    }
+
+    .history-search-icon {
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1;
+    }
+
+    .history-card {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.92);
+      box-shadow: 0 12px 26px rgba(52, 63, 73, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+      color: inherit;
+    }
+
+    .history-card-title {
+      margin: 0 0 6px;
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .history-card-time {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    .history-menu {
+      position: relative;
+      flex: 0 0 auto;
+    }
+
+    .history-menu-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      border: 0;
+      background: rgba(32, 38, 45, 0.05);
+      color: var(--muted);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .history-menu-list {
+      position: absolute;
+      top: 36px;
+      right: 0;
+      min-width: 96px;
+      padding: 6px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 14px 30px rgba(31, 45, 58, 0.12);
+      display: none;
+      z-index: 5;
+    }
+
+    .history-menu.open .history-menu-list {
+      display: grid;
+      gap: 4px;
+    }
+
+    .history-menu-list button {
+      border: 0;
+      background: transparent;
+      text-align: left;
+      border-radius: 10px;
+      padding: 8px 10px;
+      font: inherit;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .history-menu-list button:hover {
+      background: rgba(20, 106, 144, 0.08);
+    }
+
+    .chip-btn {
+      padding: 9px 12px;
+      border-radius: 12px;
+      background: #fff;
+      color: var(--brand);
+      border: 1px solid rgba(20, 106, 144, 0.08);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .chips span {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--brand-soft);
+      color: var(--brand);
+    }
+
+    .chips .warn { background: var(--warn-soft); color: var(--warn); }
+    .chips .success { background: var(--success-soft); color: var(--success); }
+    .chips .danger { background: var(--danger-soft); color: var(--danger); }
+
+    .mini-btn {
+      padding: 10px 13px;
+      border-radius: 12px;
+      background: #f3f5f7;
+      color: var(--ink);
+      font-size: 13px;
+    }
+
+    .mini-btn.primary {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .section-link-btn {
+      border: 0;
+      background: transparent;
+      color: var(--brand);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .market-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .market-card {
+      width: 100%;
+      border: 1px solid rgba(32, 38, 45, 0.06);
+      border-radius: 22px;
+      padding: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,247,243,0.96));
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.05);
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+      color: inherit;
+    }
+
+    .market-card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(20, 106, 144, 0.08);
+      color: var(--brand);
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+
+    .market-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .market-card .muted {
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .toggle {
+      width: 48px;
+      height: 30px;
+      border-radius: 999px;
+      background: rgba(32, 38, 45, 0.16);
+      position: relative;
+      cursor: pointer;
+      transition: background .2s ease;
+      flex: 0 0 auto;
+    }
+
+    .toggle::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(31, 45, 58, 0.2);
+      transition: transform .2s ease;
+    }
+
+    .toggle.active {
+      background: #6558f5;
+    }
+
+    .toggle.active::after {
+      transform: translateX(18px);
+    }
+
+    .usage-progress-card {
+      padding: 14px;
+      border-radius: 18px;
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.06);
+      cursor: pointer;
+      display: grid;
+      gap: 10px;
+    }
+
+    .usage-progress-actions {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 2px;
+    }
+
+    .usage-inline-btn {
+      border: 0;
+      border-radius: 12px;
+      padding: 9px 14px;
+      background: rgba(20, 106, 144, 0.12);
+      color: var(--brand);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(20, 106, 144, 0.12);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #2aa7df, #146a90);
+    }
+
+    .search-input {
+      width: 100%;
+      border: 1px solid rgba(32, 38, 45, 0.08);
+      background: transparent;
+      border-radius: 14px;
+      padding: 10px 0;
+      font: inherit;
+      color: var(--ink);
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="phone">
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="profile">
+          <div class="profile-top">
+            <div class="mini-avatar">🦀</div>
+            <button class="icon-btn" id="closeSidebarBtn">✕</button>
+          </div>
+          <div style="font-size:18px;font-weight:700;">SanagClaw</div>
+          <div class="muted" style="margin-top:4px;">聊天、派活、定时提醒、健康分析、设备诊断</div>
+        </div>
+        <div class="usage-progress-card" id="openUsageCard" role="button" tabindex="0">
+          <div class="row" style="justify-content:space-between;">
+            <strong style="font-size:15px;">积分用量</strong>
+            <span class="muted">680 / 1000</span>
+          </div>
+          <div class="progress-track">
+            <div class="progress-fill" style="width:68%;"></div>
+          </div>
+          <div class="muted">本月已使用 680 积分，点击查看详细用量</div>
+          <div class="usage-progress-actions">
+            <button class="usage-inline-btn" id="upgradeBtn" type="button">升级订阅</button>
+          </div>
+        </div>
+        <button class="chip-btn" id="openTasksSidebarBtn">定时任务</button>
+        <button class="mini-btn primary" id="newTaskBtn" style="width:100%;justify-content:center;">新建任务</button>
+      </div>
+
+      <div class="sidebar-body">
+        <div class="sidebar-card">
+          <div class="history-head">
+            <h3 class="history-title">历史任务</h3>
+            <div class="history-search-wrap">
+              <span class="history-search-icon">⌕</span>
+              <input class="search-input" id="historySearchInput" type="text" placeholder="搜索框">
+            </div>
+          </div>
+          <div class="history-list" id="historyList"></div>
+        </div>
+      </div>
+    </aside>
+
+    <div class="overlay" id="overlay"></div>
+
+    <div class="chat-shell">
+      <div class="topbar">
+        <div class="topbar-left">
+          <button class="icon-btn" id="openSidebarBtn">☰</button>
+          <div class="title-wrap">
+            <strong>SanagClaw</strong>
+            <span>K2.5 快速 · SANAG AI 助手模式</span>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <button class="icon-btn">🔊</button>
+          <button class="icon-btn" id="openSettingsBtn">◍</button>
+        </div>
+      </div>
+
+      <div class="intro">
+        <div class="avatar">🦀</div>
+        <h1>Hi，一键部署 SanagClaw</h1>
+        <p>聊天、派活、定时提醒都能在这里完成。需要的时候，随时找我。<a href="#">去试试</a></p>
+        <div class="promo">🎵 升级订阅</div>
+      </div>
+
+      <div class="message-area" id="messageArea">
+        <button class="quick-entry quick-trigger" data-command="帮我创建一个明天上午9点的会议提醒，并同步到微信 clawbot">明天 9 点提醒我开会，并同步到微信</button>
+        <button class="quick-entry quick-trigger" data-command="帮我查看今天的健康总结和异常提醒">看看今天的健康总结</button>
+        <button class="quick-entry quick-trigger" data-command="为什么我的左耳机掉电这么快">耳机掉电为什么这么快</button>
+        <button class="quick-entry quick-trigger" data-command="查看 SanagClaw 消息中心里的最新提醒">查看最新提醒</button>
+      </div>
+
+      <div class="composer-module">
+        <div class="composer-module-tabs">
+          <button class="composer-module-chip" type="button">
+            <span class="composer-module-icon">✉</span>
+            消息配置渠道
+          </button>
+          <button class="composer-module-chip" type="button">
+            <span class="composer-module-icon">◔</span>
+            定时任务
+          </button>
+          <button class="composer-module-chip" type="button">
+            <span class="composer-module-icon">▦</span>
+            任务市场
+          </button>
+          <button class="composer-module-chip active" id="composerNewTaskBtn" type="button">
+            <span class="composer-module-icon">＋</span>
+            新建任务
+          </button>
+        </div>
+      </div>
+
+      <div class="composer-wrap">
+        <div class="composer">
+          <button class="composer-btn" aria-label="add">＋</button>
+          <textarea id="composerInput" placeholder="把任务、提醒或设备问题交给 SanagClaw"></textarea>
+          <button class="composer-btn primary" id="sendBtn" aria-label="send">➜</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="settings-page" id="settingsPage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">设置</div>
+          <div class="muted">一级目录</div>
+        </div>
+        <button class="icon-btn" id="closeSettingsBtn">✕</button>
+      </div>
+      <div class="settings-body">
+        <div class="settings-menu">
+          <button class="settings-menu-item settings-nav-trigger" data-target="usagePage">
+            <div class="settings-menu-main">
+              <div class="settings-menu-top">
+                <span class="settings-menu-pill">积分</span>
+                <strong>用量统计</strong>
+              </div>
+              <span>查看近 7 天对话、任务与积分使用明细。</span>
+            </div>
+            <em>›</em>
+          </button>
+
+          <button class="settings-menu-item settings-nav-trigger" data-target="channelPage">
+            <div class="settings-menu-main">
+              <div class="settings-menu-top">
+                <span class="settings-menu-pill">通道</span>
+                <strong>远程控制</strong>
+              </div>
+              <span>配置微信、飞书和钉钉账号的同步与外发能力。</span>
+            </div>
+            <em>›</em>
+          </button>
+
+          <button class="settings-menu-item settings-nav-trigger" data-target="taskMarketPage">
+            <div class="settings-menu-main">
+              <div class="settings-menu-top">
+                <span class="settings-menu-pill">任务</span>
+                <strong>任务市场</strong>
+              </div>
+              <span>浏览推荐任务模板，快速创建适合当前场景的任务。</span>
+            </div>
+            <em>›</em>
+          </button>
+
+          <button class="settings-menu-item settings-nav-trigger" data-target="skillPage">
+            <div class="settings-menu-main">
+              <div class="settings-menu-top">
+                <span class="settings-menu-pill">能力</span>
+                <strong>技能管理</strong>
+              </div>
+              <span>启用或关闭能力模块，控制当前可调用功能范围。</span>
+            </div>
+            <em>›</em>
+          </button>
+
+          <button class="settings-menu-item settings-nav-trigger" data-target="memoryPage">
+            <div class="settings-menu-main">
+              <div class="settings-menu-top">
+                <span class="settings-menu-pill">资料</span>
+                <strong>记忆库</strong>
+              </div>
+              <span>管理基础资料、生活习惯和个性化偏好设置。</span>
+            </div>
+            <em>›</em>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="memory-page" id="memoryPage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">记忆库</div>
+          <div class="muted">资料与偏好</div>
+        </div>
+        <button class="icon-btn" id="closeMemoryBtn">✕</button>
+      </div>
+      <div class="memory-body">
+        <div class="settings-card">
+          <div class="row">
+            <h3 class="section-title">基础资料</h3>
+            <span class="muted">便于理解用户习惯</span>
+          </div>
+          <div class="memory-form">
+            <div class="memory-field">
+              <div>
+                <strong>工作节奏</strong>
+                <div class="muted">周一至周五 09:00 - 18:30，常开飞书和微信</div>
+              </div>
+              <button class="mini-btn">编辑</button>
+            </div>
+            <div class="memory-field">
+              <div>
+                <strong>提醒偏好</strong>
+                <div class="muted">重要提醒先弹窗，再发微信；不打扰时段为 23:30 - 07:30</div>
+              </div>
+              <button class="mini-btn">编辑</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="row">
+            <h3 class="section-title">补充偏好</h3>
+            <span class="muted">让提醒和建议更贴合</span>
+          </div>
+          <div class="memory-form">
+            <div class="memory-field">
+              <div>
+                <strong>常用提醒时段</strong>
+                <div class="muted">09:00 - 21:00</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+            <div class="memory-field">
+              <div>
+                <strong>健康关注点</strong>
+                <div class="muted">睡眠恢复、压力管理、久坐提醒</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+            <div class="memory-field">
+              <div>
+                <strong>设备使用习惯</strong>
+                <div class="muted">通勤佩戴耳机，夜间佩戴指环</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-page" id="tasksPage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">定时任务</div>
+          <div class="muted">查看已设置任务与执行状态</div>
+        </div>
+        <button class="icon-btn" id="closeTasksBtn">✕</button>
+      </div>
+      <div class="detail-body">
+        <div class="settings-card">
+          <div class="row">
+            <h3 class="section-title">已设置的定时任务</h3>
+            <span class="muted">共 3 个</span>
+          </div>
+          <div class="task-list" id="taskList"></div>
+        </div>
+
+        <div class="settings-card">
+          <div class="row" style="justify-content:space-between;width:100%;">
+            <div class="row">
+              <h3 class="section-title">推荐任务</h3>
+              <span class="muted">精选 3 个</span>
+            </div>
+            <button class="section-link-btn" id="viewAllTaskMarketBtn" type="button">查看全部</button>
+          </div>
+          <div class="template-list" id="recommendedTaskList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-page" id="taskMarketPage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">任务市场</div>
+          <div class="muted">浏览推荐模板并快速创建任务</div>
+        </div>
+        <button class="icon-btn" id="closeTaskMarketBtn">✕</button>
+      </div>
+      <div class="detail-body">
+        <div class="settings-card">
+          <div class="market-grid" id="taskMarketGrid"></div>
+        </div>
+
+        <div class="settings-card">
+          <div class="row">
+            <h3 class="section-title">精选模板</h3>
+            <span class="muted">快速上手</span>
+          </div>
+          <div class="template-list" id="templateList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-page" id="usagePage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">用量统计</div>
+          <div class="muted">近 7 天</div>
+        </div>
+        <button class="icon-btn detail-close-btn">✕</button>
+      </div>
+      <div class="detail-body">
+        <div class="settings-card">
+          <p>查看 SanagClaw 的对话、任务执行和主动提醒消耗，帮助用户理解使用频率和价值。</p>
+          <div class="usage-grid">
+            <div class="usage-box">
+              <div class="muted">总对话数</div>
+              <strong>126</strong>
+            </div>
+            <div class="usage-box">
+              <div class="muted">任务执行</div>
+              <strong>34</strong>
+            </div>
+            <div class="usage-box">
+              <div class="muted">主动提醒</div>
+              <strong>18</strong>
+            </div>
+            <div class="usage-box">
+              <div class="muted">设备诊断</div>
+              <strong>12</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-page" id="channelPage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">远控通道</div>
+          <div class="muted">配置微信、飞书、钉钉账号</div>
+        </div>
+        <button class="icon-btn detail-close-btn">✕</button>
+      </div>
+      <div class="detail-body">
+        <div class="settings-card">
+          <p>用于让 SanagClaw 将提醒、任务执行结果和一次性云端任务回执同步到外部通道。</p>
+          <div class="channel-list">
+            <div class="channel-item">
+              <div>
+                <strong>微信 clawbot</strong>
+                <div class="muted">已绑定个人微信 · 默认提醒通道</div>
+              </div>
+              <div class="row">
+                <div class="chips"><span>已连接</span></div>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+            <div class="channel-item">
+              <div>
+                <strong>飞书账号</strong>
+                <div class="muted">未配置联系人与群目标，暂不可外发</div>
+              </div>
+              <div class="row">
+                <div class="chips"><span class="warn">去配置</span></div>
+                <div class="toggle"></div>
+              </div>
+            </div>
+            <div class="channel-item">
+              <div>
+                <strong>钉钉账号</strong>
+                <div class="muted">已接入组织通讯录，可发送到指定联系人</div>
+              </div>
+              <div class="row">
+                <div class="chips"><span class="success">组织已连通</span></div>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-page" id="skillPage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">技能管理</div>
+          <div class="muted">启用或关闭能力模块</div>
+        </div>
+        <button class="icon-btn detail-close-btn">✕</button>
+      </div>
+      <div class="detail-body">
+        <div class="settings-card">
+          <p>管理 SanagClaw 当前可调用的技能能力，便于按业务阶段灰度开放。</p>
+          <div class="skill-list">
+            <div class="skill-item">
+              <div class="skill-item-main">
+                <div class="skill-icon">⏰</div>
+                <div class="skill-copy">
+                  <strong>定时任务</strong>
+                  <div class="muted">管理提醒创建、周期任务、执行回执和任务编排能力。</div>
+                </div>
+              </div>
+              <div class="toggle active"></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-main">
+                <div class="skill-icon">♡</div>
+                <div class="skill-copy">
+                  <strong>健康总结</strong>
+                  <div class="muted">结合设备数据和用户档案，生成每日健康结论与建议。</div>
+                </div>
+              </div>
+              <div class="toggle active"></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-main">
+                <div class="skill-icon">⌁</div>
+                <div class="skill-copy">
+                  <strong>设备诊断</strong>
+                  <div class="muted">识别连接、电量、佩戴和音量异常，并给出处理建议。</div>
+                </div>
+              </div>
+              <div class="toggle active"></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-main">
+                <div class="skill-icon">☁</div>
+                <div class="skill-copy">
+                  <strong>云端任务</strong>
+                  <div class="muted">处理一次性云端执行任务，并将结果同步回对话与任务中心。</div>
+                </div>
+              </div>
+              <div class="toggle"></div>
+            </div>
+            <div class="skill-item">
+              <div class="skill-item-main">
+                <div class="skill-icon">✉</div>
+                <div class="skill-copy">
+                  <strong>消息渠道</strong>
+                  <div class="muted">管理微信、飞书和钉钉等通知渠道的消息外发能力。</div>
+                </div>
+              </div>
+              <div class="toggle active"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    const historyData = [
+      {
+        title: "新品复盘提醒",
+        time: "上周五 18:00",
+        command: "打开上周五18点的新品复盘提醒"
+      },
+      {
+        title: "午间久坐提醒",
+        time: "昨天 15:00",
+        command: "查看昨天15点的久坐提醒记录"
+      },
+      {
+        title: "左耳机掉电诊断",
+        time: "3 月 28 日",
+        command: "查看3月28日的左耳机掉电诊断结果"
+      },
+      {
+        title: "周报自动汇总任务",
+        time: "3 月 27 日",
+        command: "查看3月27日的周报自动汇总任务"
+      }
+    ];
+
+    const taskData = [
+      {
+        title: "工作日上午 9:00 会议提醒",
+        detail: "重复周期：每周一至周五 · 同步到微信 clawbot",
+        command: "查看我的工作日上午9点会议提醒"
+      },
+      {
+        title: "每晚 23:00 睡前提醒",
+        detail: "重复周期：每天 · 提醒准备休息并开启睡眠监测",
+        command: "查看我的每晚23点睡前提醒"
+      },
+      {
+        title: "周日 20:00 健康周报",
+        detail: "重复周期：每周日 · 汇总睡眠、压力和设备使用情况",
+        command: "查看我的健康周报定时任务"
+      }
+    ];
+
+    const templateData = [
+      {
+        title: "通勤出门提醒",
+        detail: "工作日早上提醒检查耳机电量、带齐随身物品。",
+        command: "帮我创建一个工作日早上8点的通勤出门提醒"
+      },
+      {
+        title: "午间久坐提醒",
+        detail: "午后定时提醒起身活动，结合健康数据给出建议。",
+        command: "帮我创建一个每天下午3点的久坐提醒"
+      },
+      {
+        title: "耳机充电提醒",
+        detail: "检测到低电量趋势后，在固定时段提醒充电。",
+        command: "帮我创建一个每晚9点检查耳机充电状态的提醒"
+      }
+    ];
+
+    const marketTaskData = [
+      {
+        title: "创建定时任务：热点资讯自动汇总",
+        detail: "还在一条条刷资讯？每日自动整理，不用费心查找，快速看懂当天重点。",
+        icon: "📰",
+        command: "帮我创建一个每天早上8点自动汇总热点资讯的任务"
+      },
+      {
+        title: "发票/单据智能归档",
+        detail: "一到月末报销就火急火燎？把票据整理任务交给 SanagClaw 定时处理。",
+        icon: "🧾",
+        command: "帮我创建一个每周五下午整理发票和单据的任务"
+      },
+      {
+        title: "日程安排/任务跟踪与提醒",
+        detail: "每天任务太多，安排不过来怎么办？帮你管日程、盯进度、到点喊你。",
+        icon: "📅",
+        command: "帮我创建一个每天早上9点整理日程并提醒我的任务"
+      },
+      {
+        title: "内容选题灵感收集",
+        detail: "自动归纳热点、评论和灵感来源，沉淀成持续可用的选题池。",
+        icon: "📝",
+        command: "帮我创建一个每晚8点整理内容选题灵感的任务"
+      },
+      {
+        title: "业务指标可视化管理",
+        detail: "自动整理关键业务数据，生成轻量看板，方便你快速复盘与同步。",
+        icon: "📊",
+        command: "帮我创建一个每周一早上生成业务指标看板的任务"
+      },
+      {
+        title: "制定轻量学习计划",
+        detail: "把长期学习目标拆成日常节奏，自动提醒、监督打卡与阶段复盘。",
+        icon: "📒",
+        command: "帮我创建一个工作日晚上8点提醒我执行学习计划的任务"
+      }
+    ];
+
+    function openSidebar() {
+      document.getElementById("sidebar").classList.add("open");
+      document.getElementById("overlay").classList.add("show");
+    }
+
+    function closeSidebar() {
+      document.getElementById("sidebar").classList.remove("open");
+      document.getElementById("overlay").classList.remove("show");
+    }
+
+    function openSettings() {
+      closeSidebar();
+      document.getElementById("settingsPage").classList.add("open");
+    }
+
+    function closeSettings() {
+      document.getElementById("settingsPage").classList.remove("open");
+    }
+
+    function openMemory() {
+      closeSettings();
+      closeSidebar();
+      document.getElementById("memoryPage").classList.add("open");
+    }
+
+    function closeMemory() {
+      document.getElementById("memoryPage").classList.remove("open");
+      document.getElementById("settingsPage").classList.add("open");
+    }
+
+    function openTasks() {
+      closeSettings();
+      closeSidebar();
+      document.getElementById("tasksPage").classList.add("open");
+    }
+
+    function closeTasks() {
+      document.getElementById("tasksPage").classList.remove("open");
+      document.getElementById("settingsPage").classList.add("open");
+    }
+
+    function openTaskMarket() {
+      closeSettings();
+      closeSidebar();
+      document.getElementById("taskMarketPage").classList.add("open");
+    }
+
+    function closeTaskMarket() {
+      document.getElementById("taskMarketPage").classList.remove("open");
+      document.getElementById("settingsPage").classList.add("open");
+    }
+
+    function openDetailPage(pageId) {
+      closeSettings();
+      closeSidebar();
+      document.getElementById(pageId).classList.add("open");
+    }
+
+    function closeDetailPages() {
+      document.querySelectorAll(".detail-page, .memory-page").forEach(page => {
+        page.classList.remove("open");
+      });
+      document.getElementById("settingsPage").classList.add("open");
+    }
+
+    function renderHistory(keyword = "") {
+      const normalized = keyword.trim().toLowerCase();
+      const filtered = historyData.filter(item => {
+        const text = `${item.title} ${item.time} ${item.command}`.toLowerCase();
+        return text.includes(normalized);
+      });
+      const root = document.getElementById("historyList");
+      root.innerHTML = filtered.map(item => `
+        <div class="history-item">
+          <div class="history-card sidebar-trigger" data-command="${item.command}">
+            <div>
+              <div class="history-card-title">${item.title}</div>
+              <div class="history-card-time">${item.time}</div>
+            </div>
+            <div class="history-menu">
+              <button class="history-menu-btn" type="button">⋯</button>
+              <div class="history-menu-list">
+                <button type="button">删除</button>
+                <button type="button">收藏</button>
+                <button type="button">分享</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join("");
+
+      if (!filtered.length) {
+        root.innerHTML = `<div class="history-item"><div class="history-card"><div><div class="history-card-title">未找到结果</div><div class="history-card-time">试试搜索任务主题或任务时间</div></div></div></div>`;
+      }
+    }
+
+    function renderTasks() {
+      const root = document.getElementById("taskList");
+      root.innerHTML = taskData.map(item => `
+        <button class="task-item sidebar-trigger" data-command="${item.command}" style="text-align:left;border:0;width:100%;">
+          <strong>${item.title}</strong>
+          <div class="muted">${item.detail}</div>
+        </button>
+      `).join("");
+    }
+
+    function renderTemplates() {
+      const root = document.getElementById("templateList");
+      root.innerHTML = templateData.map(item => `
+        <button class="template-item sidebar-trigger" data-command="${item.command}" style="text-align:left;border:0;width:100%;">
+          <strong>${item.title}</strong>
+          <div class="muted">${item.detail}</div>
+        </button>
+      `).join("");
+    }
+
+    function renderRecommendedTasks() {
+      const root = document.getElementById("recommendedTaskList");
+      root.innerHTML = templateData.slice(0, 3).map(item => `
+        <button class="template-item sidebar-trigger" data-command="${item.command}" style="text-align:left;border:0;width:100%;">
+          <strong>${item.title}</strong>
+          <div class="muted">${item.detail}</div>
+        </button>
+      `).join("");
+    }
+
+    function renderMarketCards() {
+      const root = document.getElementById("taskMarketGrid");
+      root.innerHTML = marketTaskData.map(item => `
+        <button class="market-card sidebar-trigger" data-command="${item.command}" type="button">
+          <div class="market-card-icon">${item.icon}</div>
+          <strong>${item.title}</strong>
+          <div class="muted">${item.detail}</div>
+        </button>
+      `).join("");
+    }
+
+    function appendUserMessage(text) {
+      const area = document.getElementById("messageArea");
+      const user = document.createElement("div");
+      user.className = "message user";
+      user.textContent = text;
+      area.appendChild(user);
+
+      const reply = document.createElement("div");
+      reply.className = "message assistant";
+      reply.innerHTML = "我已收到你的请求，并开始为你处理。<br><small>SanagClaw 会把结果同步到定时任务与侧边记录中。</small>";
+      area.appendChild(reply);
+
+      area.scrollTop = area.scrollHeight;
+    }
+
+    function startNewTask() {
+      closeSidebar();
+      closeSettings();
+      document.querySelectorAll(".detail-page, .memory-page").forEach(page => {
+        page.classList.remove("open");
+      });
+      const area = document.getElementById("messageArea");
+      area.innerHTML = `
+        <button class="quick-entry quick-trigger" data-command="帮我创建一个明天上午9点的会议提醒，并同步到微信 clawbot">明天 9 点提醒我开会，并同步到微信</button>
+        <button class="quick-entry quick-trigger" data-command="帮我查看今天的健康总结和异常提醒">看看今天的健康总结</button>
+        <button class="quick-entry quick-trigger" data-command="为什么我的左耳机掉电这么快">耳机掉电为什么这么快</button>
+        <button class="quick-entry quick-trigger" data-command="查看 SanagClaw 消息中心里的最新提醒">查看最新提醒</button>
+        <div class="message assistant">新的任务对话已创建。你可以直接输入需求，我会从这里开始处理。</div>
+      `;
+      bindQuickTriggers();
+      document.getElementById("composerInput").value = "";
+      area.scrollTop = 0;
+    }
+
+    function bindQuickTriggers() {
+      document.querySelectorAll(".quick-trigger").forEach(button => {
+        button.addEventListener("click", () => {
+          const cmd = button.dataset.command;
+          document.getElementById("composerInput").value = cmd;
+          appendUserMessage(cmd);
+        });
+      });
+    }
+
+    document.getElementById("openSidebarBtn").addEventListener("click", openSidebar);
+    document.getElementById("closeSidebarBtn").addEventListener("click", closeSidebar);
+    document.getElementById("overlay").addEventListener("click", closeSidebar);
+    document.getElementById("openSettingsBtn").addEventListener("click", openSettings);
+    document.getElementById("closeSettingsBtn").addEventListener("click", closeSettings);
+    document.getElementById("closeMemoryBtn").addEventListener("click", closeMemory);
+    document.getElementById("closeTasksBtn").addEventListener("click", closeTasks);
+    document.getElementById("closeTaskMarketBtn").addEventListener("click", closeTaskMarket);
+    document.getElementById("viewAllTaskMarketBtn").addEventListener("click", openTaskMarket);
+    document.getElementById("openUsageCard").addEventListener("click", () => openDetailPage("usagePage"));
+    document.getElementById("openUsageCard").addEventListener("keydown", event => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openDetailPage("usagePage");
+      }
+    });
+    document.getElementById("upgradeBtn").addEventListener("click", event => {
+      event.stopPropagation();
+      openDetailPage("usagePage");
+    });
+    document.getElementById("openTasksSidebarBtn").addEventListener("click", openTasks);
+    document.getElementById("newTaskBtn").addEventListener("click", startNewTask);
+    document.getElementById("composerNewTaskBtn").addEventListener("click", startNewTask);
+    document.getElementById("historySearchInput").addEventListener("input", event => {
+      renderHistory(event.target.value);
+    });
+
+    document.querySelectorAll(".settings-nav-trigger").forEach(button => {
+      button.addEventListener("click", () => {
+        const pageId = button.dataset.target;
+        if (pageId === "memoryPage") {
+          openMemory();
+          return;
+        }
+        if (pageId === "taskMarketPage") {
+          openTaskMarket();
+          return;
+        }
+        openDetailPage(pageId);
+      });
+    });
+
+    document.querySelectorAll(".detail-close-btn").forEach(button => {
+      button.addEventListener("click", closeDetailPages);
+    });
+
+    bindQuickTriggers();
+
+    document.addEventListener("click", event => {
+      const menuBtn = event.target.closest(".history-menu-btn");
+      if (menuBtn) {
+        const menu = menuBtn.parentElement;
+        document.querySelectorAll(".history-menu").forEach(item => {
+          if (item !== menu) item.classList.remove("open");
+        });
+        menu.classList.toggle("open");
+        event.stopPropagation();
+        return;
+      }
+
+      const menuAction = event.target.closest(".history-menu-list button");
+      if (menuAction) {
+        event.stopPropagation();
+        menuAction.closest(".history-menu").classList.remove("open");
+        return;
+      }
+
+      const trigger = event.target.closest(".sidebar-trigger");
+      if (!trigger) return;
+      const cmd = trigger.dataset.command;
+      closeSidebar();
+      closeSettings();
+      document.querySelectorAll(".detail-page, .memory-page").forEach(page => {
+        page.classList.remove("open");
+      });
+      document.getElementById("composerInput").value = cmd;
+      appendUserMessage(cmd);
+    });
+
+    document.addEventListener("click", event => {
+      if (!event.target.closest(".history-menu")) {
+        document.querySelectorAll(".history-menu").forEach(menu => menu.classList.remove("open"));
+      }
+    });
+
+    document.getElementById("sendBtn").addEventListener("click", () => {
+      const input = document.getElementById("composerInput");
+      const text = input.value.trim();
+      if (!text) return;
+      appendUserMessage(text);
+      input.value = "";
+    });
+
+    document.querySelectorAll(".toggle").forEach(toggle => {
+      toggle.addEventListener("click", () => toggle.classList.toggle("active"));
+    });
+
+    renderHistory();
+    renderTasks();
+    renderTemplates();
+    renderRecommendedTasks();
+    renderMarketCards();
+  </script>
+</body>
+</html>

@@ -1,1 +1,21 @@
-IyBTYW5hZ0NsYXcg5qih5byP5Y6f5Z6LCgrlvZPliY3ku5PlupPmsqHmnInnjrDmiJDnmoQgQXBwIOW3peeoi++8jOaJgOS7pei/measoeWunueOsOS6pOS7mOS4uuS4gOS4quWPr+ebtOaOpeivhOWuoeeahOmdmeaAgeS6pOS6kuWOn+Wei+OAggoKLSDljp/lnovmlofku7bvvJpgb3BlbmNsYXctcHJvdG90eXBlLmh0bWxgCgojIyDlt7Lopobnm5blhoXlrrkKCi0gU2FuYWdDbGF3IOmmlumhte+8muaOqOiNkOmXrumimOOAgeacgOi/keiusOW9leOAgeiHqueEtuivreiogOi+k+WFpQotIOa2iOaBr+S4reW/g++8muS7u+WKoeOAgeWBpeW6t+OAgeiuvuWkh+OAgeaJp+ihjOe7k+aenOeahOe7n+S4gOW9kuaho+WFpeWPowotIOiuvue9rumhte+8muS4u+WKqOaPkOmGkuOAgemAmuefpea4oOmBk+OAgeWFjeaJk+aJsOOAgemrmOS8mOWFiOe6p+eZveWQjeWNlQoKIyMg5L2/55So5pa55byPCgrnm7TmjqXlnKjmtY/op4jlmajkuK3miZPlvIAgYG9wZW5jbGF3LXByb3RvdHlwZS5odG1sYCDljbPlj6/mn6XnnIvjgIIKCiMjIOW9k+WJjeWBh+iuvgoKLSDmnKzmrKHku6Xnp7vliqjnq6/pq5jkv53nnJ/ljp/lnovooajovr7kv6Hmga/mnrbmnoTlkozmoLjlv4PkuqTkupLjgIIKLSDmlbDmja7lnYfkuLrmvJTnpLogbW9ja++8jOeUqOS6juS9k+eOsOS4muWKoemTvui3r++8jOS4jeS7o+ihqOecn+WunuaOpeWPo+i/lOWbnuOAggotIOWvueivneWMuumHh+eUqOabtOi9u+mHj+eahOaOqOiNkOmXrumimOWFpeWPo++8jOeqgeWHuue7n+S4gOWFpeWPo+iAjOmdnuWkmueuoeWutuWIhua1geOAggo=
+# SanagClaw 模式原型
+
+当前仓库没有现成的 App 工程，所以这次实现交付为一个可直接评审的静态交互原型。
+
+- 原型文件：`openclaw-prototype.html`
+
+## 已覆盖内容
+
+- SanagClaw 首页：推荐问题、最近记录、自然语言输入
+- 消息中心：任务、健康、设备、执行结果的统一归档入口
+- 设置页：主动提醒、通知渠道、免打扰、高优先级白名单
+
+## 使用方式
+
+直接在浏览器中打开 `openclaw-prototype.html` 即可查看。
+
+## 当前假设
+
+- 本次以移动端高保真原型表达信息架构和核心交互。
+- 数据均为演示 mock，用于体现业务链路，不代表真实接口返回。
+- 对话区采用更轻量的推荐问题入口，突出统一入口而非多管家分流。
