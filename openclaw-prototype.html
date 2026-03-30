@@ -222,10 +222,13 @@
       gap: 8px;
       padding: 10px 14px;
       border-radius: 14px;
+      border: 0;
       background: var(--brand-soft);
       color: var(--brand);
       font-size: 13px;
       font-weight: 600;
+      font: inherit;
+      cursor: pointer;
     }
 
     .message-area {
@@ -1010,7 +1013,7 @@
         <div class="avatar">🦀</div>
         <h1>Hi，一键部署 SanagClaw</h1>
         <p>聊天、派活、定时提醒都能在这里完成。需要的时候，随时找我。<a href="#">去试试</a></p>
-        <div class="promo">🎵 升级订阅</div>
+        <button class="promo" id="introNewTaskBtn" type="button">＋ 新建任务</button>
       </div>
 
       <div class="message-area" id="messageArea">
@@ -1022,22 +1025,30 @@
 
       <div class="composer-module">
         <div class="composer-module-tabs">
-          <div class="composer-module-chip">
+          <button class="composer-module-chip" id="composerChannelBtn" type="button">
             <span class="composer-module-icon">◎</span>
             <span>消息配置渠道</span>
-          </div>
-          <div class="composer-module-chip">
+          </button>
+          <button class="composer-module-chip" id="composerTimedTaskBtn" type="button">
             <span class="composer-module-icon">◔</span>
             <span>定时任务</span>
-          </div>
-          <div class="composer-module-chip">
-            <span class="composer-module-icon">▤</span>
-            <span>任务市场中的任务</span>
-          </div>
-          <div class="composer-module-chip active">
+          </button>
+          <button class="composer-module-chip quick-trigger" type="button" data-command="帮我创建一个每天早上8点自动汇总热点资讯的任务">
+            <span class="composer-module-icon">📰</span>
+            <span>热点资讯汇总</span>
+          </button>
+          <button class="composer-module-chip quick-trigger" type="button" data-command="帮我创建一个每周五下午整理发票和单据的任务">
+            <span class="composer-module-icon">🧾</span>
+            <span>单据智能归档</span>
+          </button>
+          <button class="composer-module-chip quick-trigger" type="button" data-command="帮我创建一个每天早上9点整理日程并提醒我的任务">
+            <span class="composer-module-icon">📅</span>
+            <span>日程跟踪提醒</span>
+          </button>
+          <button class="composer-module-chip active" id="composerNewTaskBtn" type="button">
             <span class="composer-module-icon">＋</span>
             <span>新建任务</span>
-          </div>
+          </button>
         </div>
       </div>
 
@@ -1740,7 +1751,11 @@
       openDetailPage("usagePage");
     });
     document.getElementById("openTasksSidebarBtn").addEventListener("click", openTasks);
+    document.getElementById("composerTimedTaskBtn").addEventListener("click", openTasks);
+    document.getElementById("composerChannelBtn").addEventListener("click", () => openDetailPage("channelPage"));
     document.getElementById("newTaskBtn").addEventListener("click", startNewTask);
+    document.getElementById("composerNewTaskBtn").addEventListener("click", startNewTask);
+    document.getElementById("introNewTaskBtn").addEventListener("click", startNewTask);
     document.getElementById("historySearchInput").addEventListener("input", event => {
       renderHistory(event.target.value);
     });
