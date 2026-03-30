@@ -283,20 +283,18 @@
 
     .composer-module {
       margin: 0 14px 8px;
-      padding: 12px;
+      padding: 12px 12px 10px;
       border-radius: 24px;
       background: rgba(255, 255, 255, 0.72);
       border: 1px solid rgba(32, 38, 45, 0.06);
       box-shadow: 0 10px 24px rgba(52, 63, 73, 0.06);
-      display: grid;
-      gap: 12px;
+      overflow-x: auto;
     }
 
     .composer-module-tabs {
       display: flex;
       gap: 10px;
-      overflow-x: auto;
-      padding-bottom: 2px;
+      width: max-content;
     }
 
     .composer-module-chip {
@@ -329,46 +327,6 @@
       color: var(--brand);
       font-size: 12px;
       background: rgba(20, 106, 144, 0.08);
-    }
-
-    .composer-module-panel {
-      min-height: 84px;
-      border-radius: 20px;
-      background: linear-gradient(180deg, rgba(248,248,245,0.98), rgba(244,242,237,0.95));
-      border: 1px dashed rgba(32, 38, 45, 0.12);
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 16px;
-    }
-
-    .composer-module-plus {
-      min-width: 96px;
-      height: 42px;
-      border-radius: 999px;
-      border: 0;
-      background: rgba(20, 106, 144, 0.12);
-      color: var(--brand);
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 1;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      flex: 0 0 auto;
-      cursor: pointer;
-    }
-
-    .composer-module-copy strong {
-      display: block;
-      margin-bottom: 4px;
-      font-size: 14px;
-    }
-
-    .composer-module-copy span {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.5;
     }
 
     .composer {
@@ -685,7 +643,7 @@
       background: rgba(20, 106, 144, 0.07);
     }
 
-    .history-list, .task-list, .template-list {
+    .history-list, .task-list, .template-list, .market-grid {
       display: grid;
       gap: 10px;
     }
@@ -859,6 +817,48 @@
       padding: 0;
     }
 
+    .market-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .market-card {
+      width: 100%;
+      border: 1px solid rgba(32, 38, 45, 0.06);
+      border-radius: 22px;
+      padding: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,247,243,0.96));
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.05);
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+      color: inherit;
+    }
+
+    .market-card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(20, 106, 144, 0.08);
+      color: var(--brand);
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+
+    .market-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .market-card .muted {
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
     .toggle {
       width: 48px;
       height: 30px;
@@ -1027,23 +1027,16 @@
             <span>消息配置渠道</span>
           </div>
           <div class="composer-module-chip">
-            <span class="composer-module-icon">◫</span>
-            <span>模型配置</span>
+            <span class="composer-module-icon">◔</span>
+            <span>定时任务</span>
           </div>
           <div class="composer-module-chip">
-            <span class="composer-module-icon">☷</span>
-            <span>记忆库</span>
+            <span class="composer-module-icon">▤</span>
+            <span>任务市场中的任务</span>
           </div>
           <div class="composer-module-chip active">
-            <span class="composer-module-icon">◔</span>
-            <span>预留模块</span>
-          </div>
-        </div>
-        <div class="composer-module-panel">
-          <button class="composer-module-plus" id="composerNewTaskBtn" type="button">新建任务</button>
-          <div class="composer-module-copy">
-            <strong>模块内容预留区</strong>
-            <span>这里先预留为可扩展区域，等你确认具体内容后，我再替换成正式模块。</span>
+            <span class="composer-module-icon">＋</span>
+            <span>新建任务</span>
           </div>
         </div>
       </div>
@@ -1285,9 +1278,13 @@
       </div>
       <div class="detail-body">
         <div class="settings-card">
+          <div class="market-grid" id="taskMarketGrid"></div>
+        </div>
+
+        <div class="settings-card">
           <div class="row">
-            <h3 class="section-title">任务市场</h3>
-            <span class="muted">可一键创建</span>
+            <h3 class="section-title">精选模板</h3>
+            <span class="muted">快速上手</span>
           </div>
           <div class="template-list" id="templateList"></div>
         </div>
@@ -1502,6 +1499,45 @@
       }
     ];
 
+    const marketTaskData = [
+      {
+        title: "创建定时任务：热点资讯自动汇总",
+        detail: "还在一条条刷资讯？每日自动整理，不用费心查找，快速看懂当天重点。",
+        icon: "📰",
+        command: "帮我创建一个每天早上8点自动汇总热点资讯的任务"
+      },
+      {
+        title: "发票/单据智能归档",
+        detail: "一到月末报销就火急火燎？把票据整理任务交给 SanagClaw 定时处理。",
+        icon: "🧾",
+        command: "帮我创建一个每周五下午整理发票和单据的任务"
+      },
+      {
+        title: "日程安排/任务跟踪与提醒",
+        detail: "每天任务太多，安排不过来怎么办？帮你管日程、盯进度、到点喊你。",
+        icon: "📅",
+        command: "帮我创建一个每天早上9点整理日程并提醒我的任务"
+      },
+      {
+        title: "内容选题灵感收集",
+        detail: "自动归纳热点、评论和灵感来源，沉淀成持续可用的选题池。",
+        icon: "📝",
+        command: "帮我创建一个每晚8点整理内容选题灵感的任务"
+      },
+      {
+        title: "业务指标可视化管理",
+        detail: "自动整理关键业务数据，生成轻量看板，方便你快速复盘与同步。",
+        icon: "📊",
+        command: "帮我创建一个每周一早上生成业务指标看板的任务"
+      },
+      {
+        title: "制定轻量学习计划",
+        detail: "把长期学习目标拆成日常节奏，自动提醒、监督打卡与阶段复盘。",
+        icon: "📒",
+        command: "帮我创建一个工作日晚上8点提醒我执行学习计划的任务"
+      }
+    ];
+
     function openSidebar() {
       document.getElementById("sidebar").classList.add("open");
       document.getElementById("overlay").classList.add("show");
@@ -1628,6 +1664,17 @@
       `).join("");
     }
 
+    function renderMarketCards() {
+      const root = document.getElementById("taskMarketGrid");
+      root.innerHTML = marketTaskData.map(item => `
+        <button class="market-card sidebar-trigger" data-command="${item.command}" type="button">
+          <div class="market-card-icon">${item.icon}</div>
+          <strong>${item.title}</strong>
+          <div class="muted">${item.detail}</div>
+        </button>
+      `).join("");
+    }
+
     function appendUserMessage(text) {
       const area = document.getElementById("messageArea");
       const user = document.createElement("div");
@@ -1694,7 +1741,6 @@
     });
     document.getElementById("openTasksSidebarBtn").addEventListener("click", openTasks);
     document.getElementById("newTaskBtn").addEventListener("click", startNewTask);
-    document.getElementById("composerNewTaskBtn").addEventListener("click", startNewTask);
     document.getElementById("historySearchInput").addEventListener("input", event => {
       renderHistory(event.target.value);
     });
@@ -1773,6 +1819,7 @@
     renderTasks();
     renderTemplates();
     renderRecommendedTasks();
+    renderMarketCards();
   </script>
 </body>
 </html>
