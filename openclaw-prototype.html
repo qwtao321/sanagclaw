@@ -40,8 +40,63 @@
         linear-gradient(180deg, #fbfaf7 0%, #f1efe9 100%);
     }
 
+    .app-shell {
+      display: flex;
+      align-items: flex-start;
+      gap: 22px;
+    }
+
+    .mode-switcher {
+      width: 146px;
+      padding: 12px;
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.78);
+      border: 1px solid rgba(255, 255, 255, 0.74);
+      box-shadow: 0 18px 40px rgba(31, 45, 58, 0.1);
+      backdrop-filter: blur(18px);
+      display: grid;
+      gap: 10px;
+    }
+
+    .mode-switcher-title {
+      font-size: 12px;
+      color: var(--muted);
+      font-weight: 700;
+      letter-spacing: 0.2px;
+    }
+
+    .mode-switch-btn {
+      width: 100%;
+      border: 1px solid rgba(32, 38, 45, 0.08);
+      background: rgba(246, 244, 239, 0.92);
+      color: #58616a;
+      padding: 11px 12px;
+      border-radius: 16px;
+      text-align: left;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .mode-switch-btn.active {
+      background: var(--brand-soft);
+      color: var(--brand);
+      border-color: rgba(20, 106, 144, 0.18);
+      box-shadow: inset 0 0 0 1px rgba(20, 106, 144, 0.12);
+    }
+
+    .mode-switch-btn.expired-active {
+      background: rgba(177, 69, 60, 0.1);
+      color: var(--danger);
+      border-color: rgba(177, 69, 60, 0.18);
+      box-shadow: inset 0 0 0 1px rgba(177, 69, 60, 0.12);
+    }
+
     .phone {
       width: 390px;
+      height: 844px;
       min-height: 844px;
       position: relative;
       overflow: hidden;
@@ -84,6 +139,367 @@
       pointer-events: auto;
     }
 
+    .entry-page {
+      position: absolute;
+      inset: 0;
+      z-index: 26;
+      display: none;
+      grid-template-rows: auto 1fr;
+      background: linear-gradient(180deg, #fbfaf7 0%, #f4f2ed 100%);
+    }
+
+    .entry-page.open {
+      display: grid;
+    }
+
+    .entry-body {
+      overflow: auto;
+      padding: 18px 16px 22px;
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+
+    .entry-hero {
+      position: relative;
+      overflow: hidden;
+      padding: 30px 24px 26px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top right, rgba(61, 129, 214, 0.18), transparent 28%),
+        radial-gradient(circle at bottom left, rgba(255, 123, 95, 0.18), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,0.96), rgba(248,247,243,0.96));
+      border: 1px solid rgba(255, 255, 255, 0.78);
+      box-shadow: 0 16px 32px rgba(52, 63, 73, 0.08);
+      min-height: 292px;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+
+    .entry-hero::before,
+    .entry-hero::after {
+      position: absolute;
+      font-size: 96px;
+      opacity: 0.92;
+      filter: saturate(0.9);
+    }
+
+    .entry-hero::before {
+      content: "🦞";
+      left: -10px;
+      bottom: 18px;
+      transform: rotate(-16deg);
+    }
+
+    .entry-hero::after {
+      content: "👻";
+      right: 8px;
+      top: 18px;
+      transform: rotate(8deg);
+    }
+
+    .entry-hero-main {
+      position: relative;
+      z-index: 1;
+    }
+
+    .entry-hero h2 {
+      margin: 0;
+      font-size: 28px;
+      letter-spacing: 0.2px;
+    }
+
+    .entry-beta {
+      display: inline-flex;
+      margin-top: 10px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(32, 38, 45, 0.06);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .entry-copy {
+      display: grid;
+      gap: 14px;
+    }
+
+    .entry-point {
+      padding: 0 2px;
+    }
+
+    .entry-point strong {
+      display: block;
+      font-size: 18px;
+      margin-bottom: 6px;
+    }
+
+    .entry-point p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .entry-start {
+      display: grid;
+      gap: 12px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(32, 38, 45, 0.08);
+    }
+
+    .entry-start-head {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .entry-create-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.86);
+      border: 1px solid rgba(255, 255, 255, 0.82);
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.06);
+    }
+
+    .entry-create-main {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .entry-create-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 24px;
+      background: linear-gradient(180deg, #ff8f69, #ff6f5c);
+      color: #fff;
+      box-shadow: 0 10px 20px rgba(255, 111, 92, 0.22);
+      flex: 0 0 auto;
+    }
+
+    .entry-create-copy strong {
+      display: block;
+      font-size: 16px;
+      margin-bottom: 4px;
+    }
+
+    .entry-create-copy span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .entry-create-btn {
+      min-width: 74px;
+      padding: 11px 16px;
+      border-radius: 14px;
+      border: 0;
+      background: var(--ink);
+      color: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .purchase-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(21, 27, 34, 0.38);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .24s ease;
+      z-index: 27;
+    }
+
+    .purchase-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .purchase-modal {
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 18px;
+      z-index: 28;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,247,243,0.98));
+      border: 1px solid rgba(255,255,255,0.82);
+      box-shadow: 0 20px 42px rgba(31, 45, 58, 0.18);
+      padding: 18px;
+      display: none;
+      gap: 14px;
+    }
+
+    .purchase-modal.open {
+      display: grid;
+    }
+
+    .expired-gate {
+      position: absolute;
+      inset: 0;
+      z-index: 23;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      background: rgba(244, 242, 237, 0.72);
+      backdrop-filter: blur(10px);
+    }
+
+    .expired-gate.open {
+      display: flex;
+    }
+
+    .expired-card {
+      width: 100%;
+      max-width: 320px;
+      padding: 22px 20px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,247,243,0.98));
+      border: 1px solid rgba(255,255,255,0.82);
+      box-shadow: 0 20px 42px rgba(31, 45, 58, 0.14);
+      display: grid;
+      gap: 12px;
+      text-align: center;
+    }
+
+    .expired-card strong {
+      font-size: 22px;
+    }
+
+    .expired-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .expired-renew-btn {
+      width: 100%;
+      border: 0;
+      border-radius: 16px;
+      padding: 13px 18px;
+      background: var(--brand);
+      color: #fff;
+      font: inherit;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .purchase-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .purchase-top h3,
+    .purchase-top p {
+      margin: 0;
+    }
+
+    .purchase-top p {
+      margin-top: 6px;
+      color: var(--muted);
+      line-height: 1.55;
+      font-size: 13px;
+    }
+
+    .plan-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .plan-card {
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(32, 38, 45, 0.08);
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.05);
+      display: grid;
+      gap: 10px;
+    }
+
+    .plan-card.hidden {
+      display: none;
+    }
+
+    .plan-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .plan-name {
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .plan-price {
+      font-size: 14px;
+      color: var(--muted);
+      font-weight: 700;
+    }
+
+    .plan-price s {
+      opacity: 0.72;
+      text-decoration-thickness: 1.5px;
+    }
+
+    .plan-desc {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .plan-buy-btn {
+      min-width: 92px;
+      padding: 10px 16px;
+      border-radius: 14px;
+      border: 0;
+      background: var(--brand);
+      color: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .plan-empty-state {
+      display: none;
+      padding: 18px;
+      border-radius: 20px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(32, 38, 45, 0.08);
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    .plan-empty-state.show {
+      display: block;
+    }
+
     .topbar {
       display: flex;
       justify-content: space-between;
@@ -120,9 +536,101 @@
       font-weight: 700;
     }
 
-    .title-wrap span {
+    .model-trigger {
+      margin-top: 2px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0;
+      border: 0;
+      background: transparent;
       color: var(--muted);
+      font: inherit;
       font-size: 12px;
+      cursor: pointer;
+    }
+
+    .model-trigger strong {
+      font-size: 12px;
+      font-weight: 700;
+      color: inherit;
+    }
+
+    .model-trigger-caret {
+      font-size: 12px;
+      transition: transform .2s ease;
+    }
+
+    .model-trigger.open .model-trigger-caret {
+      transform: rotate(180deg);
+    }
+
+    .model-dropdown {
+      position: absolute;
+      top: 72px;
+      left: 52px;
+      right: 54px;
+      z-index: 24;
+      display: none;
+      padding: 14px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.96);
+      border: 1px solid rgba(255,255,255,0.82);
+      box-shadow: 0 20px 42px rgba(31, 45, 58, 0.16);
+      backdrop-filter: blur(18px);
+    }
+
+    .model-dropdown.open {
+      display: grid;
+      gap: 10px;
+    }
+
+    .model-option {
+      width: 100%;
+      border: 0;
+      border-radius: 22px;
+      padding: 16px 18px;
+      background: transparent;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+      color: var(--ink);
+      transition: background .18s ease;
+    }
+
+    .model-option.active {
+      background: linear-gradient(180deg, rgba(228,243,251,0.82), rgba(255,255,255,0.7));
+    }
+
+    .model-option-copy {
+      display: grid;
+      gap: 6px;
+    }
+
+    .model-option-copy strong {
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .model-option-copy span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+
+    .model-option-check {
+      color: var(--brand);
+      font-size: 22px;
+      line-height: 1;
+      opacity: 0;
+    }
+
+    .model-option.active .model-option-check {
+      opacity: 1;
     }
 
     .chat-shell {
@@ -319,6 +827,10 @@
       background: #ffffff;
       color: var(--brand);
       box-shadow: inset 0 0 0 1px rgba(20, 106, 144, 0.18);
+    }
+
+    .composer-module-chip.hidden {
+      display: none;
     }
 
     .composer-module-icon {
@@ -597,6 +1109,22 @@
       margin-bottom: 12px;
     }
 
+    .profile-top-main {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+
+    .profile-user-name {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--ink);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
     .mini-avatar {
       width: 44px;
       height: 44px;
@@ -744,4 +1272,1801 @@
       min-width: 96px;
       padding: 6px;
       border-radius: 14px;
-      border"
+      border: 1px solid rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 14px 30px rgba(31, 45, 58, 0.12);
+      display: none;
+      z-index: 5;
+    }
+
+    .history-menu.open .history-menu-list {
+      display: grid;
+      gap: 4px;
+    }
+
+    .history-menu-list button {
+      border: 0;
+      background: transparent;
+      text-align: left;
+      border-radius: 10px;
+      padding: 8px 10px;
+      font: inherit;
+      color: var(--ink);
+      cursor: pointer;
+    }
+
+    .history-menu-list button:hover {
+      background: rgba(20, 106, 144, 0.08);
+    }
+
+    .chip-btn {
+      padding: 9px 12px;
+      border-radius: 12px;
+      background: #fff;
+      color: var(--brand);
+      border: 1px solid rgba(20, 106, 144, 0.08);
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .chips span {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--brand-soft);
+      color: var(--brand);
+    }
+
+    .chips .warn { background: var(--warn-soft); color: var(--warn); }
+    .chips .success { background: var(--success-soft); color: var(--success); }
+    .chips .danger { background: var(--danger-soft); color: var(--danger); }
+
+    .mini-btn {
+      padding: 10px 13px;
+      border-radius: 12px;
+      background: #f3f5f7;
+      color: var(--ink);
+      font-size: 13px;
+    }
+
+    .mini-btn.primary {
+      background: var(--brand);
+      color: #fff;
+    }
+
+    .section-link-btn {
+      border: 0;
+      background: transparent;
+      color: var(--brand);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .market-tabs {
+      display: flex;
+      gap: 12px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+    }
+
+    .market-tab {
+      flex: 0 0 auto;
+      padding: 12px 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(32, 38, 45, 0.08);
+      background: rgba(245, 243, 236, 0.92);
+      color: #66707b;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .market-tab.active {
+      background: var(--brand-soft);
+      color: var(--brand);
+      border-color: rgba(20, 106, 144, 0.2);
+      box-shadow: inset 0 0 0 1px rgba(20, 106, 144, 0.12);
+    }
+
+    .market-grid {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .market-card {
+      width: 100%;
+      border: 1px solid rgba(32, 38, 45, 0.06);
+      border-radius: 22px;
+      padding: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,247,243,0.96));
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.05);
+      text-align: left;
+      cursor: pointer;
+      font: inherit;
+      color: inherit;
+    }
+
+    .market-card-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: rgba(20, 106, 144, 0.08);
+      color: var(--brand);
+      font-size: 20px;
+      margin-bottom: 14px;
+    }
+
+    .market-card strong {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 15px;
+      line-height: 1.45;
+    }
+
+    .market-card .muted {
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .blank-task-card {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 16px;
+      border-radius: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,247,243,0.96));
+      border: 1px solid rgba(32, 38, 45, 0.06);
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.05);
+    }
+
+    .blank-task-main {
+      display: grid;
+      gap: 6px;
+    }
+
+    .blank-task-main strong {
+      font-size: 16px;
+    }
+
+    .blank-task-btn {
+      flex: 0 0 auto;
+      border: 0;
+      border-radius: 14px;
+      padding: 11px 16px;
+      background: var(--brand);
+      color: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .task-header-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+    }
+
+    .task-create-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 14px;
+      border: 1px solid rgba(20, 106, 144, 0.16);
+      background: var(--brand-soft);
+      color: var(--brand);
+      font: inherit;
+      font-size: 22px;
+      line-height: 1;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .schedule-builder {
+      display: grid;
+      gap: 14px;
+    }
+
+    .schedule-block {
+      display: grid;
+      gap: 10px;
+      padding: 14px;
+      border-radius: 18px;
+      background: rgba(255, 255, 255, 0.74);
+      border: 1px solid rgba(20, 106, 144, 0.08);
+    }
+
+    .schedule-label {
+      font-size: 13px;
+      font-weight: 700;
+      color: #4f5963;
+    }
+
+    .schedule-input,
+    .schedule-textarea {
+      width: 100%;
+      border: 1px solid rgba(32, 38, 45, 0.08);
+      border-radius: 14px;
+      background: #fff;
+      font: inherit;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .schedule-input {
+      padding: 12px 14px;
+    }
+
+    .schedule-textarea {
+      min-height: 132px;
+      resize: none;
+      padding: 14px;
+      line-height: 1.6;
+    }
+
+    .frequency-tabs,
+    .weekday-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .frequency-chip,
+    .weekday-chip {
+      border: 1px solid rgba(32, 38, 45, 0.08);
+      border-radius: 999px;
+      background: rgba(244, 242, 237, 0.9);
+      color: #5e6770;
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .frequency-chip {
+      padding: 9px 14px;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .weekday-chip {
+      min-width: 42px;
+      padding: 9px 12px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .frequency-chip.active,
+    .weekday-chip.active {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+
+    .schedule-time-row {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .schedule-time {
+      width: 116px;
+      padding: 10px 12px;
+      border: 1px solid rgba(32, 38, 45, 0.08);
+      border-radius: 14px;
+      background: #fff;
+      font: inherit;
+      color: var(--ink);
+      outline: none;
+    }
+
+    .schedule-footer {
+      display: flex;
+      justify-content: flex-end;
+      gap: 12px;
+      padding-top: 4px;
+    }
+
+    .schedule-footer-btn {
+      min-width: 90px;
+      padding: 11px 18px;
+      border-radius: 999px;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid rgba(32, 38, 45, 0.12);
+      background: rgba(255, 255, 255, 0.9);
+      color: var(--ink);
+    }
+
+    .schedule-footer-btn.primary {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+    }
+
+    .toggle {
+      width: 48px;
+      height: 30px;
+      border-radius: 999px;
+      background: rgba(32, 38, 45, 0.16);
+      position: relative;
+      cursor: pointer;
+      transition: background .2s ease;
+      flex: 0 0 auto;
+    }
+
+    .toggle::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(31, 45, 58, 0.2);
+      transition: transform .2s ease;
+    }
+
+    .toggle.active {
+      background: #6558f5;
+    }
+
+    .toggle.active::after {
+      transform: translateX(18px);
+    }
+
+    .usage-progress-card {
+      padding: 14px;
+      border-radius: 18px;
+      background: var(--surface);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.06);
+      cursor: pointer;
+      display: grid;
+      gap: 10px;
+    }
+
+    .usage-progress-actions {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: end;
+      padding-top: 4px;
+    }
+
+    .usage-action-group {
+      display: grid;
+      gap: 6px;
+    }
+
+    .plan-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 11px;
+      border-radius: 999px;
+      background: rgba(20, 106, 144, 0.1);
+      color: var(--brand);
+      font-size: 12px;
+      font-weight: 700;
+      cursor: default;
+    }
+
+    .usage-inline-btn {
+      border: 0;
+      border-radius: 12px;
+      padding: 9px 14px;
+      background: rgba(20, 106, 144, 0.12);
+      color: var(--brand);
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      justify-self: end;
+    }
+
+    .membership-hero {
+      display: grid;
+      gap: 14px;
+    }
+
+    .token-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      overflow: hidden;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.9);
+    }
+
+    .token-table th,
+    .token-table td {
+      padding: 14px 12px;
+      text-align: left;
+      border-bottom: 1px solid rgba(32, 38, 45, 0.08);
+      font-size: 13px;
+      vertical-align: top;
+    }
+
+    .token-table th {
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--ink);
+      background: rgba(248, 247, 243, 0.92);
+    }
+
+    .token-table td:last-child,
+    .token-table th:last-child {
+      text-align: right;
+      white-space: nowrap;
+      width: 24%;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .token-table td:nth-child(2),
+    .token-table th:nth-child(2) {
+      width: 34%;
+      white-space: normal;
+      word-break: break-word;
+    }
+
+    .token-table td:first-child,
+    .token-table th:first-child {
+      width: 42%;
+      word-break: break-word;
+    }
+
+    .progress-track {
+      width: 100%;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(20, 106, 144, 0.12);
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #2aa7df, #146a90);
+    }
+
+    .search-input {
+      width: 100%;
+      border: 1px solid rgba(32, 38, 45, 0.08);
+      background: transparent;
+      border-radius: 14px;
+      padding: 10px 0;
+      font: inherit;
+      color: var(--ink);
+      outline: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+  <div class="phone">
+    <section class="entry-page" id="entryPage">
+      <div class="entry-body">
+        <div class="entry-hero">
+          <div class="entry-hero-main">
+            <h2>Sanag Claw</h2>
+            <div class="entry-beta">Beta</div>
+          </div>
+        </div>
+
+        <div class="entry-copy">
+          <div class="entry-point">
+            <strong>极速部署 SanagClaw</strong>
+            <p>SanagClaw 是一个具备独特个性与长期记忆能力的 AI 助手，一键部署到云端，无需复杂设置，7x24 在线。</p>
+          </div>
+          <div class="entry-point">
+            <strong>通过 Sanag 自由对话</strong>
+            <p>自动配置 Sanag 银河AI模型和实用技能库，支持多种聊天工具，主动完成各种任务。</p>
+          </div>
+        </div>
+
+        <div class="entry-start">
+          <div class="entry-start-head">
+            <strong>立即开始</strong>
+          </div>
+          <div class="entry-create-card">
+            <div class="entry-create-main">
+              <div class="entry-create-avatar">🦀</div>
+              <div class="entry-create-copy">
+                <strong>创建 Sanag Claw</strong>
+                <span>帮你一键部署 SanagClaw</span>
+              </div>
+            </div>
+            <button class="entry-create-btn" id="openPurchaseBtn" type="button">创建</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="purchase-overlay" id="purchaseOverlay"></div>
+    <section class="purchase-modal" id="purchaseModal">
+      <div class="purchase-top">
+        <div>
+          <h3>选择套餐</h3>
+          <p>购买任一套餐后即可进入正式 SanagClaw 页面。</p>
+        </div>
+        <button class="icon-btn" id="closePurchaseBtn" type="button">✕</button>
+      </div>
+      <div class="plan-list">
+        <div class="plan-card" data-tier="lite">
+          <div class="plan-row">
+            <div class="plan-name">Lite</div>
+            <div class="plan-price"><s>刊例价 ¥199 / 月</s><br>限时 ¥179 / 月</div>
+          </div>
+          <div class="plan-desc">每月 3000 万 token，约 30 次普通任务执行。<br>只能选用第一档模型。</div>
+          <button class="plan-buy-btn plan-buy-trigger" data-plan="lite" type="button">购买 Lite</button>
+        </div>
+        <div class="plan-card" data-tier="pro">
+          <div class="plan-row">
+            <div class="plan-name">Pro</div>
+            <div class="plan-price"><s>刊例价 ¥399 / 月</s><br>限时 ¥359 / 月</div>
+          </div>
+          <div class="plan-desc">每月 1 亿 token，约 100 次任务执行。<br>可选用三档模型，每日登录送 100 百万 token。</div>
+          <button class="plan-buy-btn plan-buy-trigger" data-plan="pro" type="button">购买 Pro</button>
+        </div>
+        <div class="plan-card" data-tier="max">
+          <div class="plan-row">
+            <div class="plan-name">Max</div>
+            <div class="plan-price"><s>刊例价 ¥799 / 月</s><br>限时 ¥699 / 月</div>
+          </div>
+          <div class="plan-desc">每月 2 亿 token，约 200 次任务执行。<br>可选用三档模型，每日登录送 300 百万 token。</div>
+          <button class="plan-buy-btn plan-buy-trigger" data-plan="max" type="button">购买 Max</button>
+        </div>
+        <div class="plan-empty-state" id="planEmptyState">当前已是最高版本，可继续使用 SanagClaw 的完整能力。</div>
+      </div>
+    </section>
+
+    <section class="expired-gate" id="expiredGate">
+      <div class="expired-card">
+        <strong>服务已过期</strong>
+        <p>当前账号需要先续费才能继续进入正式的 SanagClaw 页面与任务能力。</p>
+        <button class="expired-renew-btn" id="expiredRenewBtn" type="button">续费</button>
+      </div>
+    </section>
+
+    <div class="chat-shell">
+      <div class="topbar">
+        <div class="topbar-left">
+          <button class="icon-btn" id="backBtn">←</button>
+          <div class="title-wrap">
+            <strong>SanagClaw</strong>
+            <button class="model-trigger" id="modelTrigger" type="button">
+              <strong id="currentModelLabel">银河plus</strong>
+              <span class="model-trigger-caret">⌄</span>
+            </button>
+          </div>
+        </div>
+        <div class="topbar-right">
+          <button class="icon-btn" id="openMembershipBtn">◈</button>
+          <button class="icon-btn" id="openSettingsBtn">◍</button>
+        </div>
+      </div>
+
+      <div class="model-dropdown" id="modelDropdown">
+        <button class="model-option active" type="button" data-model="银河plus">
+          <div class="model-option-copy">
+            <strong>银河plus</strong>
+            <span>更快响应，适合日常问答与轻量任务。</span>
+          </div>
+          <span class="model-option-check">✓</span>
+        </button>
+        <button class="model-option" type="button" data-model="银河pro">
+          <div class="model-option-copy">
+            <strong>银河pro</strong>
+            <span>更强理解与推理，适合复杂任务拆解。</span>
+          </div>
+          <span class="model-option-check">✓</span>
+        </button>
+        <button class="model-option" type="button" data-model="银河max">
+          <div class="model-option-copy">
+            <strong>银河max</strong>
+            <span>高阶能力全开，适合重度执行与长链路任务。</span>
+          </div>
+          <span class="model-option-check">✓</span>
+        </button>
+      </div>
+
+      <div class="intro">
+        <div class="avatar">🦀</div>
+        <h1>Hi，一键部署 SanagClaw</h1>
+        <p>聊天、派活、定时提醒都能在这里完成。需要的时候，随时找我。<a href="#">去试试</a></p>
+      </div>
+
+      <div class="message-area" id="messageArea">
+        <button class="quick-entry quick-trigger" data-command="帮我创建一个明天上午9点的会议提醒，并同步到微信 clawbot">明天 9 点提醒我开会，并同步到微信</button>
+        <button class="quick-entry quick-trigger" data-command="帮我在小红书搜索关于sanag最热门的笔记">帮我在小红书搜索关于sanag最热门的笔记</button>
+      </div>
+
+      <div class="composer-module">
+        <div class="composer-module-tabs">
+          <button class="composer-module-chip" id="composerChannelBtn" type="button">
+            <span class="composer-module-icon">◎</span>
+            <span>消息配置渠道</span>
+          </button>
+          <button class="composer-module-chip" id="composerTimedTaskBtn" type="button">
+            <span class="composer-module-icon">◔</span>
+            <span>定时任务</span>
+          </button>
+          <button class="composer-module-chip quick-trigger" type="button" data-command="帮我创建一个每天早上8点自动汇总热点资讯的任务">
+            <span class="composer-module-icon">📰</span>
+            <span>热点资讯汇总</span>
+          </button>
+          <button class="composer-module-chip quick-trigger" type="button" data-command="帮我创建一个每周五下午整理发票和单据的任务">
+            <span class="composer-module-icon">🧾</span>
+            <span>单据智能归档</span>
+          </button>
+          <button class="composer-module-chip quick-trigger" type="button" data-command="帮我创建一个每天早上9点整理日程并提醒我的任务">
+            <span class="composer-module-icon">📅</span>
+            <span>日程跟踪提醒</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="composer-wrap">
+        <div class="composer">
+          <button class="composer-btn">＋</button>
+          <textarea id="composerInput" placeholder="尽管问，带图也行">尽管问，带图也行</textarea>
+          <button class="composer-btn primary" id="sendBtn">↑</button>
+        </div>
+      </div>
+    </div>
+
+    <section class="settings-page" id="settingsPage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">设置</div>
+          <div class="muted">一级目录</div>
+        </div>
+        <button class="icon-btn" id="closeSettingsBtn">✕</button>
+      </div>
+      <div class="settings-body">
+        <div class="settings-menu">
+          <button class="settings-menu-item settings-nav-trigger" data-target="channelPage">
+            <div class="settings-menu-main">
+              <div class="settings-menu-top">
+                <span class="settings-menu-pill">控制</span>
+                <strong>远程控制</strong>
+              </div>
+              <span>配置微信、飞书和钉钉账号的同步与外发能力。</span>
+            </div>
+            <em>›</em>
+          </button>
+          <button class="settings-menu-item settings-nav-trigger" data-target="tasksPage">
+            <div class="settings-menu-main">
+              <div class="settings-menu-top">
+                <span class="settings-menu-pill">任务</span>
+                <strong>定时任务</strong>
+              </div>
+              <span>查看已设置任务、搜索任务记录，并创建新的定时任务。</span>
+            </div>
+            <em>›</em>
+          </button>
+          <button class="settings-menu-item settings-nav-trigger" data-target="taskMarketPage">
+            <div class="settings-menu-main">
+              <div class="settings-menu-top">
+                <span class="settings-menu-pill">任务</span>
+                <strong>任务市场</strong>
+              </div>
+              <span>浏览推荐任务模板，快速创建适合当前场景的任务。</span>
+            </div>
+            <em>›</em>
+          </button>
+          <button class="settings-menu-item settings-nav-trigger" data-target="skillPage">
+            <div class="settings-menu-main">
+              <div class="settings-menu-top">
+                <span class="settings-menu-pill">能力</span>
+                <strong>技能管理</strong>
+              </div>
+              <span>启用或关闭能力模块，控制当前可调用功能范围。</span>
+            </div>
+            <em>›</em>
+          </button>
+          <button class="settings-menu-item settings-nav-trigger" data-target="memoryPage">
+            <div class="settings-menu-main">
+              <div class="settings-menu-top">
+                <span class="settings-menu-pill">资料</span>
+                <strong>记忆库</strong>
+              </div>
+              <span>管理基础资料、生活习惯和个性化偏好设置。</span>
+            </div>
+            <em>›</em>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-page" id="modePage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">Kimi+ 模式</div>
+          <div class="muted">当前对话模式与处理策略</div>
+        </div>
+        <button class="icon-btn detail-close-btn">✕</button>
+      </div>
+      <div class="detail-body">
+        <div class="settings-card">
+          <div class="row">
+            <h3 class="section-title">当前模式</h3>
+            <span class="muted">默认开启</span>
+          </div>
+          <p>SanagClaw 当前使用统一对话入口，自动识别任务、健康分析和设备诊断意图。</p>
+          <div class="chips">
+            <span>统一入口</span>
+            <span>自动识别意图</span>
+            <span>结果同步</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="memory-page" id="memoryPage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">记忆库</div>
+          <div class="muted">配置基础资料，帮助 SanagClaw 更懂你</div>
+        </div>
+        <button class="icon-btn" id="closeMemoryBtn">✕</button>
+      </div>
+      <div class="memory-body">
+        <div class="settings-card">
+          <div class="row">
+            <h3 class="section-title">基础信息</h3>
+            <span class="muted">用于任务和健康能力个性化</span>
+          </div>
+          <p>这些信息会帮助 SanagClaw 更准确地生成健康建议、提醒时间和对话偏好。</p>
+          <div class="memory-form">
+            <div class="memory-field">
+              <div>
+                <strong>年龄</strong>
+                <div class="muted">28 岁</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+            <div class="memory-field">
+              <div>
+                <strong>性别</strong>
+                <div class="muted">女</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+            <div class="memory-field">
+              <div>
+                <strong>职业</strong>
+                <div class="muted">品牌运营经理</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+            <div class="memory-field">
+              <div>
+                <strong>作息时间</strong>
+                <div class="muted">工作日 23:30 入睡，07:30 起床</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="row">
+            <h3 class="section-title">补充偏好</h3>
+            <span class="muted">让提醒和建议更贴合</span>
+          </div>
+          <div class="memory-form">
+            <div class="memory-field">
+              <div>
+                <strong>常用提醒时段</strong>
+                <div class="muted">09:00 - 21:00</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+            <div class="memory-field">
+              <div>
+                <strong>健康关注点</strong>
+                <div class="muted">睡眠恢复、压力管理、久坐提醒</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+            <div class="memory-field">
+              <div>
+                <strong>设备使用习惯</strong>
+                <div class="muted">通勤佩戴耳机，夜间佩戴指环</div>
+              </div>
+              <div class="row">
+                <button class="mini-btn">编辑</button>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-page" id="tasksPage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">定时任务</div>
+          <div class="muted">查看已设置任务与执行状态</div>
+        </div>
+        <button class="icon-btn" id="closeTasksBtn">✕</button>
+      </div>
+      <div class="detail-body">
+        <div class="settings-card">
+          <div class="task-header-row">
+            <div class="row">
+              <h3 class="section-title">已设置的定时任务</h3>
+              <span class="muted">共 3 个</span>
+            </div>
+            <button class="task-create-btn" id="openCreateScheduledTaskBtn" type="button">＋</button>
+          </div>
+          <div class="history-head">
+            <div class="history-search-wrap" style="width:100%;">
+              <span class="history-search-icon">⌕</span>
+              <input class="search-input" id="tasksSearchInput" type="text" placeholder="搜索定时任务">
+            </div>
+          </div>
+          <div class="history-list" id="taskList"></div>
+        </div>
+
+        <div class="settings-card">
+          <div class="row" style="justify-content:space-between;width:100%;">
+            <div class="row">
+              <h3 class="section-title">推荐任务</h3>
+              <span class="muted">精选 3 个</span>
+            </div>
+            <button class="section-link-btn" id="viewAllTaskMarketBtn" type="button">查看全部</button>
+          </div>
+          <div class="template-list" id="recommendedTaskList"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-page" id="createScheduledTaskPage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">创建空白定时任务</div>
+          <div class="muted">自定义创建定时任务</div>
+        </div>
+        <button class="icon-btn" id="closeCreateScheduledTaskBtn">✕</button>
+      </div>
+      <div class="detail-body">
+        <div class="settings-card">
+          <div class="schedule-builder">
+            <div class="schedule-block">
+              <div class="schedule-label">名称</div>
+              <input class="schedule-input" type="text" placeholder="例如：工作日上午 9:00 会议提醒">
+            </div>
+
+            <div class="schedule-block">
+              <div class="schedule-label">提示词</div>
+              <textarea class="schedule-textarea" placeholder="例如：每天工作日早上 9 点提醒我查看会议安排，并同步到微信 clawbot"></textarea>
+            </div>
+
+            <div class="schedule-block">
+              <div class="schedule-label">执行频率</div>
+              <div class="frequency-tabs">
+                <button class="frequency-chip active" type="button">每天</button>
+                <button class="frequency-chip" type="button">按间隔</button>
+                <button class="frequency-chip" type="button">单次</button>
+              </div>
+              <div class="schedule-time-row">
+                <input class="schedule-time" type="text" value="09:00">
+              </div>
+              <div class="weekday-row">
+                <button class="weekday-chip active" type="button">周一</button>
+                <button class="weekday-chip active" type="button">周二</button>
+                <button class="weekday-chip active" type="button">周三</button>
+                <button class="weekday-chip active" type="button">周四</button>
+                <button class="weekday-chip active" type="button">周五</button>
+                <button class="weekday-chip" type="button">周六</button>
+                <button class="weekday-chip" type="button">周日</button>
+              </div>
+            </div>
+
+            <div class="schedule-footer">
+              <button class="schedule-footer-btn" id="cancelCreateScheduledTaskBtn" type="button">取消</button>
+              <button class="schedule-footer-btn primary" id="confirmCreateScheduledTaskBtn" type="button">新建</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-page" id="taskMarketPage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">任务市场</div>
+          <div class="muted">浏览推荐模板并快速创建任务</div>
+        </div>
+        <button class="icon-btn" id="closeTaskMarketBtn">✕</button>
+      </div>
+      <div class="detail-body">
+        <div class="settings-card">
+          <div class="blank-task-card">
+            <div class="blank-task-main">
+              <strong>从空白任务开始</strong>
+              <div class="muted">不使用模板，直接创建一个新的任务对话。</div>
+            </div>
+            <button class="blank-task-btn" id="blankTaskStartBtn" type="button">创建</button>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="market-tabs" id="taskMarketTabs"></div>
+          <div class="market-grid" id="taskMarketGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-page" id="usagePage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">会员套餐</div>
+          <div class="muted">查看当前套餐与 Token 用量详情</div>
+        </div>
+        <button class="icon-btn" id="closeMembershipBtn">✕</button>
+      </div>
+      <div class="detail-body">
+        <div class="settings-card">
+          <div class="membership-hero">
+            <div class="usage-progress-card">
+              <div class="row" style="justify-content:space-between;">
+                <strong style="font-size:15px;">Token 用量</strong>
+                <span class="muted">680 / 1000</span>
+              </div>
+              <div class="progress-track">
+                <div class="progress-fill" style="width:68%;"></div>
+              </div>
+              <div class="muted">本月已使用 680 Token，点击查看详细用量</div>
+              <div class="usage-progress-actions">
+                <div class="usage-action-group">
+                  <div class="muted">当前套餐</div>
+                  <span class="plan-badge" id="currentPlanBadge">Pro 版本</span>
+                </div>
+                <div class="usage-action-group" style="justify-items:end;">
+                  <div class="muted">套餐操作</div>
+                  <button class="usage-inline-btn" id="upgradeBtn" type="button">升级订阅</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="settings-card">
+          <div class="row" style="justify-content:space-between;">
+            <h3 class="section-title">Token 使用详情</h3>
+            <span class="muted">最近记录</span>
+          </div>
+          <table class="token-table">
+            <thead>
+              <tr>
+                <th>对话内容</th>
+                <th>对话时间</th>
+                <th>Token 消耗</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>当前有哪些用户</td>
+                <td>2026-03-30 18:06:21</td>
+                <td>-43,894</td>
+              </tr>
+              <tr>
+                <td>我上个任务是什么东西</td>
+                <td>2026-03-30 18:05:27</td>
+                <td>-79,820</td>
+              </tr>
+              <tr>
+                <td>设置每日「8:00」的自动定时任务，根据我的星...</td>
+                <td>2026-03-30 18:04:34</td>
+                <td>-89,538</td>
+              </tr>
+              <tr>
+                <td>我信任这个命令，直接帮我执行</td>
+                <td>2026-03-30 13:40:16</td>
+                <td>-27,062</td>
+              </tr>
+              <tr>
+                <td>帮我运行一下命令行命令：bash &lt;(curl -fsSL htt...</td>
+                <td>2026-03-30 13:39:23</td>
+                <td>-52,691</td>
+              </tr>
+              <tr>
+                <td>设置每日「8:00」的自动定时任务，根据我的星...</td>
+                <td>2026-03-30 11:44:32</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-page" id="channelPage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">远控通道</div>
+          <div class="muted">配置微信、飞书、钉钉账号</div>
+        </div>
+        <button class="icon-btn detail-close-btn">✕</button>
+      </div>
+      <div class="detail-body">
+        <div class="settings-card">
+          <p>用于让 SanagClaw 将提醒、任务执行结果和一次性云端任务回执同步到外部通道。</p>
+          <div class="channel-list">
+            <div class="channel-item">
+              <div>
+                <strong>微信 clawbot</strong>
+                <div class="muted">已绑定个人微信 · 默认提醒通道</div>
+              </div>
+              <div class="row">
+                <div class="chips"><span>已连接</span></div>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+            <div class="channel-item">
+              <div>
+                <strong>飞书账号</strong>
+                <div class="muted">未配置联系人与群目标，暂不可外发</div>
+              </div>
+              <div class="row">
+                <div class="chips"><span class="warn">去配置</span></div>
+                <div class="toggle"></div>
+              </div>
+            </div>
+            <div class="channel-item">
+              <div>
+                <strong>钉钉账号</strong>
+                <div class="muted">已接入组织通讯录，可发送到指定联系人</div>
+              </div>
+              <div class="row">
+                <div class="chips"><span class="success">组织已连通</span></div>
+                <div class="toggle active"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-page" id="skillPage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">技能管理</div>
+          <div class="muted">启用或关闭能力模块</div>
+        </div>
+        <button class="icon-btn detail-close-btn">✕</button>
+      </div>
+      <div class="detail-body">
+        <div class="settings-card">
+          <p>管理 SanagClaw 当前可调用的技能能力，便于按业务阶段灰度开放。</p>
+          <div class="market-tabs" id="skillTabs"></div>
+          <div class="skill-list" id="skillList"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <aside class="mode-switcher">
+    <div class="mode-switcher-title">访问模式</div>
+    <button class="mode-switch-btn active" id="oldUserModeBtn" type="button">老用户</button>
+    <button class="mode-switch-btn" id="phaseOneModeBtn" type="button">一期形态</button>
+    <button class="mode-switch-btn" id="expiredUserModeBtn" type="button">过期</button>
+    <button class="mode-switch-btn" id="newUserModeBtn" type="button">新用户</button>
+  </aside>
+  </div>
+
+  <script>
+    const historyData = [
+      {
+        title: "新品复盘提醒",
+        time: "上周五 18:00",
+        command: "打开上周五18点的新品复盘提醒"
+      },
+      {
+        title: "午间久坐提醒",
+        time: "昨天 15:00",
+        command: "查看昨天15点的久坐提醒记录"
+      },
+      {
+        title: "左耳机掉电诊断",
+        time: "3 月 28 日",
+        command: "查看3月28日的左耳机掉电诊断结果"
+      },
+      {
+        title: "周报自动汇总任务",
+        time: "3 月 27 日",
+        command: "查看3月27日的周报自动汇总任务"
+      }
+    ];
+
+    const taskData = [
+      {
+        title: "工作日上午 9:00 会议提醒",
+        time: "工作日 09:00",
+        detail: "重复周期：每周一至周五 · 同步到微信 clawbot",
+        command: "查看我的工作日上午9点会议提醒"
+      },
+      {
+        title: "每晚 23:00 睡前提醒",
+        time: "每天 23:00",
+        detail: "重复周期：每天 · 提醒准备休息并开启睡眠监测",
+        command: "查看我的每晚23点睡前提醒"
+      },
+      {
+        title: "周日 20:00 健康周报",
+        time: "周日 20:00",
+        detail: "重复周期：每周日 · 汇总睡眠、压力和设备使用情况",
+        command: "查看我的健康周报定时任务"
+      }
+    ];
+
+    const templateData = [
+      {
+        title: "通勤出门提醒",
+        detail: "工作日早上提醒检查耳机电量、带齐随身物品。",
+        command: "帮我创建一个工作日早上8点的通勤出门提醒"
+      },
+      {
+        title: "午间久坐提醒",
+        detail: "午后定时提醒起身活动，结合健康数据给出建议。",
+        command: "帮我创建一个每天下午3点的久坐提醒"
+      },
+      {
+        title: "耳机充电提醒",
+        detail: "检测到低电量趋势后，在固定时段提醒充电。",
+        command: "帮我创建一个每晚9点检查耳机充电状态的提醒"
+      }
+    ];
+
+    const marketTaskData = [
+      {
+        category: "办公提效",
+        title: "创建定时任务：热点资讯自动汇总",
+        detail: "还在一条条刷资讯？每日自动整理，不用费心查找，快速看懂当天重点。",
+        icon: "📰",
+        command: "帮我创建一个每天早上8点自动汇总热点资讯的任务"
+      },
+      {
+        category: "办公提效",
+        title: "发票/单据智能归档",
+        detail: "一到月末报销就火急火燎？把票据整理任务交给 SanagClaw 定时处理。",
+        icon: "🧾",
+        command: "帮我创建一个每周五下午整理发票和单据的任务"
+      },
+      {
+        category: "办公提效",
+        title: "日程安排/任务跟踪与提醒",
+        detail: "每天任务太多，安排不过来怎么办？帮你管日程、盯进度、到点喊你。",
+        icon: "📅",
+        command: "帮我创建一个每天早上9点整理日程并提醒我的任务"
+      },
+      {
+        category: "自媒体营销",
+        title: "内容选题灵感收集",
+        detail: "自动归纳热点、评论和灵感来源，沉淀成持续可用的选题池。",
+        icon: "📝",
+        command: "帮我创建一个每晚8点整理内容选题灵感的任务"
+      },
+      {
+        category: "财务金融",
+        title: "业务指标可视化管理",
+        detail: "自动整理关键业务数据，生成轻量看板，方便你快速复盘与同步。",
+        icon: "📊",
+        command: "帮我创建一个每周一早上生成业务指标看板的任务"
+      },
+      {
+        category: "研究学习",
+        title: "制定轻量学习计划",
+        detail: "把长期学习目标拆成日常节奏，自动提醒、监督打卡与阶段复盘。",
+        icon: "📒",
+        command: "帮我创建一个工作日晚上8点提醒我执行学习计划的任务"
+      }
+    ];
+
+    const skillTabs = ["生活日常", "内容创作", "数据分析"];
+    let activeSkillTab = "生活日常";
+    const skillData = [
+      {
+        category: "生活日常",
+        icon: "☼",
+        title: "天气预报",
+        detail: "获取天气预报。"
+      },
+      {
+        category: "生活日常",
+        icon: "⌕",
+        title: "Skill 查找器",
+        detail: "帮助发现和安装 Skill。"
+      },
+      {
+        category: "生活日常",
+        icon: "📰",
+        title: "实时新闻抓取",
+        detail: "聚合 8 大主流信息源的实时新闻抓取工具。"
+      },
+      {
+        category: "内容创作",
+        icon: "✎",
+        title: "AI 文本润色",
+        detail: "润色 AI 创作的文字。"
+      },
+      {
+        category: "内容创作",
+        icon: "▣",
+        title: "AI PPT 生成",
+        detail: "AI 生成 PPT。"
+      },
+      {
+        category: "内容创作",
+        icon: "✦",
+        title: "营销文案创作",
+        detail: "生成营销文案与传播内容。"
+      },
+      {
+        category: "内容创作",
+        icon: "☰",
+        title: "内容总结",
+        detail: "总结 URL 或文件内容。"
+      },
+      {
+        category: "内容创作",
+        icon: "◉",
+        title: "多模态内容摘要",
+        detail: "多模态智能内容摘要助手。"
+      },
+      {
+        category: "数据分析",
+        icon: "📊",
+        title: "数据分析",
+        detail: "将原始数据转化为清晰可行的见解。"
+      },
+      {
+        category: "数据分析",
+        icon: "⌘",
+        title: "网页搜索与抓取",
+        detail: "支持网页搜索与信息抓取。"
+      },
+      {
+        category: "数据分析",
+        icon: "◫",
+        title: "电商数据助手",
+        detail: "支持搜索商品、挖掘爆品、分析达人和探索店铺。"
+      }
+    ];
+
+    const marketTabs = ["全部任务", "办公提效", "研究学习", "娱乐游戏", "自律生活", "自媒体营销", "财务金融"];
+    let activeMarketTab = "全部任务";
+    let currentUserMode = "old";
+    let currentPlan = "pro";
+    let purchasedPlan = currentPlan;
+    let activeModel = "银河plus";
+    let purchaseContext = "entry";
+    const planOrder = { lite: 1, pro: 2, max: 3 };
+
+    function capitalizePlan(plan) {
+      return plan.charAt(0).toUpperCase() + plan.slice(1);
+    }
+
+    function updateCurrentPlanUI() {
+      document.querySelectorAll("#currentPlanBadge").forEach(node => {
+        node.textContent = `${capitalizePlan(currentPlan)} 版本`;
+      });
+    }
+
+    function renderPurchaseOptions() {
+      const currentLevel = planOrder[currentPlan] || 1;
+      let visibleCount = 0;
+      document.querySelectorAll(".plan-card").forEach(card => {
+        const tier = card.dataset.tier;
+        const tierLevel = planOrder[tier] || 1;
+        let visible = true;
+
+        if (purchaseContext === "upgrade") {
+          visible = tierLevel > currentLevel;
+        } else if (purchaseContext === "renew") {
+          visible = tierLevel >= currentLevel;
+        }
+
+        card.classList.toggle("hidden", !visible);
+        if (visible) visibleCount += 1;
+      });
+
+      document.getElementById("planEmptyState").classList.toggle("show", visibleCount === 0);
+    }
+
+    function closeModelDropdown() {
+      document.getElementById("modelDropdown").classList.remove("open");
+      document.getElementById("modelTrigger").classList.remove("open");
+    }
+
+    function openModelDropdown() {
+      document.getElementById("modelDropdown").classList.add("open");
+      document.getElementById("modelTrigger").classList.add("open");
+    }
+
+    function toggleModelDropdown() {
+      const dropdown = document.getElementById("modelDropdown");
+      if (dropdown.classList.contains("open")) {
+        closeModelDropdown();
+        return;
+      }
+      openModelDropdown();
+    }
+
+    function setActiveModel(model) {
+      activeModel = model;
+      document.getElementById("currentModelLabel").textContent = model;
+      document.querySelectorAll(".model-option").forEach(button => {
+        button.classList.toggle("active", button.dataset.model === model);
+      });
+      closeModelDropdown();
+    }
+
+    function closePurchaseModal() {
+      document.getElementById("purchaseOverlay").classList.remove("show");
+      document.getElementById("purchaseModal").classList.remove("open");
+    }
+
+    function openPurchaseModal(context = "entry") {
+      purchaseContext = context;
+      renderPurchaseOptions();
+      document.getElementById("purchaseOverlay").classList.add("show");
+      document.getElementById("purchaseModal").classList.add("open");
+    }
+
+    function setUserMode(mode) {
+      currentUserMode = mode;
+      document.getElementById("oldUserModeBtn").classList.toggle("active", mode === "old");
+      document.getElementById("phaseOneModeBtn").classList.toggle("active", mode === "phase1");
+      document.getElementById("expiredUserModeBtn").classList.toggle("expired-active", mode === "expired");
+      document.getElementById("newUserModeBtn").classList.toggle("active", mode === "new");
+      document.getElementById("composerChannelBtn").classList.toggle("hidden", mode === "phase1");
+
+      const showEntry = mode === "new";
+      const showExpiredGate = mode === "expired";
+      document.getElementById("entryPage").classList.toggle("open", showEntry);
+      document.getElementById("expiredGate").classList.toggle("open", showExpiredGate);
+
+      if (showEntry || showExpiredGate) {
+        closeSidebar();
+        closeSettings();
+        closePurchaseModal();
+        document.querySelectorAll(".detail-page, .memory-page").forEach(page => {
+          page.classList.remove("open");
+        });
+      }
+    }
+
+    function unlockFormalPage(plan) {
+      currentPlan = plan;
+      purchasedPlan = plan;
+      updateCurrentPlanUI();
+      closePurchaseModal();
+      setUserMode("old");
+    }
+
+    function openSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      if (sidebar) sidebar.classList.add("open");
+      if (overlay) overlay.classList.add("show");
+    }
+
+    function closeSidebar() {
+      const sidebar = document.getElementById("sidebar");
+      const overlay = document.getElementById("overlay");
+      if (sidebar) sidebar.classList.remove("open");
+      if (overlay) overlay.classList.remove("show");
+    }
+
+    function goBackToHome() {
+      closeModelDropdown();
+      closePurchaseModal();
+      closeSettings();
+      document.querySelectorAll(".detail-page, .memory-page").forEach(page => {
+        page.classList.remove("open");
+      });
+    }
+
+    function openSettings() {
+      closeSidebar();
+      document.getElementById("settingsPage").classList.add("open");
+    }
+
+    function closeSettings() {
+      document.getElementById("settingsPage").classList.remove("open");
+    }
+
+    function openMemory() {
+      closeSettings();
+      closeSidebar();
+      document.getElementById("memoryPage").classList.add("open");
+    }
+
+    function closeMemory() {
+      document.getElementById("memoryPage").classList.remove("open");
+      document.getElementById("settingsPage").classList.add("open");
+    }
+
+    function openTasks() {
+      closeSettings();
+      closeSidebar();
+      document.getElementById("tasksPage").classList.add("open");
+    }
+
+    function closeTasks() {
+      document.getElementById("tasksPage").classList.remove("open");
+      document.getElementById("settingsPage").classList.add("open");
+    }
+
+    function openCreateScheduledTask() {
+      document.getElementById("tasksPage").classList.remove("open");
+      document.getElementById("createScheduledTaskPage").classList.add("open");
+    }
+
+    function closeCreateScheduledTask() {
+      document.getElementById("createScheduledTaskPage").classList.remove("open");
+      document.getElementById("tasksPage").classList.add("open");
+    }
+
+    function openTaskMarket() {
+      closeSettings();
+      closeSidebar();
+      document.getElementById("taskMarketPage").classList.add("open");
+    }
+
+    function closeTaskMarket() {
+      document.getElementById("taskMarketPage").classList.remove("open");
+      document.getElementById("settingsPage").classList.add("open");
+    }
+
+    function openDetailPage(pageId) {
+      closeSettings();
+      closeSidebar();
+      document.getElementById(pageId).classList.add("open");
+    }
+
+    function closeDetailPages() {
+      document.querySelectorAll(".detail-page, .memory-page").forEach(page => {
+        page.classList.remove("open");
+      });
+      document.getElementById("settingsPage").classList.add("open");
+    }
+
+    function renderTasks(keyword = "") {
+      const normalized = keyword.trim().toLowerCase();
+      const filtered = taskData.filter(item => {
+        const text = `${item.title} ${item.time} ${item.detail} ${item.command}`.toLowerCase();
+        return text.includes(normalized);
+      });
+      const root = document.getElementById("taskList");
+      root.innerHTML = filtered.map(item => `
+        <div class="history-item">
+          <div class="history-card sidebar-trigger" data-command="${item.command}">
+            <div>
+              <div class="history-card-title">${item.title}</div>
+              <div class="history-card-time">${item.time}</div>
+            </div>
+            <div class="history-menu">
+              <button class="history-menu-btn" type="button">⋯</button>
+              <div class="history-menu-list">
+                <button type="button">删除</button>
+                <button type="button">收藏</button>
+                <button type="button">分享</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      `).join("");
+
+      if (!filtered.length) {
+        root.innerHTML = `<div class="history-item"><div class="history-card"><div><div class="history-card-title">未找到结果</div><div class="history-card-time">试试搜索任务名称或任务时间</div></div></div></div>`;
+      }
+    }
+
+    function renderRecommendedTasks() {
+      const root = document.getElementById("recommendedTaskList");
+      root.innerHTML = templateData.slice(0, 3).map(item => `
+        <button class="template-item sidebar-trigger" data-command="${item.command}" style="text-align:left;border:0;width:100%;">
+          <strong>${item.title}</strong>
+          <div class="muted">${item.detail}</div>
+        </button>
+      `).join("");
+    }
+
+    function renderMarketTabs() {
+      const root = document.getElementById("taskMarketTabs");
+      root.innerHTML = marketTabs.map(tab => `
+        <button class="market-tab ${tab === activeMarketTab ? "active" : ""}" type="button" data-tab="${tab}">${tab}</button>
+      `).join("");
+
+      root.querySelectorAll(".market-tab").forEach(button => {
+        button.addEventListener("click", () => {
+          activeMarketTab = button.dataset.tab;
+          renderMarketTabs();
+          renderMarketCards();
+        });
+      });
+    }
+
+    function renderSkillTabs() {
+      const root = document.getElementById("skillTabs");
+      root.innerHTML = skillTabs.map(tab => `
+        <button class="market-tab ${tab === activeSkillTab ? "active" : ""}" type="button" data-tab="${tab}">${tab}</button>
+      `).join("");
+
+      root.querySelectorAll(".market-tab").forEach(button => {
+        button.addEventListener("click", () => {
+          activeSkillTab = button.dataset.tab;
+          renderSkillTabs();
+          renderSkills();
+        });
+      });
+    }
+
+    function renderSkills() {
+      const root = document.getElementById("skillList");
+      const visibleSkills = skillData.filter(item => item.category === activeSkillTab);
+      root.innerHTML = visibleSkills.map(item => `
+        <div class="skill-item">
+          <div class="skill-item-main">
+            <div class="skill-icon">${item.icon}</div>
+            <div class="skill-copy">
+              <strong>${item.title}</strong>
+              <div class="muted">${item.detail}</div>
+            </div>
+          </div>
+          <div class="toggle active"></div>
+        </div>
+      `).join("");
+    }
+
+    function renderMarketCards() {
+      const root = document.getElementById("taskMarketGrid");
+      const mergedTasks = [
+        ...marketTaskData,
+        ...templateData.map(item => ({
+          category: "全部任务",
+          title: item.title,
+          detail: item.detail,
+          icon: "✦",
+          command: item.command
+        }))
+      ];
+      const visibleTasks = activeMarketTab === "全部任务"
+        ? mergedTasks
+        : marketTaskData.filter(item => item.category === activeMarketTab);
+
+      root.innerHTML = visibleTasks.map(item => `
+        <button class="market-card sidebar-trigger" data-command="${item.command}" type="button">
+          <div class="market-card-icon">${item.icon}</div>
+          <strong>${item.title}</strong>
+          <div class="muted">${item.detail}</div>
+        </button>
+      `).join("");
+
+      if (!visibleTasks.length) {
+        root.innerHTML = `
+          <div class="market-card">
+            <strong>${activeMarketTab}</strong>
+            <div class="muted">这个分类的任务模板还在整理中，后面我可以继续帮你补内容。</div>
+          </div>
+        `;
+      }
+    }
+
+    function appendUserMessage(text) {
+      const area = document.getElementById("messageArea");
+      const user = document.createElement("div");
+      user.className = "message user";
+      user.textContent = text;
+      area.appendChild(user);
+
+      const reply = document.createElement("div");
+      reply.className = "message assistant";
+      reply.innerHTML = "我已收到你的请求，并开始为你处理。<br><small>SanagClaw 会把结果同步到定时任务与侧边记录中。</small>";
+      area.appendChild(reply);
+
+      area.scrollTop = area.scrollHeight;
+    }
+
+    function startNewTask() {
+      setUserMode("old");
+      closeSidebar();
+      closeSettings();
+      document.querySelectorAll(".detail-page, .memory-page").forEach(page => {
+        page.classList.remove("open");
+      });
+      const area = document.getElementById("messageArea");
+      area.innerHTML = `
+        <button class="quick-entry quick-trigger" data-command="帮我创建一个明天上午9点的会议提醒，并同步到微信 clawbot">明天 9 点提醒我开会，并同步到微信</button>
+        <button class="quick-entry quick-trigger" data-command="帮我在小红书搜索关于sanag最热门的笔记">帮我在小红书搜索关于sanag最热门的笔记</button>
+        <div class="message assistant">新的任务对话已创建。你可以直接输入需求，我会从这里开始处理。</div>
+      `;
+      bindQuickTriggers();
+      document.getElementById("composerInput").value = "";
+      area.scrollTop = 0;
+    }
+
+    function bindQuickTriggers() {
+      document.querySelectorAll(".quick-trigger").forEach(button => {
+        button.addEventListener("click", () => {
+          const cmd = button.dataset.command;
+          document.getElementById("composerInput").value = cmd;
+          appendUserMessage(cmd);
+        });
+      });
+    }
+
+    document.getElementById("backBtn").addEventListener("click", goBackToHome);
+    document.getElementById("modelTrigger").addEventListener("click", event => {
+      event.stopPropagation();
+      toggleModelDropdown();
+    });
+    document.getElementById("oldUserModeBtn").addEventListener("click", () => setUserMode("old"));
+    document.getElementById("phaseOneModeBtn").addEventListener("click", () => setUserMode("phase1"));
+    document.getElementById("expiredUserModeBtn").addEventListener("click", () => setUserMode("expired"));
+    document.getElementById("newUserModeBtn").addEventListener("click", () => setUserMode("new"));
+    document.getElementById("openPurchaseBtn").addEventListener("click", () => openPurchaseModal("entry"));
+    document.getElementById("closePurchaseBtn").addEventListener("click", closePurchaseModal);
+    document.getElementById("purchaseOverlay").addEventListener("click", closePurchaseModal);
+    document.getElementById("expiredRenewBtn").addEventListener("click", () => openPurchaseModal("renew"));
+    document.getElementById("openSettingsBtn").addEventListener("click", openSettings);
+    document.getElementById("closeSettingsBtn").addEventListener("click", closeSettings);
+    document.getElementById("closeMemoryBtn").addEventListener("click", closeMemory);
+    document.getElementById("closeTasksBtn").addEventListener("click", closeTasks);
+    document.getElementById("openCreateScheduledTaskBtn").addEventListener("click", openCreateScheduledTask);
+    document.getElementById("closeCreateScheduledTaskBtn").addEventListener("click", closeCreateScheduledTask);
+    document.getElementById("cancelCreateScheduledTaskBtn").addEventListener("click", closeCreateScheduledTask);
+    document.getElementById("confirmCreateScheduledTaskBtn").addEventListener("click", closeCreateScheduledTask);
+    document.getElementById("closeTaskMarketBtn").addEventListener("click", closeTaskMarket);
+    document.getElementById("viewAllTaskMarketBtn").addEventListener("click", openTaskMarket);
+    document.getElementById("blankTaskStartBtn").addEventListener("click", openCreateScheduledTask);
+    document.querySelectorAll("#currentPlanBadge").forEach(node => {
+      node.addEventListener("click", event => {
+        event.stopPropagation();
+      });
+    });
+    document.getElementById("upgradeBtn").addEventListener("click", event => {
+      event.stopPropagation();
+      openPurchaseModal("upgrade");
+    });
+    document.getElementById("openMembershipBtn").addEventListener("click", () => openDetailPage("usagePage"));
+    document.getElementById("composerTimedTaskBtn").addEventListener("click", openTasks);
+    document.getElementById("composerChannelBtn").addEventListener("click", () => openDetailPage("channelPage"));
+    document.getElementById("tasksSearchInput").addEventListener("input", event => {
+      renderTasks(event.target.value);
+    });
+
+    document.querySelectorAll(".settings-nav-trigger").forEach(button => {
+      button.addEventListener("click", () => {
+        const pageId = button.dataset.target;
+        if (pageId === "memoryPage") {
+          openMemory();
+          return;
+        }
+        if (pageId === "taskMarketPage") {
+          openTaskMarket();
+          return;
+        }
+        openDetailPage(pageId);
+      });
+    });
+
+    document.querySelectorAll(".detail-close-btn").forEach(button => {
+      button.addEventListener("click", closeDetailPages);
+    });
+    document.getElementById("closeMembershipBtn").addEventListener("click", goBackToHome);
+
+    document.querySelectorAll(".model-option").forEach(button => {
+      button.addEventListener("click", event => {
+        event.stopPropagation();
+        setActiveModel(button.dataset.model);
+      });
+    });
+
+    document.querySelectorAll(".plan-buy-trigger").forEach(button => {
+      button.addEventListener("click", () => unlockFormalPage(button.dataset.plan));
+    });
+
+    bindQuickTriggers();
+    updateCurrentPlanUI();
+    setUserMode(currentUserMode);
+
+    document.addEventListener("click", event => {
+      if (!event.target.closest(".model-dropdown") && !event.target.closest(".model-trigger")) {
+        closeModelDropdown();
+      }
+
+      const menuBtn = event.target.closest(".history-menu-btn");
+      if (menuBtn) {
+        const menu = menuBtn.parentElement;
+        document.querySelectorAll(".history-menu").forEach(item => {
+          if (item !== menu) item.classList.remove("open");
+        });
+        menu.classList.toggle("open");
+        event.stopPropagation();
+        return;
+      }
+
+      const menuAction = event.target.closest(".history-menu-list button");
+      if (menuAction) {
+        event.stopPropagation();
+        menuAction.closest(".history-menu").classList.remove("open");
+        return;
+      }
+
+      const trigger = event.target.closest(".sidebar-trigger");
+      if (!trigger) return;
+      const cmd = trigger.dataset.command;
+      closeSidebar();
+      closeSettings();
+      document.querySelectorAll(".detail-page, .memory-page").forEach(page => {
+        page.classList.remove("open");
+      });
+      document.getElementById("composerInput").value = cmd;
+      appendUserMessage(cmd);
+    });
+
+    document.addEventListener("click", event => {
+      if (!event.target.closest(".history-menu")) {
+        document.querySelectorAll(".history-menu").forEach(menu => menu.classList.remove("open"));
+      }
+    });
+
+    document.getElementById("sendBtn").addEventListener("click", () => {
+      const input = document.getElementById("composerInput");
+      const text = input.value.trim();
+      if (!text) return;
+      appendUserMessage(text);
+      input.value = "";
+    });
+
+    document.querySelectorAll(".toggle").forEach(toggle => {
+      toggle.addEventListener("click", () => toggle.classList.toggle("active"));
+    });
+
+    renderTasks();
+    renderRecommendedTasks();
+    renderMarketTabs();
+    renderMarketCards();
+    renderSkillTabs();
+    renderSkills();
+  </script>
+</body>
+</html>
