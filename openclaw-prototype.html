@@ -403,6 +403,20 @@
       cursor: pointer;
     }
 
+    .expired-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .expired-card-top .icon-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      flex: 0 0 auto;
+    }
+
     .purchase-top {
       display: flex;
       justify-content: space-between;
@@ -782,6 +796,47 @@
       background: rgba(255, 255, 255, 0.86);
     }
 
+    .state-card {
+      max-width: 92%;
+      padding: 14px 15px;
+      border-radius: 18px;
+      line-height: 1.65;
+      font-size: 14px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(32, 38, 45, 0.08);
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.06);
+    }
+
+    .state-card strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 15px;
+    }
+
+    .state-card.expired {
+      background: #fff6ef;
+      border-color: rgba(175, 109, 17, 0.16);
+    }
+
+    .state-card.credits {
+      background: #fdf3f1;
+      border-color: rgba(177, 69, 60, 0.16);
+    }
+
+    .inline-upgrade-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 0;
+      margin: 0 2px;
+      border: 0;
+      background: transparent;
+      color: var(--brand);
+      font: inherit;
+      font-weight: 700;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
     .message small, .muted {
       color: var(--muted);
       font-size: 12px;
@@ -881,6 +936,15 @@
     .composer-btn.primary {
       background: var(--brand);
       color: #fff;
+    }
+
+    .composer-disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .composer-disabled textarea {
+      cursor: not-allowed;
     }
 
     .section-title {
@@ -1020,6 +1084,156 @@
       margin-bottom: 4px;
     }
 
+    .channel-item {
+      padding: 16px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,247,243,0.96));
+      border: 1px solid rgba(32, 38, 45, 0.06);
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.05);
+      align-items: center;
+    }
+
+    .channel-item-main {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      min-width: 0;
+      flex: 1;
+    }
+
+    .channel-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      font-size: 28px;
+      flex: 0 0 auto;
+      background: rgba(24, 196, 77, 0.12);
+    }
+
+    .channel-copy {
+      min-width: 0;
+      flex: 1;
+      display: grid;
+      gap: 8px;
+    }
+
+    .channel-title-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .channel-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #e8f7e8;
+      color: #2b9a46;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .channel-copy .muted {
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    .channel-config-btn {
+      min-width: 92px;
+      padding: 11px 16px;
+      border-radius: 16px;
+      border: 0;
+      background: var(--ink);
+      color: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .channel-config-btn.done {
+      background: #eef5f8;
+      color: var(--brand);
+      box-shadow: inset 0 0 0 1px rgba(20, 106, 144, 0.12);
+    }
+
+    .channel-qr-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(21, 27, 34, 0.34);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .22s ease;
+      z-index: 29;
+    }
+
+    .channel-qr-overlay.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .channel-qr-modal {
+      position: absolute;
+      left: 20px;
+      right: 20px;
+      bottom: 22px;
+      z-index: 30;
+      display: none;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 28px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,247,243,0.98));
+      border: 1px solid rgba(255,255,255,0.82);
+      box-shadow: 0 20px 42px rgba(31, 45, 58, 0.18);
+    }
+
+    .channel-qr-modal.open {
+      display: grid;
+    }
+
+    .channel-qr-box {
+      width: 190px;
+      height: 190px;
+      margin: 0 auto;
+      border-radius: 24px;
+      background:
+        linear-gradient(90deg, rgba(32,38,45,0.9) 10px, transparent 10px) 0 0/38px 38px,
+        linear-gradient(rgba(32,38,45,0.9) 10px, transparent 10px) 0 0/38px 38px,
+        linear-gradient(90deg, transparent 28px, rgba(32,38,45,0.9) 28px, rgba(32,38,45,0.9) 38px) 0 0/38px 38px,
+        linear-gradient(transparent 28px, rgba(32,38,45,0.9) 28px, rgba(32,38,45,0.9) 38px) 0 0/38px 38px,
+        #fff;
+      border: 1px solid rgba(32, 38, 45, 0.08);
+      box-shadow: inset 0 0 0 10px #fff;
+    }
+
+    .channel-qr-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .channel-qr-btn {
+      flex: 1;
+      padding: 12px 14px;
+      border-radius: 16px;
+      border: 0;
+      background: #edf2f5;
+      color: var(--ink);
+      font: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .channel-qr-btn.primary {
+      background: var(--brand);
+      color: #fff;
+    }
+
     .skill-list {
       gap: 12px;
     }
@@ -1088,6 +1302,137 @@
     .memory-field strong {
       display: block;
       margin-bottom: 4px;
+    }
+
+    .workspace-headline {
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(32, 38, 45, 0.08);
+    }
+
+    .workspace-headline h3,
+    .workspace-headline p {
+      margin: 0;
+    }
+
+    .workspace-headline h3 {
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .workspace-headline p {
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 14px;
+    }
+
+    .workspace-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .workspace-item {
+      width: 100%;
+      padding: 16px 0;
+      border: 0;
+      border-bottom: 1px solid rgba(32, 38, 45, 0.08);
+      background: transparent;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-align: left;
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    .workspace-item:last-child {
+      border-bottom: 0;
+    }
+
+    .workspace-arrow {
+      width: 24px;
+      color: var(--ink);
+      font-size: 22px;
+      line-height: 1;
+      flex: 0 0 auto;
+    }
+
+    .workspace-icon {
+      width: 62px;
+      height: 62px;
+      border-radius: 18px;
+      border: 1px solid rgba(32, 38, 45, 0.08);
+      background: rgba(255,255,255,0.78);
+      display: grid;
+      place-items: center;
+      font-size: 32px;
+      flex: 0 0 auto;
+    }
+
+    .workspace-meta {
+      min-width: 0;
+      flex: 1;
+      display: grid;
+      gap: 6px;
+    }
+
+    .workspace-meta strong {
+      font-size: 18px;
+      line-height: 1.35;
+      font-weight: 500;
+    }
+
+    .workspace-meta span {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    .workspace-download {
+      display: none;
+      min-width: 64px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      border: 0;
+      background: var(--brand);
+      color: #fff;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .workspace-item.show-download .workspace-download {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .workspace-file-sheet {
+      padding: 16px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.82);
+      border: 1px solid rgba(32, 38, 45, 0.08);
+      box-shadow: 0 10px 24px rgba(52, 63, 73, 0.06);
+      display: grid;
+      gap: 14px;
+    }
+
+    .workspace-file-sheet h3,
+    .workspace-file-sheet p {
+      margin: 0;
+    }
+
+    .workspace-file-sheet h3 {
+      font-size: 18px;
+    }
+
+    .workspace-file-sheet p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+      white-space: pre-wrap;
     }
 
     .sidebar-header {
@@ -1299,6 +1644,85 @@
       background: rgba(20, 106, 144, 0.08);
     }
 
+    .history-menu-list button.danger {
+      color: #dd5d5d;
+    }
+
+    .history-menu-list button.danger:hover {
+      background: rgba(221, 93, 93, 0.08);
+    }
+
+    .task-card-actions {
+      display: grid;
+      gap: 10px;
+      justify-items: end;
+      flex: 0 0 auto;
+    }
+
+    .task-enable-toggle {
+      position: relative;
+      width: 40px;
+      height: 24px;
+      border: 0;
+      border-radius: 999px;
+      background: rgba(32, 38, 45, 0.18);
+      cursor: pointer;
+      transition: .2s ease;
+    }
+
+    .task-enable-toggle::after {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(31, 45, 58, 0.16);
+      transition: .2s ease;
+    }
+
+    .task-enable-toggle.active {
+      background: #2c3036;
+    }
+
+    .task-enable-toggle.active::after {
+      transform: translateX(16px);
+    }
+
+    .task-record-list {
+      display: grid;
+      gap: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(32, 38, 45, 0.06);
+      background: rgba(255, 255, 255, 0.96);
+    }
+
+    .task-record-item {
+      padding: 14px 16px;
+      display: grid;
+      gap: 6px;
+      border-bottom: 1px solid rgba(32, 38, 45, 0.06);
+      background: transparent;
+    }
+
+    .task-record-item strong {
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .task-record-item:last-child {
+      border-bottom: 0;
+    }
+
+    .task-record-meta {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
     .chip-btn {
       padding: 9px 12px;
       border-radius: 12px;
@@ -1375,6 +1799,31 @@
       color: var(--brand);
       border-color: rgba(20, 106, 144, 0.2);
       box-shadow: inset 0 0 0 1px rgba(20, 106, 144, 0.12);
+    }
+
+    .skill-tabs {
+      gap: 10px;
+      margin-bottom: 10px;
+      padding-bottom: 2px;
+    }
+
+    .skill-tabs .market-tab {
+      min-width: 92px;
+      padding: 10px 16px;
+      border-radius: 18px;
+      background: rgba(245, 243, 236, 0.85);
+      color: #5f6872;
+      font-size: 13px;
+      line-height: 1.2;
+      text-align: center;
+      box-shadow: none;
+    }
+
+    .skill-tabs .market-tab.active {
+      background: rgba(20, 106, 144, 0.12);
+      border-color: rgba(20, 106, 144, 0.2);
+      color: var(--brand);
+      box-shadow: inset 0 0 0 1px rgba(20, 106, 144, 0.1);
     }
 
     .market-grid {
@@ -1643,7 +2092,7 @@
 
     .usage-progress-actions {
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 12px;
       align-items: end;
       padding-top: 4px;
@@ -1657,13 +2106,35 @@
     .plan-badge {
       display: inline-flex;
       align-items: center;
-      padding: 7px 11px;
-      border-radius: 999px;
-      background: rgba(20, 106, 144, 0.1);
+      justify-content: center;
+      padding: 7px 12px;
+      border-radius: 12px;
+      background: rgba(20, 106, 144, 0.12);
       color: var(--brand);
       font-size: 12px;
       font-weight: 700;
+      line-height: 1;
       cursor: default;
+    }
+
+    .plan-meta-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .plan-expire {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 7px 12px;
+      border-radius: 12px;
+      background: rgba(32, 38, 45, 0.05);
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
     }
 
     .usage-inline-btn {
@@ -1676,7 +2147,7 @@
       font-size: 13px;
       font-weight: 700;
       cursor: pointer;
-      justify-self: end;
+      justify-self: stretch;
     }
 
     .membership-hero {
@@ -1802,7 +2273,7 @@
       <div class="purchase-top">
         <div>
           <h3>选择套餐</h3>
-          <p>购买任一套餐后即可进入正式 SanagClaw 页面。</p>
+          <p>购买任一套餐后即可创建您的 SanagClaw 。</p>
         </div>
         <button class="icon-btn" id="closePurchaseBtn" type="button">✕</button>
       </div>
@@ -1812,7 +2283,7 @@
             <div class="plan-name">Lite</div>
             <div class="plan-price"><s>刊例价 ¥199 / 月</s><br>限时 ¥179 / 月</div>
           </div>
-          <div class="plan-desc">每月 3000 万 token，约 30 次普通任务执行。<br>只能选用第一档模型。</div>
+          <div class="plan-desc">500 星辰币。<br>适合日常轻度使用用户。<br>支持银河 flash 模型。<br>支持手机端控制渠道。</div>
           <button class="plan-buy-btn plan-buy-trigger" data-plan="lite" type="button">购买 Lite</button>
         </div>
         <div class="plan-card" data-tier="pro">
@@ -1820,7 +2291,7 @@
             <div class="plan-name">Pro</div>
             <div class="plan-price"><s>刊例价 ¥399 / 月</s><br>限时 ¥359 / 月</div>
           </div>
-          <div class="plan-desc">每月 1 亿 token，约 100 次任务执行。<br>可选用三档模型，每日登录送 100 百万 token。</div>
+          <div class="plan-desc">1500 星辰币。<br>3 倍 Lite 用量，适合中高频使用用户。<br>支持银河flash、银河pro、银河max模型。<br>支持手机端控制渠道，每日登陆送 5 个星辰币。</div>
           <button class="plan-buy-btn plan-buy-trigger" data-plan="pro" type="button">购买 Pro</button>
         </div>
         <div class="plan-card" data-tier="max">
@@ -1828,7 +2299,7 @@
             <div class="plan-name">Max</div>
             <div class="plan-price"><s>刊例价 ¥799 / 月</s><br>限时 ¥699 / 月</div>
           </div>
-          <div class="plan-desc">每月 2 亿 token，约 200 次任务执行。<br>可选用三档模型，每日登录送 300 百万 token。</div>
+          <div class="plan-desc">3000 星辰币。<br>6 倍 Lite 用量，适合高强度使用用户。<br>支持银河 flash、银河 plus、银河 pro 模型。<br>支持手机端控制渠道，每日登陆送 10 个星辰币。</div>
           <button class="plan-buy-btn plan-buy-trigger" data-plan="max" type="button">购买 Max</button>
         </div>
         <div class="plan-empty-state" id="planEmptyState">当前已是最高版本，可继续使用 SanagClaw 的完整能力。</div>
@@ -1837,8 +2308,11 @@
 
     <section class="expired-gate" id="expiredGate">
       <div class="expired-card">
-        <strong>服务已过期</strong>
-        <p>当前账号需要先续费才能继续进入正式的 SanagClaw 页面与任务能力。</p>
+        <div class="expired-card-top">
+          <strong>套餐已过期</strong>
+          <button class="icon-btn" id="closeExpiredGateBtn" type="button">✕</button>
+        </div>
+        <p>当前账号已过期进入48小时隔离期，请在隔离期内完成续费后继续使用，隔离期结束后未续费该账号的sanagclaw数据将销毁。</p>
         <button class="expired-renew-btn" id="expiredRenewBtn" type="button">续费</button>
       </div>
     </section>
@@ -1850,7 +2324,7 @@
           <div class="title-wrap">
             <strong>SanagClaw</strong>
             <button class="model-trigger" id="modelTrigger" type="button">
-              <strong id="currentModelLabel">银河plus</strong>
+              <strong id="currentModelLabel">银河flash</strong>
               <span class="model-trigger-caret">⌄</span>
             </button>
           </div>
@@ -1862,9 +2336,9 @@
       </div>
 
       <div class="model-dropdown" id="modelDropdown">
-        <button class="model-option active" type="button" data-model="银河plus">
+        <button class="model-option active" type="button" data-model="银河flash">
           <div class="model-option-copy">
-            <strong>银河plus</strong>
+            <strong>银河flash</strong>
             <span>更快响应，适合日常问答与轻量任务。</span>
           </div>
           <span class="model-option-check">✓</span>
@@ -1906,17 +2380,21 @@
             <span class="composer-module-icon">◔</span>
             <span>定时任务</span>
           </button>
-          <button class="composer-module-chip quick-trigger" type="button" data-command="帮我创建一个每天早上8点自动汇总热点资讯的任务">
+          <button class="composer-module-chip quick-trigger" type="button" data-command="请你作为一名敏锐的内容策略师，每日「9:00」的自动定时扫描并分析今天在主流自媒体平台{例如微信公众号、B 站} 上，「AI」领域内热度蹿升最快的内容，并输出一份热点分析报告：&#10;1.识别并列出 3 个当前最火爆或最具潜力的选题方向&#10;2.为每个选题方向，提供 1-2 个具体的爆款文章或视频案例。&#10;3.基于以上分析，为我提供 1-2 条可立即借鉴的内容创作切入点或角度建议。" data-fill-only="true">
             <span class="composer-module-icon">📰</span>
-            <span>热点资讯汇总</span>
+            <span>每日内容热点收集</span>
           </button>
-          <button class="composer-module-chip quick-trigger" type="button" data-command="帮我创建一个每周五下午整理发票和单据的任务">
-            <span class="composer-module-icon">🧾</span>
-            <span>单据智能归档</span>
+          <button class="composer-module-chip quick-trigger" type="button" data-command="请你扮演一名专业的行业分析师，每周一「9:00」自动定时全面追踪并汇总「sanag耳机」的「3个」主要竞争对手的公开市场动态。&#10;信息来源应主要包括它们的官方博客、产品发布公告、公开的媒体采访、以及行业新闻网站。&#10;请按照每个“竞争对手”为独立单元，整理一份结构化的动态报告：&#10;包含产品与功能更新，市场与营销活动，战略合作与声明，核心动态摘要。&#10;请确保所有信息来源可靠、描述客观，并对相似或重复的事件进行合并处理，最终形成一份高价值的竞品情报周报" data-fill-only="true">
+            <span class="composer-module-icon">📈</span>
+            <span>每日竞品追踪</span>
           </button>
-          <button class="composer-module-chip quick-trigger" type="button" data-command="帮我创建一个每天早上9点整理日程并提醒我的任务">
-            <span class="composer-module-icon">📅</span>
-            <span>日程跟踪提醒</span>
+          <button class="composer-module-chip quick-trigger" type="button" data-command="设置每日「22:00」的自动定时任务，根据明天「深圳龙岗」的天气、每小时的气温情况变化情况和日期为我量身定制明天人性化的&quot;运动计划&quot;。" data-fill-only="true">
+            <span class="composer-module-icon">🏃</span>
+            <span>明日运动计划</span>
+          </button>
+          <button class="composer-module-chip quick-trigger" type="button" data-command="请你扮演我的个人助理，全面回顾并分析我与你 在今天的对话记录和记忆。&#10;你的任务是：&#10;1.汇总关键信息：从今日所有对话、记忆中，提炼出我们讨论过的 3-5 个核心议题或结论，每个结论用一句话清晰概括。&#10;2.整理待办事项：梳理出明确需要我执行、推进或关注的待办事项（To-do List）。" data-fill-only="true">
+            <span class="composer-module-icon">🗒</span>
+            <span>每日总结</span>
           </button>
         </div>
       </div>
@@ -1944,9 +2422,9 @@
             <div class="settings-menu-main">
               <div class="settings-menu-top">
                 <span class="settings-menu-pill">控制</span>
-                <strong>远程控制</strong>
+                <strong>消息渠道</strong>
               </div>
-              <span>配置微信、飞书和钉钉账号的同步与外发能力。</span>
+              <span>配置微信等消息渠道，接收提醒、任务结果与回执。</span>
             </div>
             <em>›</em>
           </button>
@@ -1967,6 +2445,16 @@
                 <strong>任务市场</strong>
               </div>
               <span>浏览推荐任务模板，快速创建适合当前场景的任务。</span>
+            </div>
+            <em>›</em>
+          </button>
+          <button class="settings-menu-item settings-nav-trigger" data-target="workspacePage">
+            <div class="settings-menu-main">
+              <div class="settings-menu-top">
+                <span class="settings-menu-pill">文件</span>
+                <strong>工作空间</strong>
+              </div>
+              <span>查看 SanagClaw 在云端电脑上创建的文件内容。</span>
             </div>
             <em>›</em>
           </button>
@@ -2208,6 +2696,21 @@
       </div>
     </section>
 
+    <section class="detail-page" id="taskRecordPage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;" id="taskRecordTitle">任务执行记录</div>
+          <div class="muted" id="taskRecordSubtitle">查看最近执行时间与结果摘要</div>
+        </div>
+        <button class="icon-btn" id="closeTaskRecordBtn">✕</button>
+      </div>
+      <div class="detail-body">
+        <div class="settings-card">
+          <div class="task-record-list" id="taskRecordList"></div>
+        </div>
+      </div>
+    </section>
+
     <section class="detail-page" id="taskMarketPage">
       <div class="settings-top">
         <div>
@@ -2218,18 +2721,37 @@
       </div>
       <div class="detail-body">
         <div class="settings-card">
-          <div class="blank-task-card">
-            <div class="blank-task-main">
-              <strong>从空白任务开始</strong>
-              <div class="muted">不使用模板，直接创建一个新的任务对话。</div>
-            </div>
-            <button class="blank-task-btn" id="blankTaskStartBtn" type="button">创建</button>
-          </div>
-        </div>
-
-        <div class="settings-card">
-          <div class="market-tabs" id="taskMarketTabs"></div>
           <div class="market-grid" id="taskMarketGrid"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="detail-page" id="workspacePage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">工作空间</div>
+          <div class="muted">SanagClaw 在云端电脑上创建的文件内容</div>
+        </div>
+        <button class="icon-btn detail-close-btn">✕</button>
+      </div>
+      <div class="detail-body">
+        <div class="workspace-list" id="workspaceList"></div>
+      </div>
+    </section>
+
+    <section class="detail-page" id="workspaceFilePage">
+      <div class="settings-top">
+        <div>
+          <div style="font-size:20px;font-weight:700;">文件详情</div>
+          <div class="muted">查看 SanagClaw 工作空间内的文件内容</div>
+        </div>
+        <button class="icon-btn" id="closeWorkspaceFileBtn">✕</button>
+      </div>
+      <div class="detail-body">
+        <div class="workspace-file-sheet">
+          <h3 id="workspaceFileTitle">文件标题</h3>
+          <div class="muted" id="workspaceFileMeta">0 KB</div>
+          <p id="workspaceFileContent">文件内容展示区</p>
         </div>
       </div>
     </section>
@@ -2238,7 +2760,7 @@
       <div class="settings-top">
         <div>
           <div style="font-size:20px;font-weight:700;">会员套餐</div>
-          <div class="muted">查看当前套餐与 Token 用量详情</div>
+          <div class="muted">查看当前套餐与用量详情</div>
         </div>
         <button class="icon-btn" id="closeMembershipBtn">✕</button>
       </div>
@@ -2246,30 +2768,28 @@
         <div class="settings-card">
           <div class="membership-hero">
             <div class="usage-progress-card">
+              <div class="plan-meta-row">
+                <span class="plan-badge" id="currentPlanBadge">Pro 版本</span>
+                <span class="plan-expire">到期 2026-06-30</span>
+              </div>
               <div class="row" style="justify-content:space-between;">
-                <strong style="font-size:15px;">Token 用量</strong>
+                <strong style="font-size:15px;">星辰币用量</strong>
                 <span class="muted">680 / 1000</span>
               </div>
               <div class="progress-track">
                 <div class="progress-fill" style="width:68%;"></div>
               </div>
-              <div class="muted">本月已使用 680 Token，点击查看详细用量</div>
+              <div class="muted">本月已使用 680 星辰币，点击查看详细用量</div>
               <div class="usage-progress-actions">
-                <div class="usage-action-group">
-                  <div class="muted">当前套餐</div>
-                  <span class="plan-badge" id="currentPlanBadge">Pro 版本</span>
-                </div>
-                <div class="usage-action-group" style="justify-items:end;">
-                  <div class="muted">套餐操作</div>
-                  <button class="usage-inline-btn" id="upgradeBtn" type="button">升级订阅</button>
-                </div>
+                <button class="usage-inline-btn" id="renewBtn" type="button">续费</button>
+                <button class="usage-inline-btn" id="upgradeBtn" type="button">升级订阅</button>
               </div>
             </div>
           </div>
         </div>
         <div class="settings-card">
           <div class="row" style="justify-content:space-between;">
-            <h3 class="section-title">Token 使用详情</h3>
+            <h3 class="section-title">星辰币使用详情</h3>
             <span class="muted">最近记录</span>
           </div>
           <table class="token-table">
@@ -2277,7 +2797,7 @@
               <tr>
                 <th>对话内容</th>
                 <th>对话时间</th>
-                <th>Token 消耗</th>
+                <th>星辰币消耗</th>
               </tr>
             </thead>
             <tbody>
@@ -2320,47 +2840,32 @@
     <section class="detail-page" id="channelPage">
       <div class="settings-top">
         <div>
-          <div style="font-size:20px;font-weight:700;">远控通道</div>
-          <div class="muted">配置微信、飞书、钉钉账号</div>
+          <div style="font-size:20px;font-weight:700;">消息渠道</div>
+          <div class="muted">配置微信等消息接收渠道</div>
         </div>
         <button class="icon-btn detail-close-btn">✕</button>
       </div>
       <div class="detail-body">
         <div class="settings-card">
-          <p>用于让 SanagClaw 将提醒、任务执行结果和一次性云端任务回执同步到外部通道。</p>
-          <div class="channel-list">
-            <div class="channel-item">
-              <div>
-                <strong>微信 clawbot</strong>
-                <div class="muted">已绑定个人微信 · 默认提醒通道</div>
-              </div>
-              <div class="row">
-                <div class="chips"><span>已连接</span></div>
-                <div class="toggle active"></div>
-              </div>
-            </div>
-            <div class="channel-item">
-              <div>
-                <strong>飞书账号</strong>
-                <div class="muted">未配置联系人与群目标，暂不可外发</div>
-              </div>
-              <div class="row">
-                <div class="chips"><span class="warn">去配置</span></div>
-                <div class="toggle"></div>
-              </div>
-            </div>
-            <div class="channel-item">
-              <div>
-                <strong>钉钉账号</strong>
-                <div class="muted">已接入组织通讯录，可发送到指定联系人</div>
-              </div>
-              <div class="row">
-                <div class="chips"><span class="success">组织已连通</span></div>
-                <div class="toggle active"></div>
-              </div>
-            </div>
-          </div>
+          <p>用于让 SanagClaw 将提醒、任务执行结果和云端任务回执同步到外部消息渠道。</p>
+          <div class="channel-list" id="channelList"></div>
         </div>
+      </div>
+    </section>
+
+    <div class="channel-qr-overlay" id="channelQrOverlay"></div>
+    <section class="channel-qr-modal" id="channelQrModal">
+      <div class="purchase-top">
+        <div>
+          <h3>配置微信</h3>
+          <p>扫码关联微信后，在微信联系人中与 SanagClaw 对话，AI协作和沟通更简单。</p>
+        </div>
+        <button class="icon-btn" id="closeChannelQrBtn" type="button">✕</button>
+      </div>
+      <div class="channel-qr-box" aria-hidden="true"></div>
+      <div class="channel-qr-actions">
+        <button class="channel-qr-btn" id="cancelChannelQrBtn" type="button">取消</button>
+        <button class="channel-qr-btn primary" id="confirmChannelQrBtn" type="button">连接成功</button>
       </div>
     </section>
 
@@ -2375,7 +2880,7 @@
       <div class="detail-body">
         <div class="settings-card">
           <p>管理 SanagClaw 当前可调用的技能能力，便于按业务阶段灰度开放。</p>
-          <div class="market-tabs" id="skillTabs"></div>
+          <div class="market-tabs skill-tabs" id="skillTabs"></div>
           <div class="skill-list" id="skillList"></div>
         </div>
       </div>
@@ -2386,6 +2891,7 @@
     <button class="mode-switch-btn active" id="oldUserModeBtn" type="button">老用户</button>
     <button class="mode-switch-btn" id="phaseOneModeBtn" type="button">一期形态</button>
     <button class="mode-switch-btn" id="expiredUserModeBtn" type="button">过期</button>
+    <button class="mode-switch-btn" id="creditEmptyModeBtn" type="button">积分用尽</button>
     <button class="mode-switch-btn" id="newUserModeBtn" type="button">新用户</button>
   </aside>
   </div>
@@ -2419,19 +2925,37 @@
         title: "工作日上午 9:00 会议提醒",
         time: "工作日 09:00",
         detail: "重复周期：每周一至周五 · 同步到微信 clawbot",
-        command: "查看我的工作日上午9点会议提醒"
+        command: "查看我的工作日上午9点会议提醒",
+        enabled: true,
+        records: [
+          { time: "今天 09:00", detail: "已按时提醒你查看上午会议安排，并同步到微信。"},
+          { time: "昨天 09:00", detail: "已生成会议提醒，包含会议主题与参会备注。"},
+          { time: "周一 09:00", detail: "任务正常执行，提醒已送达。"}
+        ]
       },
       {
         title: "每晚 23:00 睡前提醒",
         time: "每天 23:00",
         detail: "重复周期：每天 · 提醒准备休息并开启睡眠监测",
-        command: "查看我的每晚23点睡前提醒"
+        command: "查看我的每晚23点睡前提醒",
+        enabled: true,
+        records: [
+          { time: "昨天 23:00", detail: "已提醒准备休息，并建议开启睡眠监测。"},
+          { time: "前天 23:00", detail: "已发送睡前提醒，未检测到异常。"},
+          { time: "3 天前 23:00", detail: "任务执行完成，提醒已送达。"}
+        ]
       },
       {
         title: "周日 20:00 健康周报",
         time: "周日 20:00",
         detail: "重复周期：每周日 · 汇总睡眠、压力和设备使用情况",
-        command: "查看我的健康周报定时任务"
+        command: "查看我的健康周报定时任务",
+        enabled: false,
+        records: [
+          { time: "上周日 20:00", detail: "已汇总睡眠、压力与设备使用情况，并生成周报。"},
+          { time: "上上周日 20:00", detail: "周报已完成，重点提示睡眠恢复偏低。"},
+          { time: "3 月 24 日 20:00", detail: "周报生成完成，已进入执行记录。"}
+        ]
       }
     ];
 
@@ -2455,46 +2979,28 @@
 
     const marketTaskData = [
       {
-        category: "办公提效",
-        title: "创建定时任务：热点资讯自动汇总",
-        detail: "还在一条条刷资讯？每日自动整理，不用费心查找，快速看懂当天重点。",
+        title: "每日内容热点收集",
+        detail: "每日扫描 AI 热门内容，提炼爆款选题、案例和创作切入点。",
         icon: "📰",
-        command: "帮我创建一个每天早上8点自动汇总热点资讯的任务"
+        command: "请你作为一名敏锐的内容策略师，每日「9:00」的自动定时扫描并分析今天在主流自媒体平台{例如微信公众号、B 站} 上，「AI」领域内热度蹿升最快的内容，并输出一份热点分析报告：\n1.识别并列出 3 个当前最火爆或最具潜力的选题方向\n2.为每个选题方向，提供 1-2 个具体的爆款文章或视频案例。\n3.基于以上分析，为我提供 1-2 条可立即借鉴的内容创作切入点或角度建议。"
       },
       {
-        category: "办公提效",
-        title: "发票/单据智能归档",
-        detail: "一到月末报销就火急火燎？把票据整理任务交给 SanagClaw 定时处理。",
-        icon: "🧾",
-        command: "帮我创建一个每周五下午整理发票和单据的任务"
+        title: "每日竞品追踪",
+        detail: "定期跟踪竞品动态，输出结构化市场情报周报。",
+        icon: "📈",
+        command: "请你扮演一名专业的行业分析师，每周一「9:00」自动定时全面追踪并汇总「sanag耳机」的「3个」主要竞争对手的公开市场动态。\n信息来源应主要包括它们的官方博客、产品发布公告、公开的媒体采访、以及行业新闻网站。\n请按照每个“竞争对手”为独立单元，整理一份结构化的动态报告：\n包含产品与功能更新，市场与营销活动，战略合作与声明，核心动态摘要。\n请确保所有信息来源可靠、描述客观，并对相似或重复的事件进行合并处理，最终形成一份高价值的竞品情报周报"
       },
       {
-        category: "办公提效",
-        title: "日程安排/任务跟踪与提醒",
-        detail: "每天任务太多，安排不过来怎么办？帮你管日程、盯进度、到点喊你。",
-        icon: "📅",
-        command: "帮我创建一个每天早上9点整理日程并提醒我的任务"
+        title: "明日运动计划",
+        detail: "结合明日天气与气温变化，生成个性化运动计划。",
+        icon: "🏃",
+        command: "设置每日「22:00」的自动定时任务，根据明天「深圳龙岗」的天气、每小时的气温情况变化情况和日期为我量身定制明天人性化的\"运动计划\"。"
       },
       {
-        category: "自媒体营销",
-        title: "内容选题灵感收集",
-        detail: "自动归纳热点、评论和灵感来源，沉淀成持续可用的选题池。",
-        icon: "📝",
-        command: "帮我创建一个每晚8点整理内容选题灵感的任务"
-      },
-      {
-        category: "财务金融",
-        title: "业务指标可视化管理",
-        detail: "自动整理关键业务数据，生成轻量看板，方便你快速复盘与同步。",
-        icon: "📊",
-        command: "帮我创建一个每周一早上生成业务指标看板的任务"
-      },
-      {
-        category: "研究学习",
-        title: "制定轻量学习计划",
-        detail: "把长期学习目标拆成日常节奏，自动提醒、监督打卡与阶段复盘。",
-        icon: "📒",
-        command: "帮我创建一个工作日晚上8点提醒我执行学习计划的任务"
+        title: "每日总结",
+        detail: "回顾当天对话与记忆，提炼核心结论并整理待办事项。",
+        icon: "🗒",
+        command: "请你扮演我的个人助理，全面回顾并分析我与你 在今天的对话记录和记忆。\n你的任务是：\n1.汇总关键信息：从今日所有对话、记忆中，提炼出我们讨论过的 3-5 个核心议题或结论，每个结论用一句话清晰概括。\n2.整理待办事项：梳理出明确需要我执行、推进或关注的待办事项（To-do List）。"
       }
     ];
 
@@ -2569,14 +3075,100 @@
       }
     ];
 
-    const marketTabs = ["全部任务", "办公提效", "研究学习", "娱乐游戏", "自律生活", "自媒体营销", "财务金融"];
-    let activeMarketTab = "全部任务";
     let currentUserMode = "old";
+    let expiredGateDismissed = false;
     let currentPlan = "pro";
     let purchasedPlan = currentPlan;
-    let activeModel = "银河plus";
+    let activeModel = "银河flash";
     let purchaseContext = "entry";
+    let wechatChannelConfigured = false;
     const planOrder = { lite: 1, pro: 2, max: 3 };
+    const workspaceData = [
+      {
+        id: "daily_report",
+        type: "folder",
+        icon: "🗂",
+        title: "daily_report",
+        meta: "今日生成 3 份日报文件",
+        content: "daily_report\n\n- ai_hotspot_0407.md\n- brand_summary_0407.md\n- ops_sync_0407.md"
+      },
+      {
+        id: "memory",
+        type: "folder",
+        icon: "🗂",
+        title: "memory",
+        meta: "存放长期记忆与偏好资料",
+        content: "memory\n\n- user_profile.md\n- preference_notes.md\n- reminder_rules.md"
+      },
+      {
+        id: "skills",
+        type: "folder",
+        icon: "🗂",
+        title: "skills",
+        meta: "当前已启用的技能配置文件",
+        content: "skills\n\n- weather.json\n- news_fetcher.json\n- content_summary.json"
+      },
+      {
+        id: "agents",
+        type: "file",
+        icon: "📄",
+        title: "AGENTS.md",
+        meta: "12.13 KB",
+        content: "AGENTS.md\n\n- SanagClaw 当前支持统一聊天、任务执行与结果回传。\n- 默认模型根据套餐与任务复杂度自动调度。\n- 可通过设置页管理远程控制、任务市场、工作空间和技能模块。"
+      },
+      {
+        id: "bootstrap",
+        type: "file",
+        icon: "📄",
+        title: "BOOTSTRAP.md",
+        meta: "1.47 KB",
+        content: "BOOTSTRAP.md\n\n- 初始化用户工作空间。\n- 预置 SanagClaw 基础目录结构。\n- 同步当前账号的任务模板、技能配置与记忆数据。"
+      }
+    ];
+    let longPressTimer = null;
+
+    function getBaseQuickEntries() {
+      return `
+        <button class="quick-entry quick-trigger" data-command="帮我创建一个明天上午9点的会议提醒，并同步到微信 clawbot">明天 9 点提醒我开会，并同步到微信</button>
+        <button class="quick-entry quick-trigger" data-command="帮我在小红书搜索关于sanag最热门的笔记">帮我在小红书搜索关于sanag最热门的笔记</button>
+      `;
+    }
+
+    function getStateCardMarkup(mode) {
+      if (mode === "expired") {
+        return `
+          <div class="state-card expired">
+            <strong>当前会员已过期</strong>
+            <div>你可以先浏览已有内容，续费后再继续发起新对话与任务执行。</div>
+            <div style="margin-top:10px;">
+              <button class="promo" id="expiredStateRenewBtn" type="button">立即续费</button>
+            </div>
+          </div>
+        `;
+      }
+
+      if (mode === "credit-empty") {
+        return `
+          <div class="state-card credits">
+            <strong>当前积分已用尽</strong>
+            <div>你仍可查看已有内容，继续发送新需求时会提醒你升级套餐。</div>
+          </div>
+        `;
+      }
+
+      return "";
+    }
+
+    function renderConversationByMode() {
+      const area = document.getElementById("messageArea");
+      area.innerHTML = `${getBaseQuickEntries()}${getStateCardMarkup(currentUserMode)}`;
+      bindQuickTriggers();
+
+      const expiredStateBtn = document.getElementById("expiredStateRenewBtn");
+      if (expiredStateBtn) {
+        expiredStateBtn.addEventListener("click", () => openPurchaseModal("renew"));
+      }
+    }
 
     function capitalizePlan(plan) {
       return plan.charAt(0).toUpperCase() + plan.slice(1);
@@ -2599,7 +3191,7 @@
         if (purchaseContext === "upgrade") {
           visible = tierLevel > currentLevel;
         } else if (purchaseContext === "renew") {
-          visible = tierLevel >= currentLevel;
+          visible = tier === currentPlan;
         }
 
         card.classList.toggle("hidden", !visible);
@@ -2654,13 +3246,26 @@
       document.getElementById("oldUserModeBtn").classList.toggle("active", mode === "old");
       document.getElementById("phaseOneModeBtn").classList.toggle("active", mode === "phase1");
       document.getElementById("expiredUserModeBtn").classList.toggle("expired-active", mode === "expired");
+      document.getElementById("creditEmptyModeBtn").classList.toggle("expired-active", mode === "credit-empty");
       document.getElementById("newUserModeBtn").classList.toggle("active", mode === "new");
-      document.getElementById("composerChannelBtn").classList.toggle("hidden", mode === "phase1");
+      const phaseLike = mode === "phase1" || mode === "expired" || mode === "credit-empty";
+      document.getElementById("composerChannelBtn").classList.toggle("hidden", phaseLike);
 
       const showEntry = mode === "new";
-      const showExpiredGate = mode === "expired";
+      const showExpiredGate = mode === "expired" && !expiredGateDismissed;
       document.getElementById("entryPage").classList.toggle("open", showEntry);
       document.getElementById("expiredGate").classList.toggle("open", showExpiredGate);
+
+      const composerInput = document.getElementById("composerInput");
+      const composerWrap = document.querySelector(".composer");
+      const composerSendBtn = document.getElementById("sendBtn");
+      const composerPlusBtn = document.querySelector(".composer .composer-btn");
+      const disableComposer = mode === "expired";
+      composerInput.disabled = disableComposer;
+      composerInput.placeholder = disableComposer ? "当前会员已过期，续费后可继续输入" : "尽管问，带图也行";
+      composerWrap.classList.toggle("composer-disabled", disableComposer);
+      composerSendBtn.disabled = disableComposer;
+      composerPlusBtn.disabled = disableComposer;
 
       if (showEntry || showExpiredGate) {
         closeSidebar();
@@ -2670,11 +3275,15 @@
           page.classList.remove("open");
         });
       }
+
+      renderConversationByMode();
+      renderChannelPage();
     }
 
     function unlockFormalPage(plan) {
       currentPlan = plan;
       purchasedPlan = plan;
+      expiredGateDismissed = false;
       updateCurrentPlanUI();
       closePurchaseModal();
       setUserMode("old");
@@ -2744,6 +3353,27 @@
       document.getElementById("tasksPage").classList.add("open");
     }
 
+    function openTaskRecord(taskIndex) {
+      const task = taskData[taskIndex];
+      if (!task) return;
+      document.getElementById("tasksPage").classList.remove("open");
+      document.getElementById("taskRecordPage").classList.add("open");
+      document.getElementById("taskRecordTitle").textContent = task.title;
+      document.getElementById("taskRecordSubtitle").textContent = `查看 ${task.time} 的最近执行记录`;
+      const list = document.getElementById("taskRecordList");
+      list.innerHTML = task.records.map(item => `
+        <div class="task-record-item">
+          <strong>${item.time}</strong>
+          <div class="task-record-meta">${item.detail}</div>
+        </div>
+      `).join("");
+    }
+
+    function closeTaskRecord() {
+      document.getElementById("taskRecordPage").classList.remove("open");
+      document.getElementById("tasksPage").classList.add("open");
+    }
+
     function openTaskMarket() {
       closeSettings();
       closeSidebar();
@@ -2761,6 +3391,17 @@
       document.getElementById(pageId).classList.add("open");
     }
 
+    function fillComposerWithTemplate(command) {
+      closeSidebar();
+      closeSettings();
+      document.querySelectorAll(".detail-page, .memory-page").forEach(page => {
+        page.classList.remove("open");
+      });
+      const input = document.getElementById("composerInput");
+      input.value = command;
+      input.focus();
+    }
+
     function closeDetailPages() {
       document.querySelectorAll(".detail-page, .memory-page").forEach(page => {
         page.classList.remove("open");
@@ -2770,25 +3411,27 @@
 
     function renderTasks(keyword = "") {
       const normalized = keyword.trim().toLowerCase();
-      const filtered = taskData.filter(item => {
+      const filtered = taskData.map((item, index) => ({ ...item, index })).filter(item => {
         const text = `${item.title} ${item.time} ${item.detail} ${item.command}`.toLowerCase();
         return text.includes(normalized);
       });
       const root = document.getElementById("taskList");
       root.innerHTML = filtered.map(item => `
         <div class="history-item">
-          <div class="history-card sidebar-trigger" data-command="${item.command}">
+          <div class="history-card task-record-card" data-task-index="${item.index}">
             <div>
               <div class="history-card-title">${item.title}</div>
               <div class="history-card-time">${item.time}</div>
             </div>
-            <div class="history-menu">
+            <div class="task-card-actions">
+              <button class="task-enable-toggle ${item.enabled ? "active" : ""}" type="button" data-task-toggle="${item.index}" aria-label="切换定时任务状态"></button>
+              <div class="history-menu">
               <button class="history-menu-btn" type="button">⋯</button>
               <div class="history-menu-list">
-                <button type="button">删除</button>
-                <button type="button">收藏</button>
-                <button type="button">分享</button>
+                <button type="button" data-task-run="${item.index}">▷ 立即执行</button>
+                <button type="button" class="danger" data-task-remove="${item.index}">🗑 移除</button>
               </div>
+            </div>
             </div>
           </div>
         </div>
@@ -2802,26 +3445,11 @@
     function renderRecommendedTasks() {
       const root = document.getElementById("recommendedTaskList");
       root.innerHTML = templateData.slice(0, 3).map(item => `
-        <button class="template-item sidebar-trigger" data-command="${item.command}" style="text-align:left;border:0;width:100%;">
+        <button class="template-item sidebar-trigger" data-command="${item.command}" data-fill-only="true" style="text-align:left;border:0;width:100%;">
           <strong>${item.title}</strong>
           <div class="muted">${item.detail}</div>
         </button>
       `).join("");
-    }
-
-    function renderMarketTabs() {
-      const root = document.getElementById("taskMarketTabs");
-      root.innerHTML = marketTabs.map(tab => `
-        <button class="market-tab ${tab === activeMarketTab ? "active" : ""}" type="button" data-tab="${tab}">${tab}</button>
-      `).join("");
-
-      root.querySelectorAll(".market-tab").forEach(button => {
-        button.addEventListener("click", () => {
-          activeMarketTab = button.dataset.tab;
-          renderMarketTabs();
-          renderMarketCards();
-        });
-      });
     }
 
     function renderSkillTabs() {
@@ -2858,39 +3486,166 @@
 
     function renderMarketCards() {
       const root = document.getElementById("taskMarketGrid");
-      const mergedTasks = [
-        ...marketTaskData,
-        ...templateData.map(item => ({
-          category: "全部任务",
-          title: item.title,
-          detail: item.detail,
-          icon: "✦",
-          command: item.command
-        }))
-      ];
-      const visibleTasks = activeMarketTab === "全部任务"
-        ? mergedTasks
-        : marketTaskData.filter(item => item.category === activeMarketTab);
-
-      root.innerHTML = visibleTasks.map(item => `
-        <button class="market-card sidebar-trigger" data-command="${item.command}" type="button">
+      root.innerHTML = marketTaskData.map(item => `
+        <button class="market-card sidebar-trigger" data-command="${item.command}" data-fill-only="true" type="button">
           <div class="market-card-icon">${item.icon}</div>
           <strong>${item.title}</strong>
           <div class="muted">${item.detail}</div>
         </button>
       `).join("");
+    }
 
-      if (!visibleTasks.length) {
-        root.innerHTML = `
-          <div class="market-card">
-            <strong>${activeMarketTab}</strong>
-            <div class="muted">这个分类的任务模板还在整理中，后面我可以继续帮你补内容。</div>
+    function renderWorkspace() {
+      const root = document.getElementById("workspaceList");
+      root.innerHTML = workspaceData.map(item => `
+        <div class="workspace-item" data-workspace-id="${item.id}" data-workspace-type="${item.type}">
+          <span class="workspace-arrow">›</span>
+          <span class="workspace-icon">${item.icon}</span>
+          <span class="workspace-meta">
+            <strong>${item.title}</strong>
+            <span>${item.meta}</span>
+          </span>
+          ${item.type === "file" ? '<button class="workspace-download" type="button">下载</button>' : ""}
+        </div>
+      `).join("");
+
+      root.querySelectorAll(".workspace-item").forEach(item => {
+        const workspaceType = item.dataset.workspaceType;
+        const fileId = item.dataset.workspaceId;
+
+        if (workspaceType === "file") {
+          const startLongPress = () => {
+            clearTimeout(longPressTimer);
+            longPressTimer = setTimeout(() => {
+              document.querySelectorAll(".workspace-item").forEach(node => node.classList.remove("show-download"));
+              item.classList.add("show-download");
+            }, 450);
+          };
+
+          const cancelLongPress = () => {
+            clearTimeout(longPressTimer);
+          };
+
+          item.addEventListener("mousedown", startLongPress);
+          item.addEventListener("touchstart", startLongPress, { passive: true });
+          item.addEventListener("mouseup", cancelLongPress);
+          item.addEventListener("mouseleave", cancelLongPress);
+          item.addEventListener("touchend", cancelLongPress);
+          item.addEventListener("touchcancel", cancelLongPress);
+
+          const downloadBtn = item.querySelector(".workspace-download");
+          downloadBtn.addEventListener("click", event => {
+            event.stopPropagation();
+            downloadBtn.textContent = "已下载";
+            setTimeout(() => {
+              item.classList.remove("show-download");
+              downloadBtn.textContent = "下载";
+            }, 1000);
+          });
+        }
+
+        item.addEventListener("click", event => {
+          if (event.target.closest(".workspace-download")) return;
+          openWorkspaceFileDetail(fileId);
+        });
+      });
+    }
+
+    function openWorkspaceFileDetail(fileId) {
+      const target = workspaceData.find(item => item.id === fileId);
+      if (!target) return;
+      document.getElementById("workspaceFileTitle").textContent = target.title;
+      document.getElementById("workspaceFileMeta").textContent = target.meta;
+      document.getElementById("workspaceFileContent").textContent = target.content;
+      document.getElementById("workspacePage").classList.remove("open");
+      document.getElementById("workspaceFilePage").classList.add("open");
+    }
+
+    function closeWorkspaceFileDetail() {
+      document.getElementById("workspaceFilePage").classList.remove("open");
+      document.getElementById("workspacePage").classList.add("open");
+    }
+
+    function renderChannelPage() {
+      const root = document.getElementById("channelList");
+      const phaseOneOnly = currentUserMode === "phase1";
+      const channelItems = phaseOneOnly
+        ? [{
+            id: "wechat",
+            title: "微信",
+            detail: "一键扫码关联微信，在微信联系人中与 SanagClaw 对话，AI协作和沟通更简单。",
+            recommended: true,
+            configured: wechatChannelConfigured
+          }]
+        : [
+            {
+              id: "wechat",
+              title: "微信",
+              detail: "一键扫码关联微信，在微信联系人中与 SanagClaw 对话，AI协作和沟通更简单。",
+              recommended: true,
+              configured: wechatChannelConfigured
+            },
+            {
+              id: "feishu",
+              title: "飞书",
+              detail: "支持把提醒与任务回执同步到飞书联系人和群聊。",
+              recommended: false,
+              configured: false
+            },
+            {
+              id: "dingtalk",
+              title: "钉钉",
+              detail: "支持把任务执行结果同步到钉钉工作台与指定联系人。",
+              recommended: false,
+              configured: true
+            }
+          ];
+
+      root.innerHTML = channelItems.map(item => `
+        <div class="channel-item">
+          <div class="channel-item-main">
+            <div class="channel-icon">${item.id === "wechat" ? "💬" : item.id === "feishu" ? "🗨" : "🔔"}</div>
+            <div class="channel-copy">
+              <div class="channel-title-row">
+                <strong>${item.title}</strong>
+                ${item.recommended ? '<span class="channel-tag">推荐</span>' : ""}
+              </div>
+              <div class="muted">${item.detail}</div>
+            </div>
           </div>
-        `;
+          ${
+            item.id === "wechat"
+              ? `<button class="channel-config-btn ${item.configured ? "done" : ""}" id="wechatConfigBtn" type="button">${item.configured ? "已配置" : "配置"}</button>`
+              : `<button class="channel-config-btn ${item.configured ? "done" : ""}" type="button">${item.configured ? "已配置" : "待配置"}</button>`
+          }
+        </div>
+      `).join("");
+
+      const wechatConfigBtn = document.getElementById("wechatConfigBtn");
+      if (wechatConfigBtn && !wechatChannelConfigured) {
+        wechatConfigBtn.addEventListener("click", openChannelQrModal);
       }
     }
 
+    function openChannelQrModal() {
+      document.getElementById("channelQrOverlay").classList.add("show");
+      document.getElementById("channelQrModal").classList.add("open");
+    }
+
+    function closeChannelQrModal() {
+      document.getElementById("channelQrOverlay").classList.remove("show");
+      document.getElementById("channelQrModal").classList.remove("open");
+    }
+
+    function confirmWechatConfigured() {
+      wechatChannelConfigured = true;
+      closeChannelQrModal();
+      renderChannelPage();
+    }
+
     function appendUserMessage(text) {
+      if (currentUserMode === "expired") return;
+
       const area = document.getElementById("messageArea");
       const user = document.createElement("div");
       user.className = "message user";
@@ -2899,8 +3654,17 @@
 
       const reply = document.createElement("div");
       reply.className = "message assistant";
-      reply.innerHTML = "我已收到你的请求，并开始为你处理。<br><small>SanagClaw 会把结果同步到定时任务与侧边记录中。</small>";
+      if (currentUserMode === "credit-empty") {
+        reply.innerHTML = '当前积分已用尽，请前往<button class="inline-upgrade-btn" type="button">升级套餐</button>';
+      } else {
+        reply.innerHTML = "我已收到你的请求，并开始为你处理。<br><small>SanagClaw 会把结果同步到定时任务与侧边记录中。</small>";
+      }
       area.appendChild(reply);
+
+      const upgradeBtn = reply.querySelector(".inline-upgrade-btn");
+      if (upgradeBtn) {
+        upgradeBtn.addEventListener("click", () => openPurchaseModal("upgrade"));
+      }
 
       area.scrollTop = area.scrollHeight;
     }
@@ -2913,11 +3677,7 @@
         page.classList.remove("open");
       });
       const area = document.getElementById("messageArea");
-      area.innerHTML = `
-        <button class="quick-entry quick-trigger" data-command="帮我创建一个明天上午9点的会议提醒，并同步到微信 clawbot">明天 9 点提醒我开会，并同步到微信</button>
-        <button class="quick-entry quick-trigger" data-command="帮我在小红书搜索关于sanag最热门的笔记">帮我在小红书搜索关于sanag最热门的笔记</button>
-        <div class="message assistant">新的任务对话已创建。你可以直接输入需求，我会从这里开始处理。</div>
-      `;
+      area.innerHTML = `${getBaseQuickEntries()}<div class="message assistant">新的任务对话已创建。你可以直接输入需求，我会从这里开始处理。</div>`;
       bindQuickTriggers();
       document.getElementById("composerInput").value = "";
       area.scrollTop = 0;
@@ -2926,9 +3686,14 @@
     function bindQuickTriggers() {
       document.querySelectorAll(".quick-trigger").forEach(button => {
         button.addEventListener("click", () => {
+          if (currentUserMode === "expired") return;
           const cmd = button.dataset.command;
+          const fillOnly = button.dataset.fillOnly === "true";
           document.getElementById("composerInput").value = cmd;
-          appendUserMessage(cmd);
+          document.getElementById("composerInput").focus();
+          if (!fillOnly) {
+            appendUserMessage(cmd);
+          }
         });
       });
     }
@@ -2940,23 +3705,32 @@
     });
     document.getElementById("oldUserModeBtn").addEventListener("click", () => setUserMode("old"));
     document.getElementById("phaseOneModeBtn").addEventListener("click", () => setUserMode("phase1"));
-    document.getElementById("expiredUserModeBtn").addEventListener("click", () => setUserMode("expired"));
+    document.getElementById("expiredUserModeBtn").addEventListener("click", () => {
+      expiredGateDismissed = false;
+      setUserMode("expired");
+    });
+    document.getElementById("creditEmptyModeBtn").addEventListener("click", () => setUserMode("credit-empty"));
     document.getElementById("newUserModeBtn").addEventListener("click", () => setUserMode("new"));
     document.getElementById("openPurchaseBtn").addEventListener("click", () => openPurchaseModal("entry"));
     document.getElementById("closePurchaseBtn").addEventListener("click", closePurchaseModal);
     document.getElementById("purchaseOverlay").addEventListener("click", closePurchaseModal);
     document.getElementById("expiredRenewBtn").addEventListener("click", () => openPurchaseModal("renew"));
+    document.getElementById("closeExpiredGateBtn").addEventListener("click", () => {
+      expiredGateDismissed = true;
+      setUserMode("expired");
+    });
     document.getElementById("openSettingsBtn").addEventListener("click", openSettings);
     document.getElementById("closeSettingsBtn").addEventListener("click", closeSettings);
     document.getElementById("closeMemoryBtn").addEventListener("click", closeMemory);
     document.getElementById("closeTasksBtn").addEventListener("click", closeTasks);
-    document.getElementById("openCreateScheduledTaskBtn").addEventListener("click", openCreateScheduledTask);
+    document.getElementById("openCreateScheduledTaskBtn").addEventListener("click", () => {
+      fillComposerWithTemplate("设置每日「9:00」的自动定时任务，「自动抓取全网当日AI科技相关热点资讯」，整理成简洁清晰的内容发送给我");
+    });
     document.getElementById("closeCreateScheduledTaskBtn").addEventListener("click", closeCreateScheduledTask);
     document.getElementById("cancelCreateScheduledTaskBtn").addEventListener("click", closeCreateScheduledTask);
     document.getElementById("confirmCreateScheduledTaskBtn").addEventListener("click", closeCreateScheduledTask);
     document.getElementById("closeTaskMarketBtn").addEventListener("click", closeTaskMarket);
     document.getElementById("viewAllTaskMarketBtn").addEventListener("click", openTaskMarket);
-    document.getElementById("blankTaskStartBtn").addEventListener("click", openCreateScheduledTask);
     document.querySelectorAll("#currentPlanBadge").forEach(node => {
       node.addEventListener("click", event => {
         event.stopPropagation();
@@ -2965,6 +3739,10 @@
     document.getElementById("upgradeBtn").addEventListener("click", event => {
       event.stopPropagation();
       openPurchaseModal("upgrade");
+    });
+    document.getElementById("renewBtn").addEventListener("click", event => {
+      event.stopPropagation();
+      openPurchaseModal("renew");
     });
     document.getElementById("openMembershipBtn").addEventListener("click", () => openDetailPage("usagePage"));
     document.getElementById("composerTimedTaskBtn").addEventListener("click", openTasks);
@@ -2992,6 +3770,12 @@
       button.addEventListener("click", closeDetailPages);
     });
     document.getElementById("closeMembershipBtn").addEventListener("click", goBackToHome);
+    document.getElementById("closeWorkspaceFileBtn").addEventListener("click", closeWorkspaceFileDetail);
+    document.getElementById("closeTaskRecordBtn").addEventListener("click", closeTaskRecord);
+    document.getElementById("closeChannelQrBtn").addEventListener("click", closeChannelQrModal);
+    document.getElementById("cancelChannelQrBtn").addEventListener("click", closeChannelQrModal);
+    document.getElementById("confirmChannelQrBtn").addEventListener("click", confirmWechatConfigured);
+    document.getElementById("channelQrOverlay").addEventListener("click", closeChannelQrModal);
 
     document.querySelectorAll(".model-option").forEach(button => {
       button.addEventListener("click", event => {
@@ -3004,13 +3788,21 @@
       button.addEventListener("click", () => unlockFormalPage(button.dataset.plan));
     });
 
-    bindQuickTriggers();
     updateCurrentPlanUI();
     setUserMode(currentUserMode);
 
     document.addEventListener("click", event => {
       if (!event.target.closest(".model-dropdown") && !event.target.closest(".model-trigger")) {
         closeModelDropdown();
+      }
+
+      const taskToggle = event.target.closest("[data-task-toggle]");
+      if (taskToggle) {
+        event.stopPropagation();
+        const taskIndex = Number(taskToggle.dataset.taskToggle);
+        taskData[taskIndex].enabled = !taskData[taskIndex].enabled;
+        renderTasks(document.getElementById("tasksSearchInput").value);
+        return;
       }
 
       const menuBtn = event.target.closest(".history-menu-btn");
@@ -3027,20 +3819,47 @@
       const menuAction = event.target.closest(".history-menu-list button");
       if (menuAction) {
         event.stopPropagation();
+        const runIndex = menuAction.dataset.taskRun;
+        const removeIndex = menuAction.dataset.taskRemove;
         menuAction.closest(".history-menu").classList.remove("open");
+        if (runIndex !== undefined) {
+          goBackToHome();
+          const runTask = taskData[Number(runIndex)];
+          if (runTask) {
+            appendUserMessage(`立即执行任务：${runTask.title}`);
+          }
+          return;
+        }
+        if (removeIndex !== undefined) {
+          taskData.splice(Number(removeIndex), 1);
+          renderTasks(document.getElementById("tasksSearchInput").value);
+          return;
+        }
+        return;
+      }
+
+      const taskCard = event.target.closest(".task-record-card");
+      if (taskCard) {
+        if (event.target.closest(".task-card-actions")) return;
+        openTaskRecord(Number(taskCard.dataset.taskIndex));
         return;
       }
 
       const trigger = event.target.closest(".sidebar-trigger");
       if (!trigger) return;
+      if (currentUserMode === "expired") return;
       const cmd = trigger.dataset.command;
+      const fillOnly = trigger.dataset.fillOnly === "true";
       closeSidebar();
       closeSettings();
       document.querySelectorAll(".detail-page, .memory-page").forEach(page => {
         page.classList.remove("open");
       });
       document.getElementById("composerInput").value = cmd;
-      appendUserMessage(cmd);
+      document.getElementById("composerInput").focus();
+      if (!fillOnly) {
+        appendUserMessage(cmd);
+      }
     });
 
     document.addEventListener("click", event => {
@@ -3063,10 +3882,11 @@
 
     renderTasks();
     renderRecommendedTasks();
-    renderMarketTabs();
     renderMarketCards();
     renderSkillTabs();
     renderSkills();
+    renderWorkspace();
+    renderChannelPage();
   </script>
 </body>
 </html>
