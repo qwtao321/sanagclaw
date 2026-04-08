@@ -901,9 +901,9 @@
 
     .composer {
       display: flex;
-      align-items: flex-end;
+      align-items: center;
       gap: 10px;
-      padding: 10px 12px;
+      padding: 10px 10px 10px 14px;
       border-radius: 22px;
       background: rgba(255, 255, 255, 0.92);
       border: 1px solid rgba(32, 38, 45, 0.08);
@@ -912,7 +912,7 @@
 
     textarea {
       flex: 1;
-      min-height: 24px;
+      min-height: 22px;
       max-height: 120px;
       resize: none;
       border: 0;
@@ -920,17 +920,22 @@
       background: transparent;
       font: inherit;
       color: var(--ink);
-      line-height: 1.5;
-      padding: 8px 2px 6px;
+      line-height: 1.45;
+      padding: 0;
+      margin: 0;
+      display: block;
     }
 
     .composer-btn {
       width: 38px;
       height: 38px;
+      flex: 0 0 38px;
       border-radius: 14px;
       background: #f3f5f7;
       color: var(--ink);
       font-size: 20px;
+      display: inline-grid;
+      place-items: center;
     }
 
     .composer-btn.primary {
@@ -1694,18 +1699,48 @@
     .task-record-list {
       display: grid;
       gap: 0;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid rgba(32, 38, 45, 0.06);
       background: rgba(255, 255, 255, 0.96);
     }
 
     .task-record-item {
-      padding: 14px 16px;
+      padding: 12px 0;
       display: grid;
-      gap: 6px;
+      grid-template-columns: 1fr auto;
+      align-items: start;
+      gap: 12px;
       border-bottom: 1px solid rgba(32, 38, 45, 0.06);
       background: transparent;
+    }
+
+    .task-record-main {
+      min-width: 0;
+      display: grid;
+      gap: 6px;
+    }
+
+    .task-record-item:last-child {
+      border-bottom: 0;
+    }
+
+    .task-record-line {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      min-width: 0;
+      flex-wrap: wrap;
+    }
+
+    .task-record-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      flex: 0 0 auto;
+      background: #74c88b;
+      margin-top: 2px;
+    }
+
+    .task-record-dot.failed {
+      background: #e17a7a;
     }
 
     .task-record-item strong {
@@ -1713,14 +1748,37 @@
       line-height: 1.35;
     }
 
-    .task-record-item:last-child {
-      border-bottom: 0;
+    .task-record-id {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      border-radius: 8px;
+      background: rgba(32, 38, 45, 0.08);
+      color: #5f6872;
+      font-size: 11px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .task-record-status {
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1;
+      white-space: nowrap;
     }
 
     .task-record-meta {
       color: var(--muted);
       font-size: 12px;
       line-height: 1.45;
+    }
+
+    .task-record-time {
+      color: #5f6872;
+      font-size: 12px;
+      line-height: 1.4;
+      white-space: nowrap;
+      padding-top: 2px;
     }
 
     .chip-btn {
@@ -2374,7 +2432,7 @@
         <div class="composer-module-tabs">
           <button class="composer-module-chip" id="composerChannelBtn" type="button">
             <span class="composer-module-icon">◎</span>
-            <span>消息配置渠道</span>
+            <span>消息渠道配置</span>
           </button>
           <button class="composer-module-chip" id="composerTimedTaskBtn" type="button">
             <span class="composer-module-icon">◔</span>
@@ -2401,8 +2459,7 @@
 
       <div class="composer-wrap">
         <div class="composer">
-          <button class="composer-btn">＋</button>
-          <textarea id="composerInput" placeholder="尽管问，带图也行">尽管问，带图也行</textarea>
+          <textarea id="composerInput" placeholder="尽管问，带图也行"></textarea>
           <button class="composer-btn primary" id="sendBtn">↑</button>
         </div>
       </div>
@@ -2928,9 +2985,9 @@
         command: "查看我的工作日上午9点会议提醒",
         enabled: true,
         records: [
-          { time: "今天 09:00", detail: "已按时提醒你查看上午会议安排，并同步到微信。"},
-          { time: "昨天 09:00", detail: "已生成会议提醒，包含会议主题与参会备注。"},
-          { time: "周一 09:00", detail: "任务正常执行，提醒已送达。"}
+          { label: "每日会议提醒", recordId: "automation-202604080900", status: "成功", statusClass: "", time: "1小时前", detail: "已按时提醒你查看上午会议安排，并同步到微信。"},
+          { label: "每日会议提醒", recordId: "automation-202604070900", status: "成功", statusClass: "", time: "1天前", detail: "已生成会议提醒，包含会议主题与参会备注。"},
+          { label: "每日会议提醒", recordId: "automation-202604060900", status: "成功", statusClass: "", time: "2天前", detail: "任务正常执行，提醒已送达。"}
         ]
       },
       {
@@ -2940,9 +2997,9 @@
         command: "查看我的每晚23点睡前提醒",
         enabled: true,
         records: [
-          { time: "昨天 23:00", detail: "已提醒准备休息，并建议开启睡眠监测。"},
-          { time: "前天 23:00", detail: "已发送睡前提醒，未检测到异常。"},
-          { time: "3 天前 23:00", detail: "任务执行完成，提醒已送达。"}
+          { label: "睡前提醒", recordId: "automation-202604072300", status: "成功", statusClass: "", time: "12小时前", detail: "已提醒准备休息，并建议开启睡眠监测。"},
+          { label: "睡前提醒", recordId: "automation-202604062300", status: "成功", statusClass: "", time: "1天前", detail: "已发送睡前提醒，未检测到异常。"},
+          { label: "睡前提醒", recordId: "automation-202604052300", status: "失败", statusClass: "failed", time: "2天前", detail: "执行超时，未成功同步到设备提醒渠道。"}
         ]
       },
       {
@@ -2952,9 +3009,9 @@
         command: "查看我的健康周报定时任务",
         enabled: false,
         records: [
-          { time: "上周日 20:00", detail: "已汇总睡眠、压力与设备使用情况，并生成周报。"},
-          { time: "上上周日 20:00", detail: "周报已完成，重点提示睡眠恢复偏低。"},
-          { time: "3 月 24 日 20:00", detail: "周报生成完成，已进入执行记录。"}
+          { label: "健康周报", recordId: "automation-202604062000", status: "成功", statusClass: "", time: "2天前", detail: "已汇总睡眠、压力与设备使用情况，并生成周报。"},
+          { label: "健康周报", recordId: "automation-202603302000", status: "成功", statusClass: "", time: "1周前", detail: "周报已完成，重点提示睡眠恢复偏低。"},
+          { label: "健康周报", recordId: "automation-202603232000", status: "成功", statusClass: "", time: "2周前", detail: "周报生成完成，已进入执行记录。"}
         ]
       }
     ];
@@ -3148,12 +3205,7 @@
       }
 
       if (mode === "credit-empty") {
-        return `
-          <div class="state-card credits">
-            <strong>当前积分已用尽</strong>
-            <div>你仍可查看已有内容，继续发送新需求时会提醒你升级套餐。</div>
-          </div>
-        `;
+        return "";
       }
 
       return "";
@@ -3248,8 +3300,8 @@
       document.getElementById("expiredUserModeBtn").classList.toggle("expired-active", mode === "expired");
       document.getElementById("creditEmptyModeBtn").classList.toggle("expired-active", mode === "credit-empty");
       document.getElementById("newUserModeBtn").classList.toggle("active", mode === "new");
-      const phaseLike = mode === "phase1" || mode === "expired" || mode === "credit-empty";
-      document.getElementById("composerChannelBtn").classList.toggle("hidden", phaseLike);
+      const hideChannelComposerChip = mode === "expired" || mode === "credit-empty";
+      document.getElementById("composerChannelBtn").classList.toggle("hidden", hideChannelComposerChip);
 
       const showEntry = mode === "new";
       const showExpiredGate = mode === "expired" && !expiredGateDismissed;
@@ -3259,13 +3311,11 @@
       const composerInput = document.getElementById("composerInput");
       const composerWrap = document.querySelector(".composer");
       const composerSendBtn = document.getElementById("sendBtn");
-      const composerPlusBtn = document.querySelector(".composer .composer-btn");
       const disableComposer = mode === "expired";
       composerInput.disabled = disableComposer;
       composerInput.placeholder = disableComposer ? "当前会员已过期，续费后可继续输入" : "尽管问，带图也行";
       composerWrap.classList.toggle("composer-disabled", disableComposer);
       composerSendBtn.disabled = disableComposer;
-      composerPlusBtn.disabled = disableComposer;
 
       if (showEntry || showExpiredGate) {
         closeSidebar();
@@ -3363,8 +3413,16 @@
       const list = document.getElementById("taskRecordList");
       list.innerHTML = task.records.map(item => `
         <div class="task-record-item">
-          <strong>${item.time}</strong>
-          <div class="task-record-meta">${item.detail}</div>
+          <div class="task-record-main">
+            <div class="task-record-line">
+              <span class="task-record-dot ${item.statusClass || ""}"></span>
+              <strong>${item.label}</strong>
+              <span class="task-record-id">${item.recordId}</span>
+              <span class="task-record-status">${item.status}</span>
+            </div>
+            <div class="task-record-meta">${item.detail}</div>
+          </div>
+          <div class="task-record-time">${item.time}</div>
         </div>
       `).join("");
     }
@@ -3444,7 +3502,7 @@
 
     function renderRecommendedTasks() {
       const root = document.getElementById("recommendedTaskList");
-      root.innerHTML = templateData.slice(0, 3).map(item => `
+      root.innerHTML = marketTaskData.slice(0, 3).map(item => `
         <button class="template-item sidebar-trigger" data-command="${item.command}" data-fill-only="true" style="text-align:left;border:0;width:100%;">
           <strong>${item.title}</strong>
           <div class="muted">${item.detail}</div>
