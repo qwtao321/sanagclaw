@@ -888,6 +888,10 @@
       display: none;
     }
 
+    .settings-menu-item.hidden {
+      display: none;
+    }
+
     .composer-module-icon {
       width: 18px;
       height: 18px;
@@ -2341,7 +2345,7 @@
             <div class="plan-name">Lite</div>
             <div class="plan-price"><s>刊例价 ¥199 / 月</s><br>限时 ¥179 / 月</div>
           </div>
-          <div class="plan-desc">500 星辰币。<br>适合日常轻度使用用户。<br>支持银河 flash 模型。<br>支持手机端控制渠道。</div>
+          <div class="plan-desc">3000万token。<br>适合日常轻度使用用户。<br>支持银河 flash 模型。<br>支持手机端控制渠道。</div>
           <button class="plan-buy-btn plan-buy-trigger" data-plan="lite" type="button">购买 Lite</button>
         </div>
         <div class="plan-card" data-tier="pro">
@@ -2349,7 +2353,7 @@
             <div class="plan-name">Pro</div>
             <div class="plan-price"><s>刊例价 ¥399 / 月</s><br>限时 ¥359 / 月</div>
           </div>
-          <div class="plan-desc">1500 星辰币。<br>3 倍 Lite 用量，适合中高频使用用户。<br>支持银河flash、银河pro、银河max模型。<br>支持手机端控制渠道，每日登陆送 5 个星辰币。</div>
+          <div class="plan-desc">1亿token。<br>3 倍 Lite 用量，适合中高频使用用户。<br>支持银河flash、银河pro、银河max模型。<br>支持手机端控制渠道，每日登陆送 50万token。</div>
           <button class="plan-buy-btn plan-buy-trigger" data-plan="pro" type="button">购买 Pro</button>
         </div>
         <div class="plan-card" data-tier="max">
@@ -2357,7 +2361,7 @@
             <div class="plan-name">Max</div>
             <div class="plan-price"><s>刊例价 ¥799 / 月</s><br>限时 ¥699 / 月</div>
           </div>
-          <div class="plan-desc">3000 星辰币。<br>6 倍 Lite 用量，适合高强度使用用户。<br>支持银河 flash、银河 plus、银河 pro 模型。<br>支持手机端控制渠道，每日登陆送 10 个星辰币。</div>
+          <div class="plan-desc">2亿token。<br>6 倍 Lite 用量，适合高强度使用用户。<br>支持银河 flash、银河 plus、银河 pro 模型。<br>支持手机端控制渠道，每日登陆送 100万token。</div>
           <button class="plan-buy-btn plan-buy-trigger" data-plan="max" type="button">购买 Max</button>
         </div>
         <div class="plan-empty-state" id="planEmptyState">当前已是最高版本，可继续使用 SanagClaw 的完整能力。</div>
@@ -2525,7 +2529,7 @@
             </div>
             <em>›</em>
           </button>
-          <button class="settings-menu-item settings-nav-trigger" data-target="memoryPage">
+          <button class="settings-menu-item settings-nav-trigger" data-target="memoryPage" id="memorySettingsEntry">
             <div class="settings-menu-main">
               <div class="settings-menu-top">
                 <span class="settings-menu-pill">资料</span>
@@ -2830,13 +2834,13 @@
                 <span class="plan-expire">到期 2026-06-30</span>
               </div>
               <div class="row" style="justify-content:space-between;">
-                <strong style="font-size:15px;">星辰币用量</strong>
+                <strong style="font-size:15px;">Token用量</strong>
                 <span class="muted">680 / 1000</span>
               </div>
               <div class="progress-track">
                 <div class="progress-fill" style="width:68%;"></div>
               </div>
-              <div class="muted">本月已使用 680 星辰币，点击查看详细用量</div>
+              <div class="muted">本月已使用 680 Token，点击查看详细用量</div>
               <div class="usage-progress-actions">
                 <button class="usage-inline-btn" id="renewBtn" type="button">续费</button>
                 <button class="usage-inline-btn" id="upgradeBtn" type="button">升级订阅</button>
@@ -2846,7 +2850,7 @@
         </div>
         <div class="settings-card">
           <div class="row" style="justify-content:space-between;">
-            <h3 class="section-title">星辰币使用详情</h3>
+            <h3 class="section-title">Token使用详情</h3>
             <span class="muted">最近记录</span>
           </div>
           <table class="token-table">
@@ -2854,7 +2858,7 @@
               <tr>
                 <th>对话内容</th>
                 <th>对话时间</th>
-                <th>星辰币消耗</th>
+                <th>Token消耗</th>
               </tr>
             </thead>
             <tbody>
@@ -3142,47 +3146,35 @@
     const planOrder = { lite: 1, pro: 2, max: 3 };
     const workspaceData = [
       {
-        id: "daily_report",
-        type: "folder",
-        icon: "🗂",
-        title: "daily_report",
-        meta: "今日生成 3 份日报文件",
-        content: "daily_report\n\n- ai_hotspot_0407.md\n- brand_summary_0407.md\n- ops_sync_0407.md"
-      },
-      {
-        id: "memory",
-        type: "folder",
-        icon: "🗂",
-        title: "memory",
-        meta: "存放长期记忆与偏好资料",
-        content: "memory\n\n- user_profile.md\n- preference_notes.md\n- reminder_rules.md"
-      },
-      {
-        id: "skills",
-        type: "folder",
-        icon: "🗂",
-        title: "skills",
-        meta: "当前已启用的技能配置文件",
-        content: "skills\n\n- weather.json\n- news_fetcher.json\n- content_summary.json"
-      },
-      {
-        id: "agents",
+        id: "daily_report_file",
         type: "file",
         icon: "📄",
-        title: "AGENTS.md",
-        meta: "12.13 KB",
-        content: "AGENTS.md\n\n- SanagClaw 当前支持统一聊天、任务执行与结果回传。\n- 默认模型根据套餐与任务复杂度自动调度。\n- 可通过设置页管理远程控制、任务市场、工作空间和技能模块。"
+        title: "daily_report.md",
+        meta: "生成于 2026-04-09 17:41",
+        content: "daily_report.md\n\n生成时间：2026-04-09 17:41\n\n- 今日热点内容汇总\n- 竞品动态简报\n- 任务执行摘要"
       },
       {
-        id: "bootstrap",
+        id: "daily1_report_file",
         type: "file",
         icon: "📄",
-        title: "BOOTSTRAP.md",
-        meta: "1.47 KB",
-        content: "BOOTSTRAP.md\n\n- 初始化用户工作空间。\n- 预置 SanagClaw 基础目录结构。\n- 同步当前账号的任务模板、技能配置与记忆数据。"
+        title: "daily1_report.md",
+        meta: "生成于 2026-04-08 18:20",
+        content: "daily1_report.md\n\n生成时间：2026-04-08 18:20\n\n- 品牌内容热点回顾\n- 竞品市场动态摘要\n- 定时任务执行复盘"
+      },
+      {
+        id: "daily2_report_file",
+        type: "file",
+        icon: "📄",
+        title: "daily2_report.md",
+        meta: "生成于 2026-04-07 20:05",
+        content: "daily2_report.md\n\n生成时间：2026-04-07 20:05\n\n- AI 科技热点追踪\n- 用户任务执行统计\n- 设备健康提醒摘要"
       }
     ];
     let longPressTimer = null;
+
+    function getVisibleWorkspaceData() {
+      return workspaceData;
+    }
 
     function getBaseQuickEntries() {
       return `
@@ -3300,8 +3292,10 @@
       document.getElementById("expiredUserModeBtn").classList.toggle("expired-active", mode === "expired");
       document.getElementById("creditEmptyModeBtn").classList.toggle("expired-active", mode === "credit-empty");
       document.getElementById("newUserModeBtn").classList.toggle("active", mode === "new");
-      const hideChannelComposerChip = mode === "expired" || mode === "credit-empty";
+      const phaseLikeSettings = mode === "phase1" || mode === "expired" || mode === "credit-empty";
+      const hideChannelComposerChip = false;
       document.getElementById("composerChannelBtn").classList.toggle("hidden", hideChannelComposerChip);
+      document.getElementById("memorySettingsEntry").classList.toggle("hidden", phaseLikeSettings);
 
       const showEntry = mode === "new";
       const showExpiredGate = mode === "expired" && !expiredGateDismissed;
@@ -3336,6 +3330,10 @@
       expiredGateDismissed = false;
       updateCurrentPlanUI();
       closePurchaseModal();
+      if (purchaseContext === "entry") {
+        setUserMode("phase1");
+        return;
+      }
       setUserMode("old");
     }
 
@@ -3555,7 +3553,8 @@
 
     function renderWorkspace() {
       const root = document.getElementById("workspaceList");
-      root.innerHTML = workspaceData.map(item => `
+      const visibleWorkspaceData = getVisibleWorkspaceData();
+      root.innerHTML = visibleWorkspaceData.map(item => `
         <div class="workspace-item" data-workspace-id="${item.id}" data-workspace-type="${item.type}">
           <span class="workspace-arrow">›</span>
           <span class="workspace-icon">${item.icon}</span>
@@ -3610,7 +3609,7 @@
     }
 
     function openWorkspaceFileDetail(fileId) {
-      const target = workspaceData.find(item => item.id === fileId);
+      const target = getVisibleWorkspaceData().find(item => item.id === fileId);
       if (!target) return;
       document.getElementById("workspaceFileTitle").textContent = target.title;
       document.getElementById("workspaceFileMeta").textContent = target.meta;
@@ -3626,7 +3625,7 @@
 
     function renderChannelPage() {
       const root = document.getElementById("channelList");
-      const phaseOneOnly = currentUserMode === "phase1";
+      const phaseOneOnly = currentUserMode === "phase1" || currentUserMode === "expired" || currentUserMode === "credit-empty";
       const channelItems = phaseOneOnly
         ? [{
             id: "wechat",
